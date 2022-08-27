@@ -3,24 +3,30 @@ const {
 } = require('../database/models/index')
 
 const index = async (req, res) => {
-    /*     let usuario = await User.findAll()
-        return res.render('../src/views/usuario/index', {usuario}); */
+    let users = await User.findAll()
+    return res.status(200).json({
+        users
+    })
 };
 
 const show = async (req, res) => {
-    /*  const id = req.params.id
-     let elemento = await User.findOne({ where: { id: id } });
-     return res.render('../src/views/usuario/show', {elemento}); */
+    const id = req.params.id
+    let user = await User.findOne({
+        where: {
+            id: id
+        }
+    });
+    return res.status(200).json({
+        user
+    })
 };
-
-
-//API
 
 const store = async (req, res) => {
     const params = req.body;
     console.log(params);
 
     params.password = bcrypt.hashSync(params.password, 10);
+
     console.log(params);
 
     let verifica = await User.findOne({
@@ -38,8 +44,6 @@ const store = async (req, res) => {
         let user = await User.create(params)
         if (user) {
             return res.status(200).json({
-                'status': 200,
-                user,
                 'msg': 'Creado correctamente'
             })
         } else {
@@ -57,8 +61,6 @@ const update = async (req, res) => {
     if (id) {
         user.save().then(user => {
             res.status(201).json({
-                status: 201,
-                user,
                 'msg': 'Editado correctamente'
             })
         })
@@ -85,8 +87,6 @@ const destroy = async (req, res) => {
         })
     }
     return res.status(200).json({
-        'status': 200,
-        eliminado,
         'msg': 'Eliminado correctamente'
     })
 };
