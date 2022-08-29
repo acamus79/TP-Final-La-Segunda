@@ -1,7 +1,7 @@
 const { Vehicle } = require('../models/index');
 
 module.exports = {
-
+    // trae todo los Vehiculos
     async index(req, res) {
         const vehicles = await Vehicle.findAll({
             include: [
@@ -10,7 +10,7 @@ module.exports = {
         });
         return res.json(vehicles);
     },
-
+    // trae un vehiculo segun ID
     async getOne(req, res) {
         const id = req.params.id;
         if (id) {
@@ -44,7 +44,7 @@ module.exports = {
 
     },
 
-
+    // agrega un vehiculo a la lista
     async createVehicle(req, res) {
         const body = req.body
         const rto = req.body.rto
@@ -61,6 +61,7 @@ module.exports = {
 
     },
 
+    // elimina vehiculo segun ID
     async deleteVehicle(req, res) {
         const id = req.params
         const vehicleDeleted = await Vehicle.destroy({
@@ -74,6 +75,7 @@ module.exports = {
         }
     },
 
+    //actualiza vehiculo segun ID
     async updateVehicle(req, res) {
         try {
             const body = req.body
