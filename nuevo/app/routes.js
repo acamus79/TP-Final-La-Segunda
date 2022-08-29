@@ -16,6 +16,10 @@ router.post('/api/signup', AuthController.signUp);
 //Vehiculos
 router.get('/api/vehicles', VehicleController.index);
 router.get('/api/vehicle/:id', VehicleController.getOne);
-router.get('/api/vehicle/brand/:brand', VehicleController.findOne)
+router.get('/api/vehicle/brand/:brand', VehicleController.findOne);
+router.post('/api/vehicle', VehicleController.createVehicle);
+router.get('/api/vehicle/vehicleByUser/:id', VehicleController.findOneVehiclebyUser);
+router.delete('/api/vehicle/:id', VehicleController.deleteVehicle);
+router.put('/api/vehicle/:id', VehicleController.updateVehicle);
 
 module.exports = router;
