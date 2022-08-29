@@ -26,7 +26,7 @@ module.exports = {
         allowNull: false
       },
       resetToken: {
-        type: DataTypes.STRING(1020),
+        type: Sequelize.STRING(1020),
         allowNull: true
       },
       createdAt: {

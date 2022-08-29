@@ -3,8 +3,6 @@ const router = Router();
 
 const {
     index,
-    create,
-    edit,
     show,
     store,
     destroy,

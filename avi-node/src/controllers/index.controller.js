@@ -41,7 +41,7 @@ const store = async (req, res) => {
         });
     } else {
 
-        let user = await User.create(params)
+    let user = await User.create(params)
         if (user) {
             return res.status(200).json({
                 'msg': 'Creado correctamente'
