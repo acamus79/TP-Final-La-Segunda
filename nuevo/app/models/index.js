@@ -10,6 +10,7 @@ const db = {};
 // Creamos nuestra conexión
 let sequelize = new Sequelize(config.database, config.username, config.password, config);
 
+
 // Asociaciones y vinculaciones
 fs
   .readdirSync(__dirname)
@@ -17,7 +18,8 @@ fs
     return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
   })
   .forEach(file => {
-    const model = sequelize['import'](path.join(__dirname, file));
+    //const model = sequelize['import'](path.join(__dirname, file));
+    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes)
     db[model.name] = model;
   });
 

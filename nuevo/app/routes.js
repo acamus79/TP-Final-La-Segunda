@@ -15,5 +15,7 @@ router.post('/api/signup', AuthController.signUp);
 
 //Vehiculos
 router.get('/api/vehicles', VehicleController.index);
+router.get('/api/vehicle/:id', VehicleController.getOne);
+router.get('/api/vehicle/brand/:brand', VehicleController.findOne)
 
 module.exports = router;
