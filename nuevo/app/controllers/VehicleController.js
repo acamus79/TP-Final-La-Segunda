@@ -61,7 +61,7 @@ module.exports = {
 
     },
 
-    // elimina vehiculo segun ID
+    // elimina
     async deleteVehicle(req, res) {
         const id = req.params
         const vehicleDeleted = await Vehicle.destroy({
@@ -75,7 +75,6 @@ module.exports = {
         }
     },
 
-    //actualiza vehiculo segun ID
     async updateVehicle(req, res) {
         try {
             const body = req.body
