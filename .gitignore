@@ -40,3 +40,4 @@ testem.log
 Thumbs.db
 
 back_nodejs/node_modules/
+back_nodejs/.env
