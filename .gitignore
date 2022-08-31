@@ -39,4 +39,5 @@ testem.log
 .DS_Store
 Thumbs.db
 
-avi-node/node_modules/
+back_nodejs/node_modules/
+back_nodejs/.env
