@@ -32,7 +32,7 @@ const findAll = async (req, res) => {
         page = pageAsNumber;
     }
 
-    let vehicles = await vehicle.findAndCountAll({
+    let vehicles = await Vehicle.findAndCountAll({
         limit: size,
         offset: page * size,
     });
