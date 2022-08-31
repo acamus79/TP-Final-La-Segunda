@@ -16,10 +16,14 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'userId',
         as: 'owner'
       });
+
+      Vehicle.belongsToMany(models.Repair, {
+        through: 'repair_vehicle'
+      });
     }
   }
   Vehicle.init({
-    
+
     brand: {
       type: DataTypes.STRING,
       allowNull: false,
