@@ -29,6 +29,14 @@ module.exports = {
         type: Sequelize.STRING(20),
         allowNull: false
       },
+      resetToken: {
+        type: Sequelize.STRING(1020),
+        allowNull: true
+      },
+      refreshToken: {
+        type: Sequelize.STRING(1020),
+        allowNull: true
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

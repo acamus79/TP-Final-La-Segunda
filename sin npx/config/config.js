@@ -9,7 +9,7 @@ const username = process.env.DB_USER || "root";
 const database = process.env.DB_NAME || "clase";
 const password = process.env.DB_PASS;
 const dialect = process.env.DB_TYPE || "mysql";
-const logging = true;
+const logging = false;
 
 //Configuracion de Sequelize
 const seederStorage = "sequelize";
