@@ -14,6 +14,8 @@ const {
     destroy
 } = require('../controllers/VehicleController');
 
+const types = require('../controllers/TypeController');
+
 const {
     validateLogin,
     validateRegister
@@ -37,6 +39,13 @@ router.get('/api/vehicles', findAll);
 router.post('/api/vehicle', register);
 router.put('/api/vehicle/:id', update);
 router.delete('/api/vehicle/:id', destroy);
+
+// Rutas Type
+router.get('/api/type/:id', types.show);
+router.get('/api/types', types.findAll);
+router.post('/api/type', types.register);
+router.put('/api/type/:id', types.update);
+router.delete('/api/type/:id', types.destroy);
 
 
 

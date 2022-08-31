@@ -1,4 +1,4 @@
-const { Type } =  require('../models/Type');
+const { Type } =  require('../models/index');
 
 //GET /Type/:id
 const show = async (req, res) => {
@@ -11,7 +11,7 @@ const show = async (req, res) => {
     if (type) {
         return res.status(200).json({
             'status': 200,
-            Type
+            type
         })
     } else {
         return res.status(404).json({
