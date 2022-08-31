@@ -1,29 +1,27 @@
-const {
-    Vehicle
-} = require('../models/index');
+const { Type } =  require('../models/Type');
 
-//GET /vehicles/:id
+//GET /Type/:id
 const show = async (req, res) => {
     const id = req.params.id
-    let vehicle = await Vehicle.findOne({
+    let type = await Type.findOne({
         where: {
             id: id
         }
     });
-    if (vehicle) {
+    if (type) {
         return res.status(200).json({
             'status': 200,
-            vehicle
+            Type
         })
     } else {
         return res.status(404).json({
             'status': 404,
-            'msg': 'Vehiculo no encontrado'
+            'msg': 'Type no encontrado'
         })
     }
 };
 
-//GET /vehicles
+//GET /Type
 const findAll = async (req, res) => {
     let pageAsNumber = Number.parseInt(req.query.page);
     let page = 0,
@@ -32,27 +30,27 @@ const findAll = async (req, res) => {
         page = pageAsNumber;
     }
 
-    let vehicles = await Vehicle.findAndCountAll({
+    let type = await Type.findAndCountAll({
         limit: size,
         offset: page * size,
     });
 
     return res.status(200).json({
         'status': 200,
-        content: vehicles.rows,
-        totalPages: Math.ceil(vehicles.count / size),
+        content: type.rows,
+        totalPages: Math.ceil(Type.count / size),
         page,
     });
 };
 
-//POST /vehicles
+//POST /Type
 const register = async (req, res) => {
     let params = req.body;
-    let vehicle = await Vehicle.create(params)
-    if (vehicle) {
+    let type = await Type.create(params)
+    if (type) {
         return res.status(200).json({
             'status': 200,
-            vehicle,
+            type,
             'msg': 'Creado correctamente'
         })
     } else {
@@ -62,16 +60,16 @@ const register = async (req, res) => {
     }
 }
 
-//PUT /vehicles/:id
+//PUT /type/:id
 const update = async (req, res) => {
     const id = req.params.id
     let params = req.body
-    let vehicle = await Vehicle.update(params, {
+    let type = await Type.update(params, {
         where: {
             id: id
         }
     })
-    if (vehicle) {
+    if (type) {
         return res.status(200).json({
             'status': 200,
             'msg': 'Actualizado correctamente'
@@ -79,20 +77,20 @@ const update = async (req, res) => {
     } else {
         return res.status(404).json({
             'status': 404,
-            'msg': 'Vehiculo no encontrado'
+            'msg': 'type no encontrado'
         })
     }
 }
 
-//DELETE /vehicles/:id
+//DELETE /type/:id
 const destroy = async (req, res) => {
     const id = req.params.id
-    let vehicle = await Vehicle.destroy({
+    let type = await Type.destroy({
         where: {
             id: id
         }
     })
-    if (vehicle) {
+    if (type) {
         return res.status(200).json({
             'status': 200,
             'msg': 'Eliminado correctamente'
@@ -100,7 +98,7 @@ const destroy = async (req, res) => {
     } else {
         return res.status(404).json({
             'status': 404,
-            'msg': 'Vehiculo no encontrado'
+            'msg': 'Type no encontrado'
         })
     }
 };
