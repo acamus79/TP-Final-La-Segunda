@@ -36,6 +36,14 @@ module.exports = {
         },
         onDelete: 'CASCADE'
       },
+      typeId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "type_vehicles",
+          key: "id"
+        },
+        onDelete: 'CASCADE'
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

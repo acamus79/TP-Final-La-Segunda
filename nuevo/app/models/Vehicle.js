@@ -33,10 +33,16 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Vehicle.associate = function (models) {
+
+    Vehicle.belongsTo(models.Type_vehicles, {
+      foreignKey: 'typeId',
+      as: 'type'
+    });
     Vehicle.belongsTo(models.User, {
       foreignKey: 'userId',
       as: 'owner'
     });
+    
   };
   return Vehicle;
 };

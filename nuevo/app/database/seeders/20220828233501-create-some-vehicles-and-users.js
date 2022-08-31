@@ -24,19 +24,22 @@ module.exports = {
             model: 'Corolla',
             rto: new Date(),
             gnc: new Date(),
-            service: new Date()
+            service: new Date(),
+            type: [2],
           },
           {
             brand: 'Honda',
             model: 'XR250',
             rto: new Date(),
             gnc: null,
-            service: new Date()
+            service: new Date(),
+            type: [1]
           }
         ]
 
       }, {
-        include: "vehicles"
+        include: "vehicles",
+        include: "type_vehicles"
       }),
 
       User.create({
@@ -44,15 +47,17 @@ module.exports = {
         email: 'user@mail.com',
         password: bcrypt.hashSync('1234567', 10),
         vehicles: [{
-          brand: 'VW',
-          model: 'Golf',
+          brand: 'Chevrolet',
+          model: 's10',
           rto: new Date(),
           gnc: new Date(),
           insurance: true,
-          service: new Date()
+          service: new Date(),
+          type: [3]
         }]
       }, {
-        include: "vehicles"
+        include: "vehicles",
+        include: "type_vehicles"
       }),
     ]);
 
