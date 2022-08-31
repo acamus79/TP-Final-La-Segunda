@@ -15,6 +15,7 @@ const {
 } = require('../controllers/VehicleController');
 
 const types = require('../controllers/TypeController');
+const repair = require('../controllers/RepairController')
 
 const {
     validateLogin,
@@ -46,6 +47,13 @@ router.get('/api/types', types.findAll);
 router.post('/api/type', types.register);
 router.put('/api/type/:id', types.update);
 router.delete('/api/type/:id', types.destroy);
+
+router.get('/api/repair/:id', repair.show);
+router.get('/api/repairs', repair.findAll);
+router.post('/api/repair', repair.register);
+router.put('/api/repair/:id', repair.update);
+router.delete('/api/repair/:id', repair.destroy);
+
 
 
 
