@@ -1,7 +1,37 @@
 .body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     height: 100%;
     align-items: center;
     background-color: rgb(174, 205, 174);
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 400px;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+.button {
+    width: 100%;
+    background-color: rgb(16, 123, 156);
+    color: white;
+    height: 50px;
+    font-size: 18px;
+}
+
+.nameLogo {
+    margin: 0;
+    font-weight: 500;
+    color: rgb(25, 140, 132)
+}
+
+.spinner {
+    margin-top: 20px;
 }

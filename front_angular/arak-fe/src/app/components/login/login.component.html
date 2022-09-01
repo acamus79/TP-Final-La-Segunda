@@ -1,3 +1,21 @@
 <div class="body">
-    <img src="../../../assets/users.png" alt="users-logo-login" width="200">
+    <img src="../../../assets/ARAK_logo.png" alt="users-logo-login" width="200">
+    <h1 class="nameLogo">ARAK</h1>
+    <h2 class="nameLogo">Gestion de Vehiculos</h2>
+
+    <mat-spinner diameter="80" class="spinner" *ngIf="loading"></mat-spinner>
+
+    <form [formGroup]="form" class="example-form" (ngSubmit)="ingresar()" *ngIf="!loading">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Usuario</mat-label>
+            <input matInput placeholder="Usuario" value="" autocomplete="off" formControlName="usuario">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Contraseña</mat-label>
+            <input type="password" matInput placeholder="Contraseña" value="" autocomplete="off"
+                formControlName="password">
+        </mat-form-field>
+        <button type="submit" mat-raised-button class="button" [disabled]="form.invalid">Ingresar</button>
+    </form>
+
 </div>
