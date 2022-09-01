@@ -26,7 +26,9 @@ Loaded configuration file "config\config.js".
 == 20220831035905-create-repairs: migrated (2.311s)
 
 == 20220831035952-create-fleet: migrating =======
-== 20220831035952-create-fleet: migrated (2.720s)```
+== 20220831035952-create-fleet: migrated (2.720s)
+
+```
 
 2	Ejecutar los seeders de la Base de Datos `sequelize db:seed:all`
 	Deberia obtener un resultado similar
@@ -41,7 +43,9 @@ Loaded configuration file "config\config.js".
 == 20220821035720-create-some-type: migrated (0.669s)
 
 == 20220831035610-create-some-vehicles: migrating =======
-== 20220831035610-create-some-vehicles: migrated (0.761s)```
+== 20220831035610-create-some-vehicles: migrated (0.761s)
+
+```
 
 3	Y para ejecutar el servidor backend de Node Js de forma local `npm start`
 
