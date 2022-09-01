@@ -5,10 +5,11 @@ import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: '**', redirectTo: 'login' },
   { path: 'login', component: LoginComponent },
   /* Carga pers */
-  { path: 'dashboard', loadChildren: () => import('./components/dashboard/dashboard.module').then(module => module.DashboardModule) },
+  { path: 'dashboard', loadChildren: () => import('./components/dashboard/dashboard.module').then(m => m.DashboardModule) },
+
+  { path: '**', redirectTo: 'login' },
 ];
 
 @NgModule({
