@@ -9,7 +9,7 @@ Para poder ejecutar el codigo se recomienda:
 
 1	Ejecutar las migraciones a la Base de Datos `sequelize db:migrate`
 	Deberia obtener un resultado similar al siguiente:
-
+```
 Sequelize CLI [Node: 18.7.0, CLI: 6.4.1, ORM: 6.21.4]
 
 Loaded configuration file "config\config.js".
@@ -26,10 +26,11 @@ Loaded configuration file "config\config.js".
 == 20220831035905-create-repairs: migrated (2.311s)
 
 == 20220831035952-create-fleet: migrating =======
-== 20220831035952-create-fleet: migrated (2.720s)
+== 20220831035952-create-fleet: migrated (2.720s)```
 
 2	Ejecutar los seeders de la Base de Datos `sequelize db:seed:all`
-
+	Deberia obtener un resultado similar
+```
 Sequelize CLI [Node: 18.7.0, CLI: 6.4.1, ORM: 6.21.4]
 
 Loaded configuration file "config\config.js".
@@ -40,7 +41,7 @@ Loaded configuration file "config\config.js".
 == 20220821035720-create-some-type: migrated (0.669s)
 
 == 20220831035610-create-some-vehicles: migrating =======
-== 20220831035610-create-some-vehicles: migrated (0.761s)
+== 20220831035610-create-some-vehicles: migrated (0.761s)```
 
 3	Y para ejecutar el servidor backend de Node Js de forma local `npm start`
 
