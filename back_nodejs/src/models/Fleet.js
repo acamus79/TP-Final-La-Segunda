@@ -6,7 +6,13 @@ module.exports = (sequelize, DataTypes) => {
   class Fleet extends Model {
 
     static associate(models) {
-      // define association here
+
+      Fleet.belongsToMany(models.Vehicle, {
+        through: 'fleet_vehicle',
+        as: 'vehicles',
+        foreignKey: 'fleet_id'
+      });
+      
     }
   }
   Fleet.init({

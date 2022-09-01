@@ -1,7 +1,7 @@
 {
-  "name": "",
+  "name": "arak_api",
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend API for AraK",
   "main": "src/app.js",
   "scripts": {
     "start": "node src/app.js",

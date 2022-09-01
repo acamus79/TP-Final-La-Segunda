@@ -25,9 +25,18 @@ module.exports = {
         allowNull: false,
         unique: true
       },
-      role: {
+      phone: {
         type: Sequelize.STRING(20),
-        allowNull: false
+        allowNull: true
+      },
+      role: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "roles",
+          key: "id"
+        },
+        defaultValue: 2,
+        onDelete: 'CASCADE'
       },
       resetToken: {
         type: Sequelize.STRING(1020),
@@ -39,14 +48,17 @@ module.exports = {
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
     });
   },
+  
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('users');
   }

@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
 
     static associate(models) {
       Type.hasOne(models.Vehicle, {
-        foreignKey: 'typeId',
+        foreignKey: 'type_id',
         as: 'vehicles'
       });
     }

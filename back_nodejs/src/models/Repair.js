@@ -2,11 +2,19 @@
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
+
   class Repair extends Model {
 
     static associate(models) {
-      Repair.belongsToMany(models.Vehicle, {through: 'repair_vehicle'});
+
+      Repair.belongsToMany(models.Vehicle, {
+        through: 'repair_vehicle',
+        as: 'vehicles',
+        foreignKey: 'repair_id'
+      });
+
     }
   }
   Repair.init({
@@ -18,6 +26,3 @@ module.exports = (sequelize, DataTypes) => {
   });
   return Repair;
 };
-
-
-

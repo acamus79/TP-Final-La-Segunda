@@ -7,12 +7,20 @@ const {
 } = require('../controllers/AuthController');
 
 const {
-    show,
-    findAll,
-    register,
-    update,
-    destroy
+    showVehicle,
+    findAllVehicle,
+    registerVehicle,
+    updateVehicle,
+    destroyVehicle
 } = require('../controllers/VehicleController');
+
+const {
+    showRepair,
+    findAllRepair,
+    registerRepair,
+    updateRepair,
+    destroyRepair
+} = require('../controllers/RepairController');
 
 const {
     validateLogin,
@@ -32,13 +40,18 @@ router.post('/api/signin', validateLogin, signIn);
 router.post('/api/signup', validateRegister, EmailIsUnique, signUp);
 
 //Vehiculos
-router.get('/api/vehicle/:id', show);
-router.get('/api/vehicles', findAll);
-router.post('/api/vehicle', register);
-router.put('/api/vehicle/:id', update);
-router.delete('/api/vehicle/:id', destroy);
+router.get('/api/vehicle/:id', showVehicle);
+router.get('/api/vehicles', findAllVehicle);
+router.post('/api/vehicle', registerVehicle);
+router.put('/api/vehicle/:id', updateVehicle);
+router.delete('/api/vehicle/:id', destroyVehicle);
 
-
+//Repair
+router.get('/api/repair/:id', showRepair);
+router.get('/api/repairs', findAllRepair);
+router.post('/api/repair', registerRepair);
+router.put('/api/repair/:id', updateRepair);
+router.delete('/api/repair/:id', destroyRepair);
 
 /*
 router.get("/find", index);

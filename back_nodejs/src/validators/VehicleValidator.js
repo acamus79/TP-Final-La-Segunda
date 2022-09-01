@@ -14,7 +14,7 @@ const validateVechicle = [
     check('year')
     .exists()
     .isInt({min:1900, max: Number.parseInt(new Date().getYear())})
-    .withMessage('El año debe ser un numero entre 1900 y el año actual'),
+    .withMessage('El año debe ser un número entre 1900 y el año actual'),
 
     (req, res, next) => {
         validateResult(req, res, next)
