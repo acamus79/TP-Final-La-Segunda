@@ -1,7 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LoginComponent } from './components/login/login.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'login' },
+  { path: 'login', component: LoginComponent },
+  /* Carga pers */
+  { path: 'dashboard', loadChildren: () => import('./components/dashboard/dashboard.module').then(module => module.DashboardModule) },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
