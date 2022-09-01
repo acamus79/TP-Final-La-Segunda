@@ -1,7 +1,7 @@
 const { check } = require('express-validator');
 const { validateResult } = require('../helpers/validateHelper');
 
-const validateVechicle = [
+const validateVehicle = [
 
     check('brand')
     .exists()
@@ -20,3 +20,5 @@ const validateVechicle = [
         validateResult(req, res, next)
     }
 ]
+
+module.exports = { validateVehicle }

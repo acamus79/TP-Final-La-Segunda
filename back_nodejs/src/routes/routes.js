@@ -32,7 +32,7 @@ const {
 } = require('../validators/EmailIsUnique');
 
 const {
-    validateVechicle
+    validateVehicle
 } = require('../validators/VehicleValidator');
 
 // Usuario: login y registro - /api/singin & /api/singup
@@ -42,7 +42,7 @@ router.post('/api/signup', validateRegister, EmailIsUnique, signUp);
 //Vehiculos
 router.get('/api/vehicle/:id', showVehicle);
 router.get('/api/vehicles', findAllVehicle);
-router.post('/api/vehicle', registerVehicle);
+router.post('/api/vehicle', validateVehicle, registerVehicle);
 router.put('/api/vehicle/:id', updateVehicle);
 router.delete('/api/vehicle/:id', destroyVehicle);
 
@@ -53,19 +53,5 @@ router.post('/api/repair', registerRepair);
 router.put('/api/repair/:id', updateRepair);
 router.delete('/api/repair/:id', destroyRepair);
 
-/*
-router.get("/find", index);
-
-router.get("/find/all", findAll);
-
-router.get("/find/:id", show);
-
-router.post("/register", validateRegister, EmailIsUnique, register);
-
-router.post("/login", validateLogin, login);
-
-router.get('/logout', logOut)
-
-router.delete("/:id", destroy);*/
 
 module.exports = router;

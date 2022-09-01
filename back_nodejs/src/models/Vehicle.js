@@ -55,9 +55,18 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    insurance: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: {
+          args: [3, 255],
+          msg: "El seguro debe tener tres letras como minimo",
+        }
+      }
+    },
     rto: DataTypes.DATEONLY,
     gnc: DataTypes.DATEONLY,
-    insurance: DataTypes.STRING,
     service: DataTypes.DATEONLY,
   }, {
     sequelize,

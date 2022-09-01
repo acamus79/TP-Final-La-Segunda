@@ -13,7 +13,21 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Type.init({
-    description: DataTypes.STRING
+
+    description:{
+      type: DataTypes.STRING(50),
+      allowNull: false,
+      unique: true,
+      validate: {
+        notNull: {
+          msg: "La descripcion del Tipo es requerida"
+        },
+        len: {
+          args: [3, 50],
+          msg: "La descripcion del Tipo debe contener entre 3 a 50 letras"
+        }
+    } 
+  }
   }, {
     sequelize,
     modelName: 'Type',

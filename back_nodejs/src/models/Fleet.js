@@ -16,7 +16,22 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Fleet.init({
-    name: DataTypes.STRING
+
+    name: {
+      type:DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        notNull: {
+          msg: "El nombre de la Flota es requerido"
+        },
+        len: {
+          args: [3, 50],
+          msg: "El nombre de la Flota debe contener entre 3 a 50 letras"
+        }
+    }
+  }
+
   }, {
     sequelize,
     modelName: 'Fleet',
