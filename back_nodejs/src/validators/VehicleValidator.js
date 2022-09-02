@@ -13,8 +13,16 @@ const validateVehicle = [
     .withMessage('El modelo debe contener como minimo 2 caracteres'),
     check('year')
     .exists()
-    .isInt({min:1900, max: Number.parseInt(new Date().getYear())})
+    .isInt({min:1900, max: new Date().getFullYear()})
     .withMessage('El año debe ser un número entre 1900 y el año actual'),
+    check('insurance')
+    .exists()
+    .isLength({min:5})
+    .withMessage('La póliza debe contener como minimo 5 caracteres'),
+    check('tag')
+    .exists()
+    .isLength({min:5})
+    .withMessage('La patente debe contener como minimo 5 caracteres'),
 
     (req, res, next) => {
         validateResult(req, res, next)

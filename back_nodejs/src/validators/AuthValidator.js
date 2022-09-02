@@ -1,38 +1,63 @@
-const { check } = require('express-validator');
-const { validateResult } = require('../helpers/validateHelper');
+const {
+    check
+} = require('express-validator');
+const {
+    validateAuth
+} = require('../helpers/validateHelperAuth');
+
+const {
+    validateResult
+} = require('../helpers/validateHelper');
+
 
 const validateLogin = [
-    
+
     check('email')
-        .exists()
-        .isLength({min:5})
-        .withMessage('El correo debe contener mas de 5 caracteres')
-        .isEmail()
-        .withMessage('No contiene un formato de email valido'),
+    .exists()
+    .isLength({
+        min: 5
+    })
+    .withMessage('El correo debe contener mas de 5 caracteres')
+    .isEmail()
+    .withMessage('No contiene un formato de email valido'),
     check('password')
-        .exists()
-        .isLength({min:6})
-        .withMessage('La contraseña debe contener mas de 6 caracteres'),
+    .exists()
+    .isLength({
+        min: 6
+    })
+    .withMessage('La contraseña debe contener mas de 6 caracteres'),
     (req, res, next) => {
-        validateResult(req, res, next)
+        validateAuth(req, res, next)
     }
 ]
 
 const validateRegister = [
-    
+    check('name')
+    .exists()
+    .isLength({
+        min: 2
+    })
+    .withMessage('El nombre debe contener como minimo 2 caracteres'),
     check('email')
-        .exists()
-        .isLength({min:5})
-        .withMessage('El correo debe contener mas de 5 caracteres')
-        .isEmail()
-        .withMessage('No contiene un formato de email valido'),
+    .exists()
+    .isLength({
+        min: 5
+    })
+    .withMessage('El correo debe contener mas de 5 caracteres')
+    .isEmail()
+    .withMessage('No contiene un formato de email valido'),
     check('password')
-        .exists()
-        .isLength({min:6})
-        .withMessage('La contraseña debe contener mas de 6 caracteres'),
+    .exists()
+    .isLength({
+        min: 6
+    })
+    .withMessage('La contraseña debe contener mas de 6 caracteres'),
     (req, res, next) => {
         validateResult(req, res, next)
     }
 ]
 
-module.exports = { validateLogin, validateRegister }
+module.exports = {
+    validateLogin,
+    validateRegister
+}

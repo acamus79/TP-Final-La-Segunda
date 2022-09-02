@@ -68,6 +68,10 @@ module.exports = (sequelize, DataTypes) => {
     rto: DataTypes.DATEONLY,
     gnc: DataTypes.DATEONLY,
     service: DataTypes.DATEONLY,
+    tag: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    }
   }, {
     sequelize,
     modelName: "Vehicle",

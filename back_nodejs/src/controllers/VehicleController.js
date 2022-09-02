@@ -2,10 +2,16 @@ const {
     Vehicle
 } = require('../models/index');
 
+const {
+    User
+} = require('../models/index');
+
 //GET /vehicles/:id
 const showVehicle = async (req, res) => {
     const id = req.params.id
-    let vehicle = await Vehicle.findByPk(id, {include: "repairs"});
+    let vehicle = await Vehicle.findByPk(id, {
+        include: "repairs"
+    });
     if (vehicle) {
         res.status(200).json(vehicle);
     } else {
@@ -38,9 +44,10 @@ const findAllVehicle = async (req, res) => {
     });
 };
 
-//POST /vehicles
+//POST /vehicle
 const registerVehicle = async (req, res) => {
     let params = req.body;
+    params.user_id = req.user.id; //id del usuario logueado
     let vehicle = await Vehicle.create(params)
     if (vehicle) {
         return res.status(200).json({
@@ -55,10 +62,48 @@ const registerVehicle = async (req, res) => {
     }
 }
 
-//PUT /vehicles/:id
+//PUT /vehicle/:id
 const updateVehicle = async (req, res) => {
-    const id = req.params.id
+    const id = req.params.id;//id del vehiculo a editar
+    const idUser = req.user.id;//id del usuario logueado
+
+    let vehicles = await Vehicle.findAll({
+        where: {
+            user_id: idUser
+        }
+    });
+
+    let exist = vehicles.find(ve => ve.id == id);
+    
+    if (exist) {
+        let params = req.body;
+        let vehicle = await Vehicle.update(params, {
+            where: {
+                id: req.params.id
+            }
+        });
+        if (vehicle) {
+            return res.status(200).json({
+                'msg': 'Actualizado correctamente',
+                exist
+            })
+        } else {
+            return res.status(404).json({
+                'msg': 'No se recibieron los datos'
+            })
+        }
+    } else {
+        return res.status(403).json({
+            'msg': 'No es el propietario del vehiculo'
+        })
+    }
+}
+
+//UPDATE by Manager /vehicle/:id
+const updateVehicleByManager = async (req, res) => {
+    const id = req.params.id;
     let params = req.body
+
     let vehicle = await Vehicle.update(params, {
         where: {
             id: id
@@ -103,5 +148,6 @@ module.exports = {
     findAllVehicle,
     registerVehicle,
     updateVehicle,
-    destroyVehicle
+    destroyVehicle,
+    updateVehicleByManager
 }

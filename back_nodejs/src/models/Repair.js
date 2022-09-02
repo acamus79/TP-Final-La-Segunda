@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
               msg: "La descripcion de la Reparacion es requerida"
             },
             len: {
-              args: [3, 255],
+              args: [5, 255],
               msg: "La descripcion de la Reparacion debe contener entre 3 a 255 caracteres"
             }
           }

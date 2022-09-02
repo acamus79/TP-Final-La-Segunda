@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const config = require('../../config/config');
 
 module.exports = (req, res, next) => {
-
+    
     // Comprobar que existe el token
     if(!req.headers.authorization) {
         res.status(401).json({ msg: "Acceso no autorizado" });
@@ -16,10 +16,11 @@ module.exports = (req, res, next) => {
 
             if(err) {
                 res.status(403).json({ msg: "Ha ocurrido un problema al decodificar el token", err });
-            } else {
+            } else if(decoded.role == 3 || decoded.role == 1) {
                 req.user = decoded;
-                //req.id = decoded.id;
                 next();
+            } else {
+                res.status(401).json({ msg: "Acceso no autorizado" });
             }
         })
     }

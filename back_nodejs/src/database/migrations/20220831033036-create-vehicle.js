@@ -29,6 +29,9 @@ module.exports = {
       service: {
         type: Sequelize.DATEONLY
       },
+      tag: {
+        type: Sequelize.STRING
+      },
       user_id: {
         type: Sequelize.INTEGER,
         references: {

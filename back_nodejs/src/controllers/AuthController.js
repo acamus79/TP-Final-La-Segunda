@@ -4,86 +4,46 @@ const config = require('../../config/config');
 const {
     User
 } = require('../models/index');
-const {
-    Role
-} = require('../models/index');
-const {
-    models
-} = require('mongoose');
-
-
-/* const signUp = async (req, res) => {
-    const {
-        name,
-        email,
-        password
-    } = req.body;
-
-    let user = await User.findOne({
-        where: {
-            email: email
-        }
-    });
-    if (user) {
-        return res.status(400).json({
-            'status': 400,
-            'msg': 'El usuario ya existe'
-        })
-    } else {
-        user = await User.create({
-            name,
-            email,
-            password: bcrypt.hashSync(password, 10)
-        });
-        return res.status(200).json({
-            'status': 200,
-            'msg': 'Usuario creado correctamente',
-            'id': user.id,
-            'name': user.name
-        })
-    }
-}; */
 
 
 module.exports = {
-    
+
     //Registro
     signUp(req, res) {
 
-            let params = req.body;
-            params.password = bcrypt.hashSync(params.password, Number.parseInt(config.rounds));
+        let params = req.body;
+        params.password = bcrypt.hashSync(params.password, Number.parseInt(config.rounds));
 
-            //Crear un usuario
-            User.create(params).then(user => {
+        //Crear un usuario
+        User.create(params).then(user => {
 
-                // Creamos el token
-                let token = jwt.sign({
-                    user: user
-                }, config.secret, {
-                    expiresIn: config.expires
-                });
-
-                const cookiesOptions = {
-                    expire: new Date(Date.now() + config.expires * 24 * 60 * 60 * 1000),
-                    httpOnly: true
-                }
-                res.cookie('jwt', token, cookiesOptions)
-
-                res.json({
-                    'status': 200,
-                    'msg': 'Usuario creado correctamente',
-                    'id': user.id,
-                    'name': user.name,
-                    Bearer: token
-                });
-
-            }).catch(err => {
-                    res.status(400).json({
-                        msg: err.message
-                    });
+            // Creamos el token
+            let token = jwt.sign({
+                'id': user.id,
+                'name': user.name,
+                'email': user.email,
+                'role': user.role
+            }, config.secret, {
+                expiresIn: config.expires
             });
 
-        },
+            const cookiesOptions = {
+                expire: new Date(Date.now() + config.expires * 24 * 60 * 60 * 1000),
+                httpOnly: true
+            }
+            res.cookie('jwt', token, cookiesOptions)
+
+            res.json({
+                'msg': 'Usuario creado correctamente',
+                Bearer: token
+            });
+
+        }).catch(err => {
+            res.status(400).json({
+                msg: err.message
+            });
+        });
+    },
 
     // Login
     signIn(req, res) {
@@ -107,7 +67,10 @@ module.exports = {
                 if (bcrypt.compareSync(password, user.password)) {
                     // Creamos el token
                     let token = jwt.sign({
-                        user: user
+                        'id': user.id,
+                        'name': user.name,
+                        'email': user.email,
+                        'role': user.role
                     }, config.secret, {
                         expiresIn: config.expires
                     });
