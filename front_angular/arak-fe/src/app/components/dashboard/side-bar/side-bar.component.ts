@@ -6,16 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./side-bar.component.css']
 })
 export class SideBarComponent implements OnInit {
-  showFiller:boolean;
+  showFiller: boolean;
 
   constructor() {
     this.showFiller = true
-   }
+  }
 
   ngOnInit(): void {
   }
 
-  showSideBar () {
+  showSideBar() {
     this.showFiller = false
   }
 
