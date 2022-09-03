@@ -18,6 +18,7 @@ const app = express();
 const routerAuth = require('./routes/auth.routes');
 const routerVehicle = require('./routes/vehicle.routes');
 const routerRepair = require('./routes/repair.routes');
+const routerFleet = require('./routes/fleet.routes');
 
 //Settings
 app.use(cors());
@@ -32,6 +33,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(setup));
 app.use('/api', routerAuth);
 app.use('/api/vehicle', routerVehicle);
 app.use('/api/repair', routerRepair);
+app.use('/api/fleet', routerFleet);
 
 
 app.use((req, res, next) => {

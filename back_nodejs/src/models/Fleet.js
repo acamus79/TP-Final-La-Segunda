@@ -13,6 +13,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'fleet_id'
       });
       
+      Fleet.belongsTo(models.User, {
+        foreignKey: "user_id",
+        as: "manager",
+      });
+
     }
   }
   Fleet.init({

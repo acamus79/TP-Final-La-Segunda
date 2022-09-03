@@ -24,7 +24,7 @@ const {
 
 //RUTAS Vehiculos
 router.get('/:id', authUser, showVehicle);
-router.get('/all', authAdmin, findAllVehicle);
+router.get('/all', authManager, findAllVehicle);
 router.post('/', authUser, validateVehicle, registerVehicle);
 router.put('/:id', authUser, updateVehicle);
 router.put('/mng/:id', authManager, updateVehicleByManager);

@@ -22,6 +22,12 @@ module.exports = (sequelize, DataTypes) => {
           as: 'vehicles'
         });
         
+        //un Usuario Puede tener muchas Flotas
+        User.hasMany(models.Fleet, {
+          foreignKey: 'user_id',
+          as: 'fleets'
+        });
+        
       };
     }
   }

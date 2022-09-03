@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
         res.status(401).json({ msg: "Acceso no autorizado" });
     } else {
 
-        // Comrpobar la validez de este token
+        // Extrae el token del header
         let token = req.headers.authorization.split(" ")[1];
 
         // Comprobar la validez de este token
@@ -18,7 +18,6 @@ module.exports = (req, res, next) => {
                 res.status(403).json({ msg: "Ha ocurrido un problema al decodificar el token", err });
             } else {
                 req.user = decoded;
-                //req.id = decoded.id;
                 next();
             }
         })
