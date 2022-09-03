@@ -4,42 +4,47 @@ module.exports = {
   async up(queryInterface, Sequelize) {
 
     await queryInterface.createTable('fleet_vehicle', {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      fleet_id: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'fleets',
-          key: 'id'
+        id: {
+          allowNull: false,
+          autoIncrement: true,
+          primaryKey: true,
+          type: Sequelize.INTEGER
         },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
-      },
-      vehicle_id: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'vehicles',
-          key: 'id'
+        fleet_id: {
+          allowNull: false,
+          type: Sequelize.INTEGER,
+          references: {
+            model: 'fleets',
+            key: 'id'
+          },
+          onUpdate: 'CASCADE',
+          onDelete: 'CASCADE'
         },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
+        vehicle_id: {
+          allowNull: false,
+          type: Sequelize.INTEGER,
+          references: {
+            model: 'vehicles',
+            key: 'id'
+          },
+          onUpdate: 'CASCADE',
+          onDelete: 'CASCADE'
+        },
+        createdAt: {
+          allowNull: true,
+          type: Sequelize.DATE
+        },
+        updatedAt: {
+          allowNull: true,
+          type: Sequelize.DATE
+        }
       },
-      createdAt: {
-        allowNull: true,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: true,
-        type: Sequelize.DATE
-      }
-    });
-
+      {
+        indexes: [{
+          unique: true,
+          fields: ['fleet_id', 'vehicle_id']
+        }]
+      });
   },
 
   async down(queryInterface, Sequelize) {
