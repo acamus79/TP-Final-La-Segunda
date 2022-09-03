@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 /* Componentes */
 import { LoginComponent } from './components/login/login.component';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import { LoginComponent } from './components/login/login.component';
     SharedModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
