@@ -12,27 +12,23 @@ const {
 
 const validateLogin = [
 
-    check('email')
-    .exists()
-    .isLength({
-        min: 5
-    })
-    .withMessage('El correo debe contener mas de 5 caracteres')
-    .isEmail()
-    .withMessage('No contiene un formato de email valido'),
-    check('password')
-    .exists()
+    check('email').trim()
+    .notEmpty().withMessage('El email es requerido')
+    .isEmail().withMessage('El email no es valido'),
+
+    check('password').trim()
+    .notEmpty().withMessage('La contraseña es requerida')
     .isLength({
         min: 6
-    })
-    .withMessage('La contraseña debe contener mas de 6 caracteres'),
+    }).withMessage('La contraseña debe tener al menos 6 caracteres'),
+
     (req, res, next) => {
         validateAuth(req, res, next)
     }
 ]
 
 const validateRegister = [
-    check('name')
+    check('name').trim()
     .exists()
     .isLength({
         min: 2

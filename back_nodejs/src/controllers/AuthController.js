@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+const tokenJwt = require('../helpers/generateJwt');
 const bcrypt = require('bcrypt');
 const config = require('../../config/config');
 const {
@@ -18,14 +18,7 @@ module.exports = {
         User.create(params).then(user => {
 
             // Creamos el token
-            let token = jwt.sign({
-                'id': user.id,
-                'name': user.name,
-                'email': user.email,
-                'role': user.role
-            }, config.secret, {
-                expiresIn: config.expires
-            });
+            let token = tokenJwt.generate(user);
 
             const cookiesOptions = {
                 expire: new Date(Date.now() + config.expires * 24 * 60 * 60 * 1000),
@@ -35,7 +28,7 @@ module.exports = {
 
             res.json({
                 'msg': 'Usuario creado correctamente',
-                Bearer: token
+                token
             });
 
         }).catch(err => {
@@ -66,14 +59,7 @@ module.exports = {
             } else {
                 if (bcrypt.compareSync(password, user.password)) {
                     // Creamos el token
-                    let token = jwt.sign({
-                        'id': user.id,
-                        'name': user.name,
-                        'email': user.email,
-                        'role': user.role
-                    }, config.secret, {
-                        expiresIn: config.expires
-                    });
+                    let token = tokenJwt.generate(user);
 
                     const cookiesOptions = {
                         expire: new Date(Date.now() + config.expires * 24 * 60 * 60 * 1000),
@@ -82,7 +68,7 @@ module.exports = {
                     res.cookie('jwt', token, cookiesOptions)
 
                     res.json({
-                        'Bearer': token
+                        token
                     })
                 } else {
                     // Unauthorized Access
@@ -95,12 +81,31 @@ module.exports = {
             res.status(500).json(err.message);
         })
     },
+
     //Logout
     signOut(res) {
         res.clearCookie('jwt');
         res.status(200).json({
             msg: "Sesión cerrada"
         });
-    }
+    },
 
+    //Funcion que dado un token vigente obtener uno nuevo y 
+    //asi ir extendiendo la sesion
+    refreshToken(req, res) {
+        try {
+            const user = User.findbyPk(req.user.id);
+            const token = tokenJwt.generate(user);
+            const cookiesOptions = {
+                expire: new Date(Date.now() + config.expires * 24 * 60 * 60 * 1000),
+                httpOnly: true
+            }
+            res.cookie('jwt', token, cookiesOptions)
+            res.json({
+                token
+            })
+        } catch (error) {
+            res.status(500).json(error.message);
+        }
+    }
 }

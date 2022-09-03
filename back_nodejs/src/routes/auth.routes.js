@@ -9,7 +9,9 @@ const authAdmin = require('../middlewares/authAdmin');
 //Controllers
 const {
     signIn,
-    signUp
+    signUp,
+    signOut,
+    refreshToken,
 } = require('../controllers/AuthController');
 
 
@@ -115,5 +117,8 @@ router.post('/signin', validateLogin, signIn);
   */
 router.post('/signup', validateRegister, EmailIsUnique, signUp);
 
+router.get('/signout', signOut);
+
+router.get('/token', refreshToken);
 
 module.exports = router;
