@@ -3,7 +3,6 @@ const router = Router();
 
 //Middlewares
 const authUser = require('../middlewares/authUser');
-const authAdmin = require('../middlewares/authAdmin');
 
 
 //Controllers
@@ -119,6 +118,6 @@ router.post('/signup', validateRegister, EmailIsUnique, signUp);
 
 router.get('/signout', signOut);
 
-router.get('/token', refreshToken);
+router.get('/token', authUser, refreshToken);
 
 module.exports = router;
