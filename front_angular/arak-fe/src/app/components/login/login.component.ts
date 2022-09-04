@@ -1,7 +1,13 @@
+import { JsonPipe } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { ILogin } from 'src/app/models/ilogin';
+import { IResponse } from 'src/app/models/iresponse';
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-login',
@@ -11,10 +17,17 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   form: FormGroup;
   loading: boolean;
+  private url:string = environment.api 
 
-  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private _snackBar: MatSnackBar,
+    private router: Router,
+    private http: HttpClient,
+
+  ) {
     this.form = this.fb.group({
-      usuario: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required],
     });
     this.loading = false
@@ -24,11 +37,28 @@ export class LoginComponent implements OnInit {
   }
 
   ingresar() {
-    console.log(this.form)
-    const usuario = this.form.value.usuario;
+    const email = this.form.value.email;
     const password = this.form.value.password;
 
-    if (usuario === 'andy' && password === 'andy1234') {
+    const userLogin: ILogin = {
+      email: email,
+      password: password
+    };
+
+
+  /*   login(data:LoginI):Observable<ResponseI>{
+      return this.http.post<ResponseI>(`${this.url}/signin`, data); */
+  
+    this.http.post<IResponse>(`${this.url}/signin`, userLogin, { observe: 'response' })
+      .subscribe( res => {
+        const token = res.body;
+        console.log('token de porqueria', JSON.stringify(token));
+        this.router.navigate(['dashboard']);
+        sessionStorage.setItem('token', JSON.stringify(token))
+
+      })
+
+    /* if (usuario === 'andy' && password === 'andy1234') {
       //ingreso al dashboard
       this.loading = true;
       setTimeout(() => {
@@ -40,7 +70,7 @@ export class LoginComponent implements OnInit {
       // mensaje de error
       this.error();
       this.form.reset();
-    }
+    } */
 
   }
 

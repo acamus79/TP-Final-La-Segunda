@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 /* Modulos */
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'
 
 /* Material angular modules */
 import { MatSliderModule } from '@angular/material/slider';
@@ -14,6 +15,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
+
 
 @NgModule({
   declarations: [],
@@ -28,7 +30,8 @@ import { MatDividerModule } from '@angular/material/divider';
     ReactiveFormsModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatDividerModule
+    MatDividerModule,
+    HttpClientModule,
 
   ],
   exports: [
@@ -42,7 +45,8 @@ import { MatDividerModule } from '@angular/material/divider';
     ReactiveFormsModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatDividerModule
+    MatDividerModule,
+    HttpClientModule
   ]
 })
 export class SharedModule { }
