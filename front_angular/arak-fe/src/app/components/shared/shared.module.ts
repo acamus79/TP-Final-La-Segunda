@@ -15,7 +15,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
-
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [],
@@ -32,6 +33,8 @@ import { MatDividerModule } from '@angular/material/divider';
     MatSidenavModule,
     MatDividerModule,
     HttpClientModule,
+    MatTableModule,
+    MatIconModule,
 
   ],
   exports: [
@@ -46,7 +49,9 @@ import { MatDividerModule } from '@angular/material/divider';
     MatToolbarModule,
     MatSidenavModule,
     MatDividerModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
+    MatIconModule,
   ]
 })
 export class SharedModule { }

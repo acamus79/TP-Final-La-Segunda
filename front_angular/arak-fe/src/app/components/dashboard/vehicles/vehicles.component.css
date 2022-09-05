@@ -1,0 +1,10 @@
+table {
+    width: 100%;
+  }
+
+.layout {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2rem;
+}
