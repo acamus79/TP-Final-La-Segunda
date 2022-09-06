@@ -1,12 +1,10 @@
-/* ARAK Login */
-
 .body {
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 100%;
     align-items: center;
-    background-color: white;
+    background-color: rgb(174, 205, 174);
 }
 
 .example-form {
@@ -29,7 +27,6 @@
 }
 
 .nameLogo {
-    font-size: 30px;
     margin: 0;
     font-weight: 500;
     color: rgb(25, 140, 132)
@@ -39,9 +36,6 @@
     margin-top: 20px;
 }
 
-
-
-
-/* Language: css */
-/* Path: arak-fe\src\app\components\login\login.component.css */
-/* ARAK Login */
+.blue-snackbar {
+    background: #2196F3;
+  }

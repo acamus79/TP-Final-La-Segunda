@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 /* Modulos */
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 /* Material angular modules */
 import { MatSliderModule } from '@angular/material/slider';
@@ -14,9 +16,17 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogGenComponent } from './dialog-gen/dialog-gen.component';
+import { MatSelectModule } from '@angular/material/select';
+
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    DialogGenComponent
+  ],
   imports: [
     CommonModule,
     MatSnackBarModule,
@@ -26,10 +36,15 @@ import { MatDividerModule } from '@angular/material/divider';
     MatButtonModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    FormsModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatDividerModule
+    MatDividerModule,
+    HttpClientModule,
+    MatTableModule,
+    MatIconModule,
+    MatDialogModule,
+    MatSelectModule,
+    FormsModule,
 
   ],
   exports: [
@@ -41,10 +56,15 @@ import { MatDividerModule } from '@angular/material/divider';
     MatButtonModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    FormsModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatDividerModule
+    MatDividerModule,
+    HttpClientModule,
+    MatTableModule,
+    MatIconModule,
+    MatDialogModule,
+    MatSelectModule,
+    FormsModule,
   ]
 })
 export class SharedModule { }
