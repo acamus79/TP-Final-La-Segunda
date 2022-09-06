@@ -3,6 +3,8 @@ import { SharedModule } from '../shared.module';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 interface Food {
   value: string;
@@ -55,6 +57,8 @@ export class DialogGenComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
+    private _snackBar: MatSnackBar,
+    private router: Router,
 
   ) {
     this.form = this.fb.group({
@@ -81,7 +85,13 @@ export class DialogGenComponent implements OnInit {
       {
         headers: this.httpHeaders,
       }).subscribe(res => {
-        console.log(res)
+        console.log(res);
+        this._snackBar.open('Vehiculo creado correctamente', '', {
+          duration: 2000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+          panelClass: ['blue-snackbar']
+        });
       })
   }
 

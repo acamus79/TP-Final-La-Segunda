@@ -12,10 +12,10 @@
               The actual rendered columns are set as a property on the row definition" -->
 
         <!-- Position Column -->
-        <ng-container matColumnDef="id">
+        <!-- <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef> N°. </th>
-            <td mat-cell *matCellDef="let vehicle"> {{vehicle.id}} </td>
-        </ng-container>
+            <td mat-cell *matCellDef="let vehicle" > {{ vehicle.id }} </td>
+        </ng-container> -->
 
         <!-- Name Column -->
         <ng-container matColumnDef="brand">
@@ -74,7 +74,7 @@
             <td mat-cell *matCellDef="let element">
                 <mat-icon color="primary" class="butIcon" (click)="hacerAlgo()" aria-hidden="false"
                     aria-label="Example home icon" fontIcon="visibility"></mat-icon>
-                <mat-icon class="butIcon" (click)="hacerAlgo()" aria-hidden="false" aria-label="Example home icon"
+                <mat-icon class="butIcon" (click)="deleteVehicle(element.id)" aria-hidden="false" aria-label="Example home icon"
                     fontIcon="delete" color="warn"></mat-icon>
                 <mat-icon class="butIcon" (click)="hacerAlgo()" aria-hidden="false" aria-label="Example home icon"
                     fontIcon="edit" color=""></mat-icon>
