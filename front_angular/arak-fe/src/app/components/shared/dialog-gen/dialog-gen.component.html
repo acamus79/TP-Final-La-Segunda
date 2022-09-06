@@ -1,6 +1,10 @@
 <h1 mat-dialog-title>Panel Agregar Vehiculo</h1>
 <div mat-dialog-content>
 
+    <select [(ngModel)]="cars" name="" id="">
+        <option *ngFor="let c of cars" [ngValue]="c.value">{{c.viewValue}}</option>
+    </select>
+
     <form [formGroup]="form" class="example-form" (ngSubmit)=" saveVehicle()">
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Marca</mat-label>

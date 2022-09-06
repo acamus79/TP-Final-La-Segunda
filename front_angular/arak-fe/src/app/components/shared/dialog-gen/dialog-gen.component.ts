@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SharedModule } from '../shared.module';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 interface Food {
   value: string;
@@ -23,7 +24,7 @@ export class DialogGenComponent implements OnInit {
   selectedValue?: string;
   selectedCar?: string;
   lista:string[]=["hola","que","tal", "estas"];
-  seleccionados:string[]=[]
+  seleccionados:string = 'Algo'
 
 
   foods: Food[] = [

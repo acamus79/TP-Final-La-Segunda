@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 /* Modulos */
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 /* Material angular modules */
 import { MatSliderModule } from '@angular/material/slider';
@@ -43,6 +44,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatIconModule,
     MatDialogModule,
     MatSelectModule,
+    FormsModule,
 
   ],
   exports: [
@@ -61,7 +63,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatTableModule,
     MatIconModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    FormsModule
   ]
 })
 export class SharedModule { }
