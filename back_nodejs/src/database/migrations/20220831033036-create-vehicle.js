@@ -29,7 +29,10 @@ module.exports = {
       service: {
         type: Sequelize.DATEONLY
       },
-      userId: {
+      tag: {
+        type: Sequelize.STRING
+      },
+      user_id: {
         type: Sequelize.INTEGER,
         references: {
           model: "users",
@@ -37,7 +40,7 @@ module.exports = {
         },
         onDelete: 'CASCADE'
       },
-      typeId: {
+      type_id: {
         type: Sequelize.INTEGER,
         references: {
           model: "types",
@@ -47,11 +50,11 @@ module.exports = {
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       }
     });
   },

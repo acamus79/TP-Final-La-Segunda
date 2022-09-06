@@ -1,15 +1,10 @@
 const {
     Repair
 } = require('../models/index');
-
-const {
-    db
-} = require('../models/index');
-
 const {Vehicle} = require('../models/index');
 
 //GET /Repair/:id
-const show = async (req, res) => {
+const showRepair = async (req, res) => {
     const id = req.params.id
     let repair = await Repair.findOne({
         where: {
@@ -19,18 +14,18 @@ const show = async (req, res) => {
     if (repair) {
         return res.status(200).json({
             'status': 200,
-            repair
+            'data': repair
         })
     } else {
         return res.status(404).json({
             'status': 404,
-            'msg': 'Repair no encontrado'
+            'msg': 'Reparación no encontrada'
         })
     }
 };
 
 //GET /Repair
-const findAll = async (req, res) => {
+const findAllRepair = async (req, res) => {
     let pageAsNumber = Number.parseInt(req.query.page);
     let page = 0,
         size = 12;
@@ -52,19 +47,20 @@ const findAll = async (req, res) => {
 };
 
 //POST /Repair
-const register = async (req, res) => {
+const registerRepair = async (req, res) => {
     const {description, vehicle_id} = req.body;
     let repair = await Repair.create({ description });
+    //console.log(repair);
     let vehicle = await Vehicle.findOne({
         where: {
             id: vehicle_id
         }
     });
-
+    //console.log(vehicle);
     if(!vehicle){
         return res.status(404).json({
             'status': 404,
-            'msg': 'Vehiculo no encontrado'
+            'msg': 'Vehículo no encontrado'
         })
     }
 
@@ -77,18 +73,19 @@ const register = async (req, res) => {
     if (repair) {
         return res.status(200).json({
             'status': 200,
-            repair,
-            'msg': 'Creado correctamente'
+            'msg': 'Creado correctamente',
+            'data': repair
         })
     } else {
         return res.status(404).json({
+            'status': 404,
             'msg': 'No se recibieron los datos'
         })
     }
 }
 
 //PUT /repair/:id
-const update = async (req, res) => {
+const updateRepair = async (req, res) => {
     const id = req.params.id
     let params = req.body
     let repair = await Repair.update(params, {
@@ -99,18 +96,19 @@ const update = async (req, res) => {
     if (repair) {
         return res.status(200).json({
             'status': 200,
-            'msg': 'Actualizado correctamente'
+            'msg': 'Actualizado correctamente',
+            'data': repair
         })
     } else {
         return res.status(404).json({
             'status': 404,
-            'msg': 'repair no encontrado'
+            'msg': 'Reparación no encontrada'
         })
     }
 }
 
 //DELETE /repair/:id
-const destroy = async (req, res) => {
+const destroyRepair = async (req, res) => {
     const id = req.params.id
     let repair = await Repair.destroy({
         where: {
@@ -120,20 +118,21 @@ const destroy = async (req, res) => {
     if (repair) {
         return res.status(200).json({
             'status': 200,
-            'msg': 'Eliminado correctamente'
+            'msg': 'Eliminada correctamente',
+            'data': repair
         })
     } else {
         return res.status(404).json({
             'status': 404,
-            'msg': 'Repair no encontrado'
+            'msg': 'Reparación no encontrada'
         })
     }
 };
 
 module.exports = {
-    show,
-    findAll,
-    register,
-    update,
-    destroy
+    showRepair,
+    findAllRepair,
+    registerRepair,
+    updateRepair,
+    destroyRepair
 }
