@@ -14,12 +14,12 @@ const showRepair = async (req, res) => {
     if (repair) {
         return res.status(200).json({
             'status': 200,
-            repair
+            'data': repair
         })
     } else {
         return res.status(404).json({
             'status': 404,
-            'msg': 'Repair no encontrado'
+            'msg': 'Reparación no encontrada'
         })
     }
 };
@@ -60,7 +60,7 @@ const registerRepair = async (req, res) => {
     if(!vehicle){
         return res.status(404).json({
             'status': 404,
-            'msg': 'Vehiculo no encontrado'
+            'msg': 'Vehículo no encontrado'
         })
     }
 
@@ -73,11 +73,12 @@ const registerRepair = async (req, res) => {
     if (repair) {
         return res.status(200).json({
             'status': 200,
-            repair,
-            'msg': 'Creado correctamente'
+            'msg': 'Creado correctamente',
+            'data': repair
         })
     } else {
         return res.status(404).json({
+            'status': 404,
             'msg': 'No se recibieron los datos'
         })
     }
@@ -95,12 +96,13 @@ const updateRepair = async (req, res) => {
     if (repair) {
         return res.status(200).json({
             'status': 200,
-            'msg': 'Actualizado correctamente'
+            'msg': 'Actualizado correctamente',
+            'data': repair
         })
     } else {
         return res.status(404).json({
             'status': 404,
-            'msg': 'repair no encontrado'
+            'msg': 'Reparación no encontrada'
         })
     }
 }
@@ -116,12 +118,13 @@ const destroyRepair = async (req, res) => {
     if (repair) {
         return res.status(200).json({
             'status': 200,
-            'msg': 'Eliminado correctamente'
+            'msg': 'Eliminada correctamente',
+            'data': repair
         })
     } else {
         return res.status(404).json({
             'status': 404,
-            'msg': 'Repair no encontrado'
+            'msg': 'Reparación no encontrada'
         })
     }
 };

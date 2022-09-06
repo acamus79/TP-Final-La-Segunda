@@ -13,10 +13,14 @@ const showVehicle = async (req, res) => {
         include: "repairs"
     });
     if (vehicle) {
-        res.status(200).json(vehicle);
+        res.status(200).json({
+            'status': 200,
+            'data': vehicle
+        });
     } else {
         res.status(404).json({
-            error: 'No se encontro el vehiculo'
+            'status': 404,
+            'msg': 'No se encontro el vehiculo'
         });
     }
 };
@@ -52,11 +56,12 @@ const registerVehicle = async (req, res) => {
     if (vehicle) {
         return res.status(200).json({
             'status': 200,
-            vehicle,
-            'msg': 'Creado correctamente'
+            'msg': 'Creado correctamente',
+            'data': vehicle
         })
     } else {
         return res.status(404).json({
+            'status': 404,
             'msg': 'No se recibieron los datos'
         })
     }
@@ -83,17 +88,20 @@ const updateVehicle = async (req, res) => {
             }
         });
         if (vehicle) {
-            return res.status(200).json({
+            return res.status(201).json({
+                'status': 201,
                 'msg': 'Actualizado correctamente',
-                exist
+                'data': exist
             })
         } else {
             return res.status(404).json({
+                'status': 404,
                 'msg': 'No se recibieron los datos'
             })
         }
     } else {
         return res.status(403).json({
+            'status': 403,
             'msg': 'No es el propietario del vehiculo'
         })
     }
@@ -110,9 +118,10 @@ const updateVehicleByManager = async (req, res) => {
         }
     })
     if (vehicle) {
-        return res.status(200).json({
-            'status': 200,
-            'msg': 'Actualizado correctamente'
+        return res.status(201).json({
+            'status': 201,
+            'msg': 'Actualizado correctamente',
+            'data': vehicle
         })
     } else {
         return res.status(404).json({

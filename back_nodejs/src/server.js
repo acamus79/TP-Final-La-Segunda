@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const path = require("path");
+//const path = require("path");
 const {
   json
 } = require('body-parser');
@@ -21,14 +21,15 @@ const routerRepair = require('./routes/repair.routes');
 const routerFleet = require('./routes/fleet.routes');
 
 //Settings
-app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({
   extend: false
 }));
 app.use(json());
+app.use(cors());
 
 //Rutas
+
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(setup));
 app.use('/api', routerAuth);
 app.use('/api/vehicle', routerVehicle);
@@ -37,10 +38,12 @@ app.use('/api/fleet', routerFleet);
 
 
 app.use((req, res, next) => {
+  console.log('Request URL:', req.originalUrl);
   res.status(404).json({
     status: '404',
     descripcion: 'Pagina no encontrada'
   })
+  next();
 })
 
 module.exports = app;

@@ -10,7 +10,7 @@ module.exports = {
     },
     servers: [
       {
-        url: `http://localhost:${port}/`,
+        url: `http://localhost:${port}/api`,
       },
     ],
   },

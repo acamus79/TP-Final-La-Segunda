@@ -2,15 +2,14 @@ const Router = require('express');
 const router = Router();
 
 //Middlewares
-const authUser = require('../middlewares/authUser');
+//const authUser = require('../middlewares/authUser');
 
 
 //Controllers
 const {
     signIn,
     signUp,
-    signOut,
-    refreshToken,
+    //signOut,
 } = require('../controllers/AuthController');
 
 
@@ -33,7 +32,7 @@ const {
   *      description: Sign in // Iniciar sesión
   *      summary: Authenticate user // Realiza la autenticación del usuario
   *      tags:
-  *        - auth
+  *        - Auth
   *      requestBody:
   *        required: true
   *        content:
@@ -48,7 +47,7 @@ const {
   *                password:
   *                  type: string
   *                  format: varchar(255)
-  *                  example: supersecret
+  *                  example: 1234567
   *      responses:
   *        200:
   *         content:
@@ -77,7 +76,7 @@ router.post('/signin', validateLogin, signIn);
   *      description: Inscribirse en el sistema // Sign up
   *      summary: Registra el usuario en el sistema // Register user
   *      tags:
-  *        - auth
+  *        - Auth
   *      requestBody:
   *        required: true
   *        content:
@@ -96,7 +95,7 @@ router.post('/signin', validateLogin, signIn);
   *                password:
   *                  type: string
   *                  format: varchar(255)
-  *                  example: supersecret
+  *                  example: 1234567
   *      responses:
   *        200:
   *          description: Usuario creado correctamente
@@ -116,8 +115,6 @@ router.post('/signin', validateLogin, signIn);
   */
 router.post('/signup', validateRegister, EmailIsUnique, signUp);
 
-router.get('/signout', signOut);
-
-router.get('/token', authUser, refreshToken);
+//router.get('/logout', signOut); */
 
 module.exports = router;

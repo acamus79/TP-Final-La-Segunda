@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const config = require('../../config/config');
 
 //Generate a new token
-const generate = async (user) => {
+const generate = (user) => {
     return jwt.sign({
         'id': user.id,
         'role': user.role
@@ -13,7 +13,7 @@ const generate = async (user) => {
 }
 
 //Verify the token
-const verify = async (token) => {
+const verify = (token) => {
     try {
         return jwt.verify(token, config.secret)
     } catch (e) {

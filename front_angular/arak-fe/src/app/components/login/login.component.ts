@@ -27,14 +27,20 @@ export class LoginComponent implements OnInit {
   }
 
   ingresar(form:LoginI) {
-    console.log(this.form)
-    //const email = this.form.value.email;
+
+    //console.log(this.form)
+    //console.log(this.form.value.email);
     //const password = this.form.value.password;
 
     this.api.login(form).subscribe(res => {
-      console.log(res)
-      this.loading = true
-      this.router.navigate(['/dashboard']);
+
+      this.loading = true;
+
+      setTimeout(() => {
+        this.loading = false;
+        this.router.navigate(['dashboard']);
+      }, 2000)
+
     }, err => {
       console.log(err)
       this.loading = false

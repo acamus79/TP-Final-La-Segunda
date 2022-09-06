@@ -1,5 +1,5 @@
 const tokenJwt = require('../helpers/generateJwt');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const config = require('../../config/config');
 const {
     User
@@ -19,7 +19,6 @@ module.exports = {
 
             // Creamos el token
             let token = tokenJwt.generate(user);
-
             const cookiesOptions = {
                 expire: new Date(Date.now() + config.expires * 24 * 60 * 60 * 1000),
                 httpOnly: true
@@ -27,6 +26,7 @@ module.exports = {
             res.cookie('jwt', token, cookiesOptions)
 
             res.json({
+                'status': 200,
                 'msg': 'Usuario creado correctamente',
                 token
             });
@@ -54,31 +54,35 @@ module.exports = {
         }).then(user => {
             if (!user) {
                 res.status(404).json({
-                    msg: "El Usuario no se encuentra registrado"
+                    'status': 404,
+                    'msg': 'El Usuario no se encuentra registrado'
                 });
             } else {
                 if (bcrypt.compareSync(password, user.password)) {
                     // Creamos el token
                     let token = tokenJwt.generate(user);
-
                     const cookiesOptions = {
                         expire: new Date(Date.now() + config.expires * 24 * 60 * 60 * 1000),
                         httpOnly: true
                     }
-                    res.cookie('jwt', token, cookiesOptions)
 
+                    res.cookie('jwt', token, cookiesOptions)
                     res.json({
                         token
                     })
                 } else {
                     // Unauthorized Access
                     res.status(401).json({
-                        msg: "Contraseña incorrecta"
+                        'status': 401,
+                        'msg': 'Contraseña incorrecta'
                     })
                 }
             }
         }).catch(err => {
-            res.status(500).json(err.message);
+            res.status(500).json({
+                'status': 500,
+                'msg': err.message
+            });
         })
     },
 
@@ -86,26 +90,9 @@ module.exports = {
     signOut(res) {
         res.clearCookie('jwt');
         res.status(200).json({
-            msg: "Sesión cerrada"
+            'status': 200,
+            'msg': "Sesión cerrada"
         });
     },
 
-    //Funcion que dado un token vigente obtener uno nuevo y 
-    //asi ir extendiendo la sesion
-    refreshToken(req, res) {
-        try {
-            const user = User.findbyPk(req.user.id);
-            const token = tokenJwt.generate(user);
-            const cookiesOptions = {
-                expire: new Date(Date.now() + config.expires * 24 * 60 * 60 * 1000),
-                httpOnly: true
-            }
-            res.cookie('jwt', token, cookiesOptions)
-            res.json({
-                token
-            })
-        } catch (error) {
-            res.status(500).json(error.message);
-        }
-    }
 }

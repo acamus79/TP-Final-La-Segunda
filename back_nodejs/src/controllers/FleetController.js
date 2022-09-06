@@ -13,36 +13,37 @@ const showFleet = async (req, res) => {
         include: "vehicles"
     });
     if (fleet) {
-        res.status(200).json(fleet);
+        res.status(200).json({
+            'status': 200,
+            fleet
+        });
     } else {
         res.status(404).json({
-            error: 'No se encontro la flota'
+            'status': 404,
+            'msg': 'No se encontro la flota'
         });
     }
 };
 
 //GET /fleets/
 const getByUser = async (req, res) => {
-    console.log("que onda");
-
     const userId = req.user.id;
-    console.log(userId);
-
+    
     let fleets = await Fleet.findAll({
         where: {
             user_id: userId
         }
     });
 
-    console.log(fleets);
-
     if (fleets) {
         res.status(200).json({
-            fleets
+            'status': 200,
+            'data': fleets
         });
     } else {
         res.status(404).json({
-            error: 'No se encontro iawsiqiqiqiqiq la flota'
+            'status': 404,
+            'msg': 'No se encontro la flota'
         });
     }
 }
@@ -82,16 +83,20 @@ const registerFleet = async (req, res) => {
     }).then(([fleet, created]) => {
         if (created) {
             res.status(201).json({
-                'message': 'Flota '+ fleet.name+' creada con exito'
+                'status': 201,
+                'msg': 'Flota '+ fleet.name+' creada con exito',
+                'data': fleet
             });
         } else {
             res.status(409).json({
-                'message': 'Ya existe una flota con ese nombre'
+                'status': 409,
+                'msg': 'Ya existe una flota con ese nombre'
             });
         } 
     }).catch(err => {
         res.status(500).json({
-            'message': 'Error al crear la flota'
+            'status': 500,
+            'msg': 'Error al crear la flota'
         });
     });
 }
@@ -114,10 +119,12 @@ const addVehicleFleet = async (req, res) => {
         if (!exist) {
             fleet.addVehicle(vehicle);
             return res.status(201).json({
+                'status': 201,
                 'msg': 'Vehiculo ' + vehicle.tag + ' agregado a la flota ' + fleet.name,
             })
         } else {
             return res.status(409).json({
+                'status': 409,
                 'msg': 'El vehiculo ya se encuentra en la flota'
             })
         }
@@ -146,16 +153,19 @@ const updateFleet = async (req, res) => {
         });
         if (vehicle) {
             return res.status(200).json({
+                'status': 200,
                 'msg': 'Actualizado correctamente',
-                exist
+                'data': exist
             })
         } else {
             return res.status(404).json({
+                'status': 404,
                 'msg': 'No se recibieron los datos'
             })
         }
     } else {
         return res.status(403).json({
+            'status': 403,
             'msg': 'No es el propietario del vehiculo'
         })
     }
@@ -172,8 +182,8 @@ const updateVehicleByManager = async (req, res) => {
         }
     })
     if (vehicle) {
-        return res.status(200).json({
-            'status': 200,
+        return res.status(201).json({
+            'status': 201,
             'msg': 'Actualizado correctamente'
         })
     } else {
