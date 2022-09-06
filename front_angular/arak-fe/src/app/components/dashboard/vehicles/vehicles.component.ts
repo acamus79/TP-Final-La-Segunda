@@ -105,14 +105,14 @@ export class VehiclesComponent implements OnInit {
           duration: 2000,
           horizontalPosition: 'center',
           verticalPosition: 'bottom',
-          panelClass: ['blue-snackbar']
+          panelClass: ['snakOk']
         });
       }, error => {
         this._snackBar.open('Error al eliminar un Vehiculo', '', {
-          duration: 2000,
+          duration: 9000,
           horizontalPosition: 'center',
           verticalPosition: 'bottom',
-          panelClass: ['red-snackbar']
+          panelClass: ['snakError']
         });
       }
 
