@@ -13,6 +13,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extend:true}));
 app.use(json());
+app.use(cors());
+
+
 
 //Rutas
 app.use('/', router);
