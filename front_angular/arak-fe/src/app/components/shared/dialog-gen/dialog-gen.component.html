@@ -1,0 +1,50 @@
+<h1 mat-dialog-title>Panel Agregar Vehiculo</h1>
+<div mat-dialog-content>
+
+    <form [formGroup]="form" class="example-form" (ngSubmit)=" saveVehicle()">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Marca</mat-label>
+            <input matInput placeholder="Ford" value="" autocomplete="off" formControlName="brand">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Modelo</mat-label>
+            <input matInput placeholder="Focus" value="" autocomplete="off"
+                formControlName="model">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Año</mat-label>
+            <input matInput placeholder="2015" value="" autocomplete="off"
+                formControlName="year">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Patente</mat-label>
+            <input matInput placeholder="AB122CL" value="" autocomplete="off"
+                formControlName="tag">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Seguro</mat-label>
+            <input matInput placeholder="La segunda" value="" autocomplete="off"
+                formControlName="insurance">
+        </mat-form-field>
+
+
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Tipo</mat-label>
+            <input matInput placeholder="Automovil" value="" autocomplete="off"
+                formControlName="type_id">
+        </mat-form-field>
+
+
+        <button type="submit" mat-raised-button class="button" [disabled]="form.invalid">Ingresar</button>
+    
+    </form>
+
+    
+
+    
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cerrar</button>
+  <button mat-button>Guardar</button>
+</div>

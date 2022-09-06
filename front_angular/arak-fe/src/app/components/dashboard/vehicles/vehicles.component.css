@@ -1,3 +1,13 @@
+.sectionVehicle {
+    margin-bottom: 2rem;
+}
+
+.sectionVehicle button {
+
+    height: 40px;
+    
+}
+
 table {
     width: 100%;
   }
@@ -7,4 +17,12 @@ table {
     justify-content: center;
     flex-direction: column;
     padding: 2rem;
+}
+
+.butIcon {
+    margin-left: 1px;
+}
+
+.butIcon:hover {
+    color: rgb(29, 178, 44);
 }

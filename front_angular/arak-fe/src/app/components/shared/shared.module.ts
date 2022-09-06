@@ -17,9 +17,15 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogGenComponent } from './dialog-gen/dialog-gen.component';
+import { MatSelectModule } from '@angular/material/select';
+
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    DialogGenComponent
+  ],
   imports: [
     CommonModule,
     MatSnackBarModule,
@@ -35,6 +41,8 @@ import { MatIconModule } from '@angular/material/icon';
     HttpClientModule,
     MatTableModule,
     MatIconModule,
+    MatDialogModule,
+    MatSelectModule,
 
   ],
   exports: [
@@ -52,6 +60,8 @@ import { MatIconModule } from '@angular/material/icon';
     HttpClientModule,
     MatTableModule,
     MatIconModule,
+    MatDialogModule,
+    MatSelectModule
   ]
 })
 export class SharedModule { }

@@ -4,6 +4,9 @@ import { environment } from 'src/environments/environment';
 import { IVehicle } from 'src/app/models/iVehicle';
 import { IResponse } from 'src/app/models/iresponse';
 import { IReqResponse } from 'src/app/models/ireqresponse';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogGenComponent } from '../../shared/dialog-gen/dialog-gen.component';
+
 
 
 
@@ -34,23 +37,40 @@ export class VehiclesComponent implements OnInit {
   datos = 'Hola';
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    public dialog: MatDialog,
   ) { }
+
+  getToken(): void {
+    const tok = localStorage.getItem('token');
+    
+    if (tok) JSON.parse(tok) 
+
+  }
 
   ngOnInit(): void {
     let httpHeaders: HttpHeaders = new HttpHeaders();
     const token = localStorage.getItem('token');
-    console.log('get token', token);
 
-    httpHeaders = httpHeaders.append('Authorization', 'Barer' + token);
+    /* if (token) {
+      JSON.parse(token),
+      console.log('get token if', token);
+    }  */
 
-    this.http.get<IReqResponse>(`${this.url}/vehicles`,
+  
+    console.log('mando al enpoint', token?.replace(/['"]+/g, ''))
+    
+    
+
+    httpHeaders = httpHeaders.append('Authorization', 'Barer ' + token?.replace(/['"]+/g, ''));
+
+    this.http.get<IReqResponse>(`${this.url}/vehicle/all`,
       {
         headers: httpHeaders,
         observe: 'response'
 
       }).subscribe(res => {
-        console.log(res.body?.content)
+        //console.log(res.body?.content)
         this.vehicles = res.body?.content
         this.dataSource = this.vehicles
 
@@ -65,8 +85,13 @@ export class VehiclesComponent implements OnInit {
 
   }
 
+
   hacerAlgo() {
     console.log('boton')
+  }
+
+  openDialog() {
+    this.dialog.open(DialogGenComponent);
   }
 
 }

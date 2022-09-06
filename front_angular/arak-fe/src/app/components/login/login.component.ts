@@ -55,8 +55,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.subRef$ = this.http.post<IResponse>(`${this.url}/signin`, userLogin, { observe: 'response' })
       .subscribe(res => {
         respuesta = res.body
-        console.log(JSON.stringify(respuesta))
-        localStorage.setItem('token', JSON.stringify(respuesta));
+        localStorage.setItem('token', JSON.stringify(respuesta.token));
         this.loading = true;
         setTimeout(() => {
           this.loading = false;
