@@ -23,18 +23,20 @@ export class VehiclesComponent implements OnInit {
     "brand",
     "model",
     "year",
-    "rto",
-    "gnc",
+    'tag',
     "insurance",
-    "service",
     "typeId",
-    "userId",
     "accion"
   ];
 
+  tipos = [
+    {id: 1, }
+  ]
+
+  
+
   displayedColumns: string[] = this.colum;
   dataSource: any;
-  datos = 'Hola';
 
   constructor(
     private http: HttpClient,

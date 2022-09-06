@@ -1,5 +1,9 @@
-.sectionVehicle {
-    margin-bottom: 2rem;
+.sectionHeader {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 1rem;
 }
 
 .sectionVehicle button {
@@ -7,17 +11,21 @@
     height: 40px;
     
 }
-
-table {
-    width: 100%;
-  }
-
 .layout {
     display: flex;
     justify-content: center;
     flex-direction: column;
     padding: 2rem;
+    align-items: center;
 }
+
+table {
+    width: 90%;
+    min-width: 680px;
+    
+  }
+
+
 
 .butIcon {
     margin-left: 1px;
@@ -25,4 +33,12 @@ table {
 
 .butIcon:hover {
     color: rgb(29, 178, 44);
+}
+
+.elementos th {
+    color: blue;
+}
+
+.elementos td, th  {
+    font-size: 18px !important;
 }

@@ -64,7 +64,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatIconModule,
     MatDialogModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class SharedModule { }
