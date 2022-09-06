@@ -10,7 +10,6 @@ module.exports = {
       service: new Date(),
       createdAt: new Date(),
       updatedAt: new Date(),
-      typeId: 18
     }], {});
 
   },

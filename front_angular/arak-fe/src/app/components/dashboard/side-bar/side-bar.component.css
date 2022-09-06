@@ -1,0 +1,31 @@
+.example-container {
+    width: 100%;
+    height: 100%;
+}
+
+.example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: top;
+    justify-content: center;
+}
+
+.example-sidenav {
+    padding: 20px;
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+}
+
+.buttonGroup {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.sideBar {
+    background-color: rgb(220, 234, 232);
+}
