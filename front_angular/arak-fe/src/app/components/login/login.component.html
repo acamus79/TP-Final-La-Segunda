@@ -1,7 +1,7 @@
 <div class="body">
     <img src="../../../assets/ARAK_Logo.svg" alt="users-logo-login" width="200">
     <h1 class="nameLogo">ARAK</h1>
-    <h2 class="nameLogo">Gestion de Vehiculos</h2>
+    <h2 class="nameLogo">Gestión de Vehículos</h2>
 
     <mat-spinner diameter="80" class="spinner" *ngIf="loading"></mat-spinner>
 
@@ -16,6 +16,8 @@
                 formControlName="password">
         </mat-form-field>
         <button type="submit" mat-raised-button class="button" [disabled]="form.invalid">Ingresar</button>
+
+        <h4 class="register">Nuevo usuario</h4>
     </form>
 
 </div>

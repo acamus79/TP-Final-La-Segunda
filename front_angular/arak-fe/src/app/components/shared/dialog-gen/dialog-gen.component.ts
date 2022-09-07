@@ -36,12 +36,12 @@ export class DialogGenComponent implements OnInit {
 
   ) {
     this.form = this.fb.group({
+      type_id: ['', Validators.required],
       brand: ['', Validators.required],
       model: ['', Validators.required],
       year: ['', Validators.required],
       insurance: ['', Validators.required],
       tag: ['', Validators.required],
-      type_id: ['', Validators.required],
     });
   }
 

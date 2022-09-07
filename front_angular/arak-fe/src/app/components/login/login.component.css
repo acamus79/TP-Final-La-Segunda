@@ -1,38 +1,44 @@
 .body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    align-items: center;
-    background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+  background-color: whitesmoke;
 }
 
 .example-form {
-    min-width: 150px;
-    max-width: 400px;
-    width: 100%;
-    margin-top: 2rem;
+  min-width: 150px;
+  max-width: 400px;
+  width: 100%;
+  margin-top: 2rem;
 }
 
 .example-full-width {
-    width: 100%;
+  width: 100%;
 }
 
 .button {
-    width: 100%;
-    background-color: rgb(16, 123, 156);
-    color: white;
-    height: 50px;
-    font-size: 18px;
+  width: 100%;
+  background-color: rgb(16, 123, 156);
+  color: white;
+  height: 50px;
+  font-size: 18px;
 }
 
 .nameLogo {
-    margin: 0;
-    font-weight: 800;
-    color: rgb(25, 140, 132)
+  margin: 0;
+  font-weight: 800;
+  color: rgb(25, 140, 132)
 }
 
 .spinner {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
+.register {
+  text-align: right;
+  margin-top: 5px !important;
+  color: rgb(25, 140, 132);
+  font-weight: 800;
+}

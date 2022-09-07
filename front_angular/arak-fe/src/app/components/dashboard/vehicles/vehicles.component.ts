@@ -9,14 +9,12 @@ import { DialogGenComponent } from '../../shared/dialog-gen/dialog-gen.component
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
-
-
-
 @Component({
   selector: 'app-vehicles',
   templateUrl: './vehicles.component.html',
   styleUrls: ['./vehicles.component.css']
 })
+
 export class VehiclesComponent implements OnInit {
   num: number = 0;
   httpHeaders: HttpHeaders = new HttpHeaders();
@@ -35,8 +33,6 @@ export class VehiclesComponent implements OnInit {
   tipos = [
     { id: 1, }
   ]
-
-
 
   displayedColumns: string[] = this.colum;
   dataSource: any;
@@ -101,7 +97,6 @@ export class VehiclesComponent implements OnInit {
           panelClass: ['snakError']
         });
       }
-
       )
   }
 
