@@ -2,13 +2,20 @@
     <mat-drawer mode="side" opened class="sideBar">
       <div class="container">
         <div class="buttonGroup">
-            <button mat-button routerLink="/dashboard">Home</button>
+            <button mat-button routerLink="/dashboard">Inicio</button>
             <mat-divider></mat-divider>
             <button mat-button routerLink="users">Usuarios</button>
             <mat-divider></mat-divider>
+            <button mat-button *ngIf="expression">Flota</button>
+            <mat-divider></mat-divider>
             <button mat-button routerLink="vehicles">Vehículos</button>
             <mat-divider></mat-divider>
+            <button mat-button routerLink="vehicles">Reparaciones</button>
+            <mat-divider></mat-divider>
             <button mat-button>Perfil</button>
+            <mat-divider></mat-divider>
+            <mat-divider></mat-divider>
+            <button mat-button>Contacto</button>
             <mat-divider></mat-divider>
 
               <img src="../../../../assets/logo_white.svg" alt="users-logo-login" class="arak1">

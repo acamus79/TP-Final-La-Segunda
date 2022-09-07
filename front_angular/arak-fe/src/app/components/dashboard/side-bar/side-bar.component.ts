@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideBarComponent implements OnInit {
   showFiller: boolean;
+  expression: any = true
 
   constructor() {
     this.showFiller = true
