@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
+<<<<<<< HEAD
 interface Food {
   value: string;
   viewValue: string;
@@ -17,6 +18,8 @@ interface Car {
 }
 
 
+=======
+>>>>>>> acamus
 @Component({
   selector: 'app-dialog-gen',
   templateUrl: './dialog-gen.component.html',
@@ -27,12 +30,16 @@ export class DialogGenComponent implements OnInit {
   form: FormGroup;
   selectedValue?: string;
   selectedCar?: string;
+<<<<<<< HEAD
   lista: string[] = ["hola", "que", "tal", "estas"];
   seleccionados: string = 'Algo';
+=======
+>>>>>>> acamus
   url: string = environment.api;
   httpHeaders: HttpHeaders = new HttpHeaders();
 
 
+<<<<<<< HEAD
   foods: Food[] = [
     { value: 'steak-0', viewValue: 'Steak' },
     { value: 'pizza-1', viewValue: 'Pizza' },
@@ -46,6 +53,8 @@ export class DialogGenComponent implements OnInit {
   ];
 
 
+=======
+>>>>>>> acamus
   type: any[] = [
     { value: 1, viewValue: 'Moto' },
     { value: 2, viewValue: 'Auto' },
@@ -62,12 +71,19 @@ export class DialogGenComponent implements OnInit {
 
   ) {
     this.form = this.fb.group({
+<<<<<<< HEAD
+=======
+      type_id: ['', Validators.required],
+>>>>>>> acamus
       brand: ['', Validators.required],
       model: ['', Validators.required],
       year: ['', Validators.required],
       insurance: ['', Validators.required],
       tag: ['', Validators.required],
+<<<<<<< HEAD
       type_id: ['', Validators.required],
+=======
+>>>>>>> acamus
     });
   }
 
@@ -85,12 +101,24 @@ export class DialogGenComponent implements OnInit {
       {
         headers: this.httpHeaders,
       }).subscribe(res => {
+<<<<<<< HEAD
         console.log(res);
         this._snackBar.open('Vehiculo creado correctamente', '', {
           duration: 2000,
           horizontalPosition: 'center',
           verticalPosition: 'bottom',
           panelClass: ['blue-snackbar']
+=======
+        //console.log(res);
+        this._snackBar.open('Vehiculo creado correctamente', 'Aceptar', {
+          duration: 2000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+          panelClass: ['snackOk']
+        }).afterDismissed().subscribe(() => {
+          this.router.navigate(['/dashboard/vehicles']);
+
+>>>>>>> acamus
         });
       })
   }

@@ -5,7 +5,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> acamus
 /* Material angular modules */
 import { MatSliderModule } from '@angular/material/slider';
 import { MatInputModule } from '@angular/material/input';
@@ -22,7 +25,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { DialogGenComponent } from './dialog-gen/dialog-gen.component';
 import { MatSelectModule } from '@angular/material/select';
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> acamus
 @NgModule({
   declarations: [
     DialogGenComponent

@@ -1,8 +1,9 @@
-
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+const tokenJwt = require('../helpers/generateJwt');
+const bcrypt = require('bcryptjs');
 const config = require('../../config/config');
-const { User } = require('../models/index');
+const {
+    User
+} = require('../models/index');
 
 
 module.exports = {
@@ -17,12 +18,7 @@ module.exports = {
         User.create(params).then(user => {
 
             // Creamos el token
-            let token = jwt.sign({
-                user: user
-            }, config.secret, {
-                expiresIn: config.expires
-            });
-
+            let token = tokenJwt.generate(user);
             const cookiesOptions = {
                 expire: new Date(Date.now() + config.expires * 24 * 60 * 60 * 1000),
                 httpOnly: true
@@ -30,22 +26,16 @@ module.exports = {
             res.cookie('jwt', token, cookiesOptions)
 
             res.json({
-                user: user,
-                token: token
+                'status': 200,
+                'msg': 'Usuario creado correctamente',
+                token
             });
 
         }).catch(err => {
-            if (err.errors[0].message == "users.email must be unique") {
-                res.status(400).json({
-                    msg: "Correo ya registrado"
-                });
-            } else {
-                res.status(400).json({
-                    msg: err.errors[0].message
-                });
-            }
+            res.status(400).json({
+                msg: err.message
+            });
         });
-
     },
 
     // Login
@@ -64,43 +54,45 @@ module.exports = {
         }).then(user => {
             if (!user) {
                 res.status(404).json({
-                    msg: "Usuario no encontrado"
+                    'status': 404,
+                    'msg': 'El Usuario no se encuentra registrado'
                 });
             } else {
                 if (bcrypt.compareSync(password, user.password)) {
                     // Creamos el token
-                    let token = jwt.sign({
-                        user: user
-                    }, config.secret, {
-                        expiresIn: config.expires
-                    });
-
+                    let token = tokenJwt.generate(user);
                     const cookiesOptions = {
                         expire: new Date(Date.now() + config.expires * 24 * 60 * 60 * 1000),
                         httpOnly: true
                     }
-                    res.cookie('jwt', token, cookiesOptions)
 
+                    res.cookie('jwt', token, cookiesOptions)
                     res.json({
                         token
                     })
                 } else {
                     // Unauthorized Access
                     res.status(401).json({
-                        msg: "Contraseña incorrecta"
+                        'status': 401,
+                        'msg': 'Contraseña incorrecta'
                     })
                 }
             }
         }).catch(err => {
-            res.status(500).json(err.message);
+            res.status(500).json({
+                'status': 500,
+                'msg': err.message
+            });
         })
     },
+
     //Logout
     signOut(res) {
         res.clearCookie('jwt');
         res.status(200).json({
-            msg: "Sesión cerrada"
+            'status': 200,
+            'msg': "Sesión cerrada"
         });
-    }
+    },
 
 }

@@ -1,34 +1,16 @@
 'use strict';
 
 module.exports = {
-  async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('types', [
-      {
-        description: 'Auto',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        description: 'Moto',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        description: 'Camion',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        description: 'Camioneta',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        description: 'Taxi/Remis',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      }
-    ], {});
+  async up (queryInterface, Sequelize) {
+    /**
+     * Add seed commands here.
+     *
+     * Example:
+     * await queryInterface.bulkInsert('People', [{
+     *   name: 'John Doe',
+     *   isBetaMember: false
+     * }], {});
+    */
   },
 
   async down(queryInterface, Sequelize) {

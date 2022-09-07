@@ -1,10 +1,20 @@
+<<<<<<< HEAD
 .example-form {
+=======
+.login-form {
+>>>>>>> acamus
     min-width: 250px;
     max-width: 650px;
     width: 100%;
     margin-top: 2rem;
 }
 
+<<<<<<< HEAD
 .example-full-width {
     width: 100%;
 }
+=======
+.login-full-width {
+    width: 100%;
+}
+>>>>>>> acamus

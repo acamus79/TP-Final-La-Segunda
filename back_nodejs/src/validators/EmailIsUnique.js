@@ -8,7 +8,7 @@ const EmailIsUnique = async (req, res, next) => {
   }).then(user =>{
     if (user) {
       //Email invalido
-      return res.status(400).json({msg: "El email ingresado ya se encuentra en uso"})
+      return res.status(409).json({msg: "El email ingresado ya se encuentra registrado"})
     }else{
       next()
     }

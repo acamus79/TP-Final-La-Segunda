@@ -9,26 +9,40 @@ import { DialogGenComponent } from '../../shared/dialog-gen/dialog-gen.component
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> acamus
 @Component({
   selector: 'app-vehicles',
   templateUrl: './vehicles.component.html',
   styleUrls: ['./vehicles.component.css']
 })
+<<<<<<< HEAD
+=======
+
+>>>>>>> acamus
 export class VehiclesComponent implements OnInit {
   num: number = 0;
   httpHeaders: HttpHeaders = new HttpHeaders();
   url: string = environment.api;
   vehicles: any = [];
   colum = [
+<<<<<<< HEAD
+=======
+    "typeId",
+>>>>>>> acamus
     "brand",
     "model",
     "year",
     'tag',
     "insurance",
+<<<<<<< HEAD
     "typeId",
+=======
+>>>>>>> acamus
     "accion"
   ];
 
@@ -36,8 +50,11 @@ export class VehiclesComponent implements OnInit {
     { id: 1, }
   ]
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> acamus
   displayedColumns: string[] = this.colum;
   dataSource: any;
 
@@ -56,6 +73,7 @@ export class VehiclesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+<<<<<<< HEAD
     //let httpHeaders: HttpHeaders = new HttpHeaders();
     //const token = localStorage.getItem('token'); */
     const token = localStorage.getItem('token');
@@ -73,13 +91,23 @@ export class VehiclesComponent implements OnInit {
 
     //httpHeaders = httpHeaders.append('Authorization', 'Barer ' + token?.replace(/['"]+/g, ''));
 
+=======
+
+    const token = localStorage.getItem('token');
+    this.httpHeaders = this.httpHeaders.append('Authorization', 'Barer ' + token?.replace(/['"]+/g, ''));
+
+>>>>>>> acamus
     this.http.get<IReqResponse>(`${this.url}/vehicle/all`,
       {
         headers: this.httpHeaders,
         observe: 'response'
 
       }).subscribe(res => {
+<<<<<<< HEAD
         //console.log(res.body?.content)
+=======
+
+>>>>>>> acamus
         this.vehicles = res.body?.content
         this.dataSource = this.vehicles
 
@@ -87,7 +115,10 @@ export class VehiclesComponent implements OnInit {
           console.log('cada elemento es: ', element)
         });
 
+<<<<<<< HEAD
         console.log('me vienen los vechicles', this.vehicles)
+=======
+>>>>>>> acamus
       }, error => {
         console.log('error al obtener los datos', error)
       })
@@ -115,7 +146,10 @@ export class VehiclesComponent implements OnInit {
           panelClass: ['snakError']
         });
       }
+<<<<<<< HEAD
 
+=======
+>>>>>>> acamus
       )
   }
 
