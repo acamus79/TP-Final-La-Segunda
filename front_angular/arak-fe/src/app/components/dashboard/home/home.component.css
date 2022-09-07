@@ -2,19 +2,21 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    padding: 2px;
 }
 
 .section {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    padding: 1rem;
+    margin: 4px;
 }
 
+article {
+    margin: 4px;
+}
 
-.example-card {
-    margin: 2rem;
-  }
   
   .example-header-image {
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
@@ -28,6 +30,10 @@
 
   .image-expirations {
     width: 300px;
+  }
+
+  .panel-vehicle {
+    width: 100%;
   }
 
   .panel-expirations {
