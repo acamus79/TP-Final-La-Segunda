@@ -20,6 +20,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogGenComponent } from './dialog-gen/dialog-gen.component';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatDialogModule,
     MatSelectModule,
     FormsModule,
-
+    MatCardModule,
+    MatBadgeModule,
   ],
   exports: [
     CommonModule,
@@ -63,6 +66,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatDialogModule,
     MatSelectModule,
     FormsModule,
+    MatCardModule,
+    MatBadgeModule,
   ]
 })
 export class SharedModule { }
