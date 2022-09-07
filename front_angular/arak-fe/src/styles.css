@@ -3,15 +3,16 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.snakOk {
-    background: #49a947;
+.snackOk {
+    background: #5b8f5a;
+    padding-left: 10em;
   }
 
-.snakError .mat-simple-snackbar {
+.snackError .mat-simple-snackbar {
     display: flex;
     justify-content: center !important;
     align-items: center !important;
     text-align: center !;
-    background: #d67d38;
-    
+    background: #9e6234;
+
   }

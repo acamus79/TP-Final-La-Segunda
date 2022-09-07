@@ -7,23 +7,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './components/shared/shared.module';
 
 
-
-
 /* Componentes */
 import { LoginComponent } from './components/login/login.component';
-
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-   
   ],
   providers: [],
   bootstrap: [AppComponent]

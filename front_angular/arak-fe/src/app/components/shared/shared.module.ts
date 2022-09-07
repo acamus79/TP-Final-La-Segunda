@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-
 /* Material angular modules */
 import { MatSliderModule } from '@angular/material/slider';
 import { MatInputModule } from '@angular/material/input';
@@ -21,7 +20,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogGenComponent } from './dialog-gen/dialog-gen.component';
 import { MatSelectModule } from '@angular/material/select';
-
+import { MatCardModule } from '@angular/material/card';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatDialogModule,
     MatSelectModule,
     FormsModule,
-
+    MatCardModule,
+    MatBadgeModule,
   ],
   exports: [
     CommonModule,
@@ -65,6 +66,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatDialogModule,
     MatSelectModule,
     FormsModule,
+    MatCardModule,
+    MatBadgeModule,
   ]
 })
 export class SharedModule { }
