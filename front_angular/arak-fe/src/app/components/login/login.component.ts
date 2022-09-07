@@ -64,10 +64,10 @@ export class LoginComponent implements OnInit, OnDestroy {
         }, 2000);
       }, error => {
         this._snackBar.open('Error en usuario o contraseña', '', {
-          duration: 5000,
+          duration: 2000,
           horizontalPosition: 'center',
           verticalPosition: 'bottom',
-          panelClass: ['blue-snackbar']
+          panelClass: ['snackError']
         })
       }
     )

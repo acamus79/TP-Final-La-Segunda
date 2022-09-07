@@ -23,12 +23,12 @@ export class VehiclesComponent implements OnInit {
   url: string = environment.api;
   vehicles: any = [];
   colum = [
+    "typeId",
     "brand",
     "model",
     "year",
     'tag',
     "insurance",
-    "typeId",
     "accion"
   ];
 
@@ -56,22 +56,9 @@ export class VehiclesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //let httpHeaders: HttpHeaders = new HttpHeaders();
-    //const token = localStorage.getItem('token'); */
+
     const token = localStorage.getItem('token');
     this.httpHeaders = this.httpHeaders.append('Authorization', 'Barer ' + token?.replace(/['"]+/g, ''));
-
-    /* if (token) {
-      JSON.parse(token),
-      console.log('get token if', token);
-    }  */
-
-
-    console.log('mando al enpoint', token?.replace(/['"]+/g, ''))
-
-
-
-    //httpHeaders = httpHeaders.append('Authorization', 'Barer ' + token?.replace(/['"]+/g, ''));
 
     this.http.get<IReqResponse>(`${this.url}/vehicle/all`,
       {
@@ -79,7 +66,7 @@ export class VehiclesComponent implements OnInit {
         observe: 'response'
 
       }).subscribe(res => {
-        //console.log(res.body?.content)
+
         this.vehicles = res.body?.content
         this.dataSource = this.vehicles
 
@@ -87,7 +74,6 @@ export class VehiclesComponent implements OnInit {
           console.log('cada elemento es: ', element)
         });
 
-        console.log('me vienen los vechicles', this.vehicles)
       }, error => {
         console.log('error al obtener los datos', error)
       })

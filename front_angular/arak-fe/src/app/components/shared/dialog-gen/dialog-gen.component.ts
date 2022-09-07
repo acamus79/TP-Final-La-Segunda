@@ -6,17 +6,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
-interface Food {
-  value: string;
-  viewValue: string;
-}
-
-interface Car {
-  value: string;
-  viewValue: string;
-}
-
-
 @Component({
   selector: 'app-dialog-gen',
   templateUrl: './dialog-gen.component.html',
@@ -27,23 +16,8 @@ export class DialogGenComponent implements OnInit {
   form: FormGroup;
   selectedValue?: string;
   selectedCar?: string;
-  lista: string[] = ["hola", "que", "tal", "estas"];
-  seleccionados: string = 'Algo';
   url: string = environment.api;
   httpHeaders: HttpHeaders = new HttpHeaders();
-
-
-  foods: Food[] = [
-    { value: 'steak-0', viewValue: 'Steak' },
-    { value: 'pizza-1', viewValue: 'Pizza' },
-    { value: 'tacos-2', viewValue: 'Tacos' },
-  ];
-
-  cars: Car[] = [
-    { value: 'volvo', viewValue: 'Volvo' },
-    { value: 'saab', viewValue: 'Saab' },
-    { value: 'mercedes', viewValue: 'Mercedes' },
-  ];
 
 
   type: any[] = [
@@ -85,12 +59,15 @@ export class DialogGenComponent implements OnInit {
       {
         headers: this.httpHeaders,
       }).subscribe(res => {
-        console.log(res);
-        this._snackBar.open('Vehiculo creado correctamente', '', {
+        //console.log(res);
+        this._snackBar.open('Vehiculo creado correctamente', 'Aceptar', {
           duration: 2000,
           horizontalPosition: 'center',
           verticalPosition: 'bottom',
-          panelClass: ['blue-snackbar']
+          panelClass: ['snackOk']
+        }).afterDismissed().subscribe(() => {
+          this.router.navigate(['/dashboard/vehicles']);
+
         });
       })
   }

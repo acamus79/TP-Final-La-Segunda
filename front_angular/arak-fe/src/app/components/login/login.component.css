@@ -4,7 +4,7 @@
     justify-content: center;
     height: 100%;
     align-items: center;
-    background-color: rgb(174, 205, 174);
+    background-color: whitesmoke;
 }
 
 .example-form {
@@ -28,7 +28,7 @@
 
 .nameLogo {
     margin: 0;
-    font-weight: 500;
+    font-weight: 800;
     color: rgb(25, 140, 132)
 }
 
@@ -36,6 +36,3 @@
     margin-top: 20px;
 }
 
-.blue-snackbar {
-    background: #2196F3;
-  }

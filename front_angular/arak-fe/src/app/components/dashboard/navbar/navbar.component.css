@@ -1,3 +1,14 @@
 .navBar {
     background-color: rgb(25,140,132);
+    color: white;
+    font-size: x-large;
+    font-weight: bold;
+    display: flex;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    margin: 0 1rem;
+    rotate: 38deg;
 }
