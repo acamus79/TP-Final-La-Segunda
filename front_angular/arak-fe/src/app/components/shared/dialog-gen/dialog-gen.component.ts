@@ -18,6 +18,7 @@ export class DialogGenComponent implements OnInit {
   selectedCar?: string;
   url: string = environment.api;
   httpHeaders: HttpHeaders = new HttpHeaders();
+  close:boolean = false
 
 
   type: any[] = [
@@ -66,6 +67,7 @@ export class DialogGenComponent implements OnInit {
           verticalPosition: 'bottom',
           panelClass: ['snackOk']
         }).afterDismissed().subscribe(() => {
+          this.close = true
           this.router.navigate(['/dashboard/vehicles']);
 
         });

@@ -20,12 +20,26 @@ export interface ReqUser {
 }
 
 
+
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
+
 export class UsersComponent implements OnInit {
+  colum = [
+    "id",
+    "name",
+    "email",
+    "phone",
+    "role",
+    "actions"
+  ];
+
+  displayedColumns: string[] = this.colum;
+  dataSource: any;
 
   constructor(
     private userService: UserService
@@ -34,7 +48,9 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getUser$()
         .subscribe( (res: any) => {
-          console.log(res.data)
+          console.log(res)
+          this.dataSource = res.body.data;
+          console.log(this.dataSource)
         })
 
   }

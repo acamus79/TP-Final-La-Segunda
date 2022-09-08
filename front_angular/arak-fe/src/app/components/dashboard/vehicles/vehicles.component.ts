@@ -63,12 +63,11 @@ export class VehiclesComponent implements OnInit {
       {
         headers: this.httpHeaders,
         observe: 'response'
-
       }).subscribe(res => {
 
         this.vehicles = res.body?.content
         this.vehicleService.addVehicle(this.vehicles)
-        this.dataSource = this.vehicleService
+        this.dataSource = this.vehicles
 
         /* this.vehicles.forEach((element: any) => {
           console.log('cada elemento es: ', element)

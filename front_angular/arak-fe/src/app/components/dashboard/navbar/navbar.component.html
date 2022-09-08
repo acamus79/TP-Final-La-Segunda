@@ -1,5 +1,11 @@
 <mat-toolbar class="navBar">
-  <img src="../../../../assets/logo_white.svg" alt="users-logo-login" class="logo">
+  <div class="log">
+    <img src="../../../../assets/logo_white.svg" alt="users-logo-login" class="logo">
   <span>AraK</span>
+  </div>
+  <div class="log">
+    <mat-icon (click)="logout()" class="button" aria-hidden="false" aria-label="Example home icon" fontIcon="logout"></mat-icon>
+  </div>
+  
 </mat-toolbar>
 
