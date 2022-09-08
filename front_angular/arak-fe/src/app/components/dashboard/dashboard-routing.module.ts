@@ -9,11 +9,11 @@ import { ContactComponent } from './contact/contact.component';
 const routes: Routes = [
   { path: '', component: DashboardComponent,
       children: [
-        {path: '', component: HomeComponent},
-        {path: 'users', component: UsersComponent},
-        {path: 'vehicles', component:VehiclesComponent},
-        {path: 'users', component: UsersComponent},
-        {path: 'contact', component: ContactComponent}
+        {path: '', component: HomeComponent, pathMatch: 'full'},
+        {path: 'users', component: UsersComponent, pathMatch: 'full'},
+        {path: 'vehicles', component:VehiclesComponent, pathMatch: 'full'},
+        {path: 'users', component: UsersComponent, pathMatch: 'full'},
+        {path: 'contact', component: ContactComponent, pathMatch: 'full'},
       ]
 }
 ];
