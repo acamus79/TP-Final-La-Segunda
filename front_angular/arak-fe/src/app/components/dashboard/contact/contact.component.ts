@@ -39,8 +39,10 @@ export class ContactComponent implements OnInit {
 
   saveContact() {
     console.log(this.form.value);
+
     if(this.form.valid){
-      this.http.post(`${this.url}/contact`, this.form.value, {
+      console.log(this.httpHeaders);
+      this.http.post(`${this.url}/contact/create`, this.form.value, {
         headers: this.httpHeaders,
       }).subscribe(
         (res) => {

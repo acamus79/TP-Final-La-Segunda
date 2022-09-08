@@ -2,13 +2,14 @@ const Router = require('express');
 const router = Router();
 
 //Middlewares
-//const authUser = require('../middlewares/authUser');
+const authAdmin = require('../middlewares/authAdmin');
 
 
 //Controllers
 const {
     signIn,
     signUp,
+    index,
     //signOut,
 } = require('../controllers/AuthController');
 
@@ -114,6 +115,8 @@ router.post('/signin', validateLogin, signIn);
   *          description: Error de conexión con el servidor o en la base de datos // Error connecting to the server or database
   */
 router.post('/signup', validateRegister, EmailIsUnique, signUp);
+
+router.get('/index', authAdmin, index);
 
 //router.get('/logout', signOut); */
 

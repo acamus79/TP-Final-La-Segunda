@@ -8,6 +8,23 @@ const {
 
 module.exports = {
 
+    //Show all users
+    async index(req, res) {
+        let users = await User.findAll();
+        if (users) {
+            res.status(200).json({
+                'status': 200,
+                'data': users
+            });
+        } else {
+            res.status(404).json({
+                'status': 404,
+                'msg': 'No se encontraron usuarios'
+            });
+        }
+    },
+
+
     //Registro
     signUp(req, res) {
 
