@@ -24,10 +24,11 @@ export class ContactComponent implements OnInit {
     private fb: FormBuilder,
     private http: HttpClient,
     private _snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+
   ) {
     this.form = this.fb.group({
-      subject: ['', Validators.required],
+      subjet: ['', Validators.required],
       text: ['', Validators.required],
     });
   }
@@ -38,11 +39,11 @@ export class ContactComponent implements OnInit {
   }
 
   saveContact() {
-    console.log(this.form.value);
+    console.log("esto llega",this.form.value);
 
     if(this.form.valid){
-      console.log(this.httpHeaders);
-      this.http.post(`${this.url}/contact/create`, this.form.value, {
+      console.log("esto seria si se valida el formulario", this.httpHeaders);
+      this.http.post(`https://arak-backend.herokuapp.com/api/contact/create`, this.form.value, {
         headers: this.httpHeaders,
       }).subscribe(
         (res) => {
@@ -53,7 +54,7 @@ export class ContactComponent implements OnInit {
             verticalPosition: 'bottom',
             panelClass: ['snackOk']
           });
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/dashboard/vehicles']);
         },
         (err) => {
           console.log(err);
