@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { IVehicle } from 'src/app/models/iVehicle';
+import { UserService } from 'src/app/services/user/user.service';
+import { VehiclesService } from 'src/app/services/vehicles/vehicles.service';
 
 export interface PeriodicElement {
   vehicle: string;
@@ -22,10 +25,24 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class HomeComponent implements OnInit {
   displayedColumns: string[] = ['position', 'vehicle', 'alert', 'date', 'action'];
   dataSource = ELEMENT_DATA;
+  arrVehicle:any;
 
-  constructor() { }
+  constructor(
+    private vehicleService: VehiclesService,
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
+    this.userService.getUser$()
+        .subscribe( (res: any) => {
+          console.log(res.body.data)
+        })
+
+    this.vehicleService.getVehicle$().subscribe(
+      vehicle => {
+        this.arrVehicle = vehicle
+      }
+    )
   }
 
 }

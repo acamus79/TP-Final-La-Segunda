@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogGenComponent } from '../../shared/dialog-gen/dialog-gen.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { VehiclesService } from 'src/app/services/vehicles/vehicles.service';
 
 @Component({
   selector: 'app-vehicles',
@@ -42,6 +43,7 @@ export class VehiclesComponent implements OnInit {
     public dialog: MatDialog,
     private _snackBar: MatSnackBar,
     private router: Router,
+    private vehicleService: VehiclesService,
   ) { }
 
   getToken(): void {
@@ -56,6 +58,7 @@ export class VehiclesComponent implements OnInit {
     const token = localStorage.getItem('token');
     this.httpHeaders = this.httpHeaders.append('Authorization', 'Barer ' + token?.replace(/['"]+/g, ''));
 
+    
     this.http.get<IReqResponse>(`${this.url}/vehicle/all`,
       {
         headers: this.httpHeaders,
@@ -64,11 +67,12 @@ export class VehiclesComponent implements OnInit {
       }).subscribe(res => {
 
         this.vehicles = res.body?.content
-        this.dataSource = this.vehicles
+        this.vehicleService.addVehicle(this.vehicles)
+        this.dataSource = this.vehicleService
 
-        this.vehicles.forEach((element: any) => {
+        /* this.vehicles.forEach((element: any) => {
           console.log('cada elemento es: ', element)
-        });
+        }); */
 
       }, error => {
         console.log('error al obtener los datos', error)
