@@ -1,1 +1,22 @@
-<p>contact works!</p>
+
+<section class="sectionForm">
+  <h2> - Formulario de Contacto - </h2>
+
+
+
+<form [formGroup]="form" class="formContact" (ngSubmit)="saveContact()">
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Asunto</mat-label>
+    <input matInput placeholder="Funcionalidad" value="" formControlName="subject">
+  </mat-form-field>
+
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Deja un comentario</mat-label>
+    <textarea matInput placeholder="Ej.: Me gustaria que..." formControlName="text"></textarea>
+  </mat-form-field>
+
+  <button mat-raised-button>Enviar</button>
+
+</form>
+
+</section>

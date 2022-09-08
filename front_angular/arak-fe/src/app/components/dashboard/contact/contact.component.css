@@ -1,0 +1,22 @@
+.sectionForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 70%;
+  align-items: center;
+  background-color: whitesmoke;
+  padding: 20px 20px 20px 20px;
+  margin-top: 25px  ;
+  border-radius: 5px;
+  box-shadow: 0 0 15px 0 rgba(0,0,0,.2);
+}
+.formContact {
+  min-width: 50%;
+  max-width: 80%;
+  width: 70%;
+}
+
+.full-width {
+  width: 100%;
+}
+

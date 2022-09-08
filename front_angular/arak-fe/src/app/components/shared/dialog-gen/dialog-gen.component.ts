@@ -53,13 +53,13 @@ export class DialogGenComponent implements OnInit {
   }
 
   saveVehicle() {
-    console.log('anda');
     console.log(this.form.value);
+
     this.http.post(`${this.url}/vehicle`, this.form.value,
       {
         headers: this.httpHeaders,
       }).subscribe(res => {
-        //console.log(res);
+        console.log(res);
         this._snackBar.open('Vehiculo creado correctamente', 'Aceptar', {
           duration: 2000,
           horizontalPosition: 'center',

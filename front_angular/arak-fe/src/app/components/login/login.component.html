@@ -5,12 +5,12 @@
 
     <mat-spinner diameter="80" class="spinner" *ngIf="loading"></mat-spinner>
 
-    <form [formGroup]="form" class="example-form" (ngSubmit)="ingresar()" *ngIf="!loading">
-        <mat-form-field class="example-full-width" appearance="fill">
+    <form [formGroup]="form" class="form-login" (ngSubmit)="ingresar()" *ngIf="!loading">
+        <mat-form-field class="full-width" appearance="fill">
             <mat-label>Usuario</mat-label>
             <input matInput placeholder="Usuario" value="" autocomplete="off" formControlName="email">
         </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-form-field class="full-width" appearance="fill">
             <mat-label>Contraseña</mat-label>
             <input type="password" matInput placeholder="Contraseña" value="" autocomplete="off"
                 formControlName="password">
