@@ -1,7 +1,9 @@
 const {
     Repair
 } = require('../models/index');
-const {Vehicle} = require('../models/index');
+const {
+    Vehicle
+} = require('../models/index');
 
 //GET /Repair/:id
 const showRepair = async (req, res) => {
@@ -48,16 +50,19 @@ const findAllRepair = async (req, res) => {
 
 //POST /Repair
 const registerRepair = async (req, res) => {
-    const {description, vehicle_id} = req.body;
-    let repair = await Repair.create({ description });
-    //console.log(repair);
+    const {
+        description,
+        vehicle_id
+    } = req.body;
+    let repair = await Repair.create({
+        description
+    });
     let vehicle = await Vehicle.findOne({
         where: {
             id: vehicle_id
         }
     });
-    //console.log(vehicle);
-    if(!vehicle){
+    if (!vehicle) {
         return res.status(404).json({
             'status': 404,
             'msg': 'Vehículo no encontrado'

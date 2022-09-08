@@ -16,18 +16,24 @@ module.exports = (sequelize, DataTypes) => {
           as: "role"
         });
 
-        //un Usuario Puede tener muchos Vehiculos
+        //One User can have many Vehicles
         User.hasMany(models.Vehicle, {
           foreignKey: 'user_id',
           as: 'vehicles'
         });
-        
+
+        //One User can have many Contacts
+        User.hasMany(models.Contact, {
+          foreignKey: 'user_id',
+          as: 'contacts'
+        });
+
         //un Usuario Puede tener muchas Flotas
         User.hasMany(models.Fleet, {
           foreignKey: 'user_id',
           as: 'fleets'
         });
-        
+
       };
     }
   }
