@@ -8,21 +8,24 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      name: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      email: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      phone: {
+        type: Sequelize.STRING
+      },
       subjet: {
         type: Sequelize.STRING
       },
       text: {
         type: Sequelize.STRING
       },
-      user_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "users",
-          key: "id"
-        },
-        onDelete: 'CASCADE'
-      },
-      createdAt: {
+    createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },

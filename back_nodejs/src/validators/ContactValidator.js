@@ -3,12 +3,19 @@ const { validateResult } = require('../helpers/validateHelper');
 
 const validateContact = [
 
-    check('subjet')
+    check('name')
     .exists()
-    .isLength({min:4})
-    .withMessage('El asunto debe contener como mínimo 4 caracteres'),
+    .withMessage('El nombre es requerido')
+    .isLength({min:3})
+    .withMessage('El Nombre debe contener como mínimo 3 caracteres'),
+    check('email')
+    .exists()
+    .withMessage('El email es requerido')
+    .isEmail()
+    .withMessage('El email no es válido'),
     check('text')
     .exists()
+    .withMessage('El texto es requerido')
     .isLength({min:5})
     .withMessage('El texto debe contener como mínimo 5 caracteres'),
 

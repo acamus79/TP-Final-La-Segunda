@@ -22,12 +22,6 @@ module.exports = (sequelize, DataTypes) => {
           as: 'vehicles'
         });
 
-        //One User can have many Contacts
-        User.hasMany(models.Contact, {
-          foreignKey: 'user_id',
-          as: 'contacts'
-        });
-
         //un Usuario Puede tener muchas Flotas
         User.hasMany(models.Fleet, {
           foreignKey: 'user_id',

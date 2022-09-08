@@ -24,27 +24,6 @@ const getByUser = async (req, res) => {
     }
 }
 
-//GET /all/:id
-const getByUserId = async (req, res) => {
-    const id = req.params.id
-    let contacts = await Contact.findAll({
-        where: {
-            user_id: id
-        }
-    });
-
-    if (contacts) {
-        res.status(200).json({
-            'status': 200,
-            'data': contacts
-        });
-    } else {
-        res.status(404).json({
-            'status': 404,
-            'msg': 'No se encontro Contacto con el id ' + userId
-        });
-    }
-}
 
 //GET /contacts
 const showAllContact = async (req, res) => {
@@ -57,7 +36,9 @@ const showAllContact = async (req, res) => {
     let contacts = await Contact.findAndCountAll({
         limit: size,
         offset: page * size,
-        include: "message", //include: "messageTo" is for show the messages that the user send
+        order: [
+            ['id', 'DESC']
+        ]
     });
     return res.status(200).json({
         'status': 200,
@@ -71,7 +52,7 @@ const showAllContact = async (req, res) => {
 const registerContact = async (req, res) => {
 
     let params = req.body;
-    params.user_id = req.user.id; //id del usuario logueado
+    
     let contact = await Contact.create(params);
     if (contact) {
         return res.status(200).json({
@@ -88,7 +69,6 @@ const registerContact = async (req, res) => {
 }
 
 module.exports = {
-    getByUserId,
     getByUser,
     registerContact,
     showAllContact

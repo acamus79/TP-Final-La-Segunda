@@ -6,13 +6,13 @@ module.exports = (sequelize, DataTypes) => {
   class Contact extends Model {
 
     static associate(models) {
-      Contact.belongsTo(models.User, {
-        foreignKey: "user_id",
-        as: "message",
-      });
+
     }
   }
   Contact.init({
+    name: DataTypes.STRING,
+    email: DataTypes.STRING,
+    phone: DataTypes.STRING,
     subjet: DataTypes.STRING,
     text: DataTypes.STRING
   }, {

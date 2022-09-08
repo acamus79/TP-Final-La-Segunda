@@ -45,7 +45,12 @@ module.exports = {
             res.json({
                 'status': 200,
                 'msg': 'Usuario creado correctamente',
+                'id': user.id,
+                'name': user.name,
+                'role': user.role,
                 token
+                
+
             });
 
         }).catch(err => {
@@ -85,6 +90,10 @@ module.exports = {
 
                     res.cookie('jwt', token, cookiesOptions)
                     res.json({
+                        'status': 200,
+                        'id': user.id,
+                        'name': user.name,
+                        'role': user.role,
                         token
                     })
                 } else {
@@ -111,5 +120,22 @@ module.exports = {
             'msg': "Sesión cerrada"
         });
     },
+
+    //Show user by id
+    show(req, res) {
+        const id = req.params.id
+        let user = User.findByPk(id , { include: "contact" });
+        if (user) {
+            res.status(200).json({
+                'status': 200,
+                'data': user
+            });
+        } else {
+            res.status(404).json({
+                'status': 404,
+                'msg': 'No se encontro Usuario con el id ' + id
+            });
+        }
+    }
 
 }
