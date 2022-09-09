@@ -9,7 +9,7 @@ import { UsersComponent } from './users/users.component';
 import { VehiclesComponent } from './vehicles/vehicles.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
-import { ContactComponent } from './contact/contact.component';
+//import { ContactComponent } from '../contact/contact.component';
 
 
 @NgModule({
@@ -20,7 +20,7 @@ import { ContactComponent } from './contact/contact.component';
     VehiclesComponent,
     NavbarComponent,
     SideBarComponent,
-    ContactComponent
+    //ContactComponent
   ],
   imports: [
     CommonModule,

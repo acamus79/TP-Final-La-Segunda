@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   private url: string = environment.api;
   subRef$?: Subscription;
 
-
   constructor(
     private fb: FormBuilder,
     private _snackBar: MatSnackBar,
@@ -50,8 +49,6 @@ export class LoginComponent implements OnInit, OnDestroy {
       password: password
     };
 
-
-
     this.subRef$ = this.http.post<IResponse>(`${this.url}/signin`, userLogin, { observe: 'response' })
       .subscribe(res => {
         respuesta = res.body
@@ -72,6 +69,16 @@ export class LoginComponent implements OnInit, OnDestroy {
       }
     )
   }
+
+  contact(){
+    this.router.navigate(['contact']);
+  }
+
+  newUser(){
+    console.log('new user');
+  }
+
+
     ngOnDestroy() {
       if (this.subRef$) {
         this.subRef$.unsubscribe()

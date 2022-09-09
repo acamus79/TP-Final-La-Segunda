@@ -16,8 +16,13 @@
                 formControlName="password">
         </mat-form-field>
         <button type="submit" mat-raised-button class="button" [disabled]="form.invalid">Ingresar</button>
+        <button class="footBtn" mat-button (click)="contact()">Contacto</button>
+        <button class="footBtn" mat-button (click)="newUser()">Registrarse</button>
 
-        <h4 class="register">Nuevo usuario</h4>
+        <!-- <h4 class="register">Nuevo usuario</h4>
+          <button mat-button routerLink="contact">Contacto</button>
+        -->
+
     </form>
 
 </div>

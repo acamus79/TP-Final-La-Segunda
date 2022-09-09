@@ -42,3 +42,10 @@
   color: rgb(25, 140, 132);
   font-weight: 800;
 }
+
+.footBtn{
+
+  justify-content: space-between;
+  padding: 5px 10px 5px 10px;
+  margin-top: 10px;
+}
