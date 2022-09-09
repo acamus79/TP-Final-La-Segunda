@@ -8,6 +8,23 @@ const {
 
 module.exports = {
 
+    //Show all users
+    async index(req, res) {
+        let users = await User.findAll();
+        if (users) {
+            res.status(200).json({
+                'status': 200,
+                'data': users
+            });
+        } else {
+            res.status(404).json({
+                'status': 404,
+                'msg': 'No se encontraron usuarios'
+            });
+        }
+    },
+
+
     //Registro
     signUp(req, res) {
 
@@ -25,10 +42,18 @@ module.exports = {
             }
             res.cookie('jwt', token, cookiesOptions)
 
-            res.json({
-                'status': 200,
-                'msg': 'Usuario creado correctamente',
-                token
+            User.findByPk(user.id).then(x => {
+                res.json({
+                    'status': 200,
+                    'msg': 'Usuario creado correctamente',
+                    'data': {
+                        'id': x.id,
+                        'name': x.name,
+                        'role': x.role,
+                        'email': x.email,
+                        token
+                    },
+                })
             });
 
         }).catch(err => {
@@ -37,6 +62,7 @@ module.exports = {
             });
         });
     },
+
 
     // Login
     signIn(req, res) {
@@ -68,7 +94,16 @@ module.exports = {
 
                     res.cookie('jwt', token, cookiesOptions)
                     res.json({
-                        token
+                        'status': 200,
+                        'msg': 'Usuario autenticado correctamente',
+                        'data': {
+                            'id': user.id,
+                            'name': user.name,
+                            'email': user.email,
+                            'phone': user.phone,
+                            'role': user.role,
+                            token
+                        }
                     })
                 } else {
                     // Unauthorized Access
@@ -94,5 +129,24 @@ module.exports = {
             'msg': "Sesión cerrada"
         });
     },
+
+    //Show user by id
+    show(req, res) {
+        const id = req.params.id
+        let user = User.findByPk(id, {
+            include: "contact"
+        });
+        if (user) {
+            res.status(200).json({
+                'status': 200,
+                'data': user
+            });
+        } else {
+            res.status(404).json({
+                'status': 404,
+                'msg': 'No se encontro Usuario con el id ' + id
+            });
+        }
+    }
 
 }

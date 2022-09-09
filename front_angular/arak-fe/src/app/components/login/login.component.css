@@ -7,14 +7,14 @@
   background-color: whitesmoke;
 }
 
-.example-form {
+.form-login {
   min-width: 150px;
   max-width: 400px;
   width: 100%;
   margin-top: 2rem;
 }
 
-.example-full-width {
+.full-width {
   width: 100%;
 }
 
@@ -41,4 +41,11 @@
   margin-top: 5px !important;
   color: rgb(25, 140, 132);
   font-weight: 800;
+}
+
+.footBtn{
+
+  justify-content: space-between;
+  padding: 5px 10px 5px 10px;
+  margin-top: 10px;
 }

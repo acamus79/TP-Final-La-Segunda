@@ -19,6 +19,7 @@ const routerAuth = require('./routes/auth.routes');
 const routerVehicle = require('./routes/vehicle.routes');
 const routerRepair = require('./routes/repair.routes');
 const routerFleet = require('./routes/fleet.routes');
+const routerContact = require('./routes/contact.routes');
 
 //Settings
 app.use(express.json());
@@ -35,6 +36,7 @@ app.use('/api', routerAuth);
 app.use('/api/vehicle', routerVehicle);
 app.use('/api/repair', routerRepair);
 app.use('/api/fleet', routerFleet);
+app.use('/api/contact', routerContact);
 
 
 app.use((req, res, next) => {
