@@ -22,10 +22,14 @@ import { DialogGenComponent } from './dialog-gen/dialog-gen.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatBadgeModule } from '@angular/material/badge';
+import { DialogAddUserComponent } from './dialog-add-user/dialog-add-user.component';
+import { DialogDeleteVehicleComponent } from './dialog-delete-vehicle/dialog-delete-vehicle.component';
 
 @NgModule({
   declarations: [
-    DialogGenComponent
+    DialogGenComponent,
+    DialogAddUserComponent,
+    DialogDeleteVehicleComponent,
   ],
   imports: [
     CommonModule,
@@ -46,7 +50,7 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatSelectModule,
     FormsModule,
     MatCardModule,
-    MatBadgeModule,
+    MatBadgeModule
   ],
   exports: [
     CommonModule,
@@ -67,7 +71,7 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatSelectModule,
     FormsModule,
     MatCardModule,
-    MatBadgeModule,
+    MatBadgeModule
   ]
 })
 export class SharedModule { }
