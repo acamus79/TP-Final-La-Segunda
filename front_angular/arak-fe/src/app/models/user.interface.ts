@@ -1,4 +1,7 @@
-export interface UserI{
+export interface IUser{
   id: number;
-  role: string;
+  name: string;
+  email: string;
+  phone: string;
+  role: number;
 }

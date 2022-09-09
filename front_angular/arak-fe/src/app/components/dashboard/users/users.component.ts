@@ -1,25 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { UserService } from 'src/app/services/user/user.service';
-
-export interface IReqUser {
-  status: number;
-  data:   ReqUser[];
-}
-
-export interface ReqUser {
-  id:           number;
-  name:         string;
-  password:     string;
-  email:        string;
-  phone:        null;
-  resetToken:   null;
-  refreshToken: null;
-  createdAt:    Date;
-  updatedAt:    Date;
-  role:         number;
-}
-
-
 
 
 @Component({
@@ -39,7 +20,7 @@ export class UsersComponent implements OnInit {
   ];
 
   displayedColumns: string[] = this.colum;
-  dataSource: any;
+  dataSource: MatTableDataSource<any> = new MatTableDataSource( [] as any[])
 
   constructor(
     private userService: UserService
@@ -49,10 +30,40 @@ export class UsersComponent implements OnInit {
     this.userService.getUser$()
         .subscribe( (res: any) => {
           console.log(res)
-          this.dataSource = res.body.data;
+          this.dataSource.data = res.body.data;
           console.log(this.dataSource)
         })
 
+    
+
   }
+  
+
+  postUser() {
+    const x = { 
+      name: "Mariano",
+      email: "mariano@mail.com",
+      password: "1234567"
+    } 
+
+    this.userService.addUser$(x).subscribe( { next: ( res:any) => {
+        this.dataSource.data = [...this.dataSource.data , res.body]
+    }} );
+    /* this.userService.getUser$()
+        .subscribe( (res: any) => {
+          console.log(res)
+          this.dataSource = res.body.data;
+          console.log(this.dataSource)
+        }) */
+  }
+
+  ngOnDestroy(): void {
+    console.log('hago algo')
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    
+  }
+
+
 
 }
