@@ -7,8 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideBarComponent implements OnInit {
   showFiller: boolean;
-  isManager: any = true
-  isAdmin: any = true
+  expression: any = false
 
   constructor() {
     this.showFiller = true

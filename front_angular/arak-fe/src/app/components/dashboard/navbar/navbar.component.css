@@ -1,9 +1,16 @@
 .navBar {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    text-align: center;
+    align-items: center;
     background-color: rgb(25,140,132);
     color: white;
     font-size: x-large;
     font-weight: bold;
     display: flex;
+    border: 1px solid rgb(25,140,132);
+    padding: 4px;
 }
 
 .logo {
@@ -11,4 +18,18 @@
     height: 50px;
     margin: 0 1rem;
     rotate: 38deg;
+}
+
+.log {
+    display: flex;
+    align-items: center;
+}
+
+.log:hover {
+    color: rgb(69, 212, 90)
+}
+
+.button {
+    position: absolute;
+    right: 10px;
 }

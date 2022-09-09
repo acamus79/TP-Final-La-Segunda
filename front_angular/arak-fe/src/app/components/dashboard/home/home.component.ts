@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { IVehicle } from 'src/app/models/iVehicle';
+import { UserService } from 'src/app/services/user/user.service';
+import { VehiclesService } from 'src/app/services/vehicles/vehicles.service';
 
 export interface PeriodicElement {
   vehicle: string;
@@ -19,13 +22,34 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['position', 'vehicle', 'alert', 'date', 'action'];
   dataSource = ELEMENT_DATA;
+  arrVehicle:any;
+  arrUsers:any;
 
-  constructor() { }
+  constructor(
+    private vehicleService: VehiclesService,
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
+    this.userService.getUser$()
+        .subscribe( (res: any) => {
+          this.arrUsers = res.body.data
+          console.log(this.arrUsers)
+        })
+
+    this.vehicleService.getVehicle$().subscribe(
+      vehicle => {
+        this.arrVehicle = vehicle
+      }
+    )
+  }
+  
+
+  ngOnDestroy(): void {
+    console.log('se destruyo')
   }
 
 }

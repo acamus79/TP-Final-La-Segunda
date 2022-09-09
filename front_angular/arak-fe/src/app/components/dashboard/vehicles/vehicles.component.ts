@@ -8,6 +8,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogGenComponent } from '../../shared/dialog-gen/dialog-gen.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { VehiclesService } from 'src/app/services/vehicles/vehicles.service';
+import { Subscription } from 'rxjs'
+import { DialogDeleteVehicleComponent } from '../../shared/dialog-delete-vehicle/dialog-delete-vehicle.component';
 
 @Component({
   selector: 'app-vehicles',
@@ -16,6 +19,7 @@ import { Router } from '@angular/router';
 })
 
 export class VehiclesComponent implements OnInit {
+  suscription?:Subscription;
   num: number = 0;
   httpHeaders: HttpHeaders = new HttpHeaders();
   url: string = environment.api;
@@ -42,6 +46,7 @@ export class VehiclesComponent implements OnInit {
     public dialog: MatDialog,
     private _snackBar: MatSnackBar,
     private router: Router,
+    private vehicleService: VehiclesService,
   ) { }
 
   getToken(): void {
@@ -52,31 +57,23 @@ export class VehiclesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getVehicles();
 
-    const token = localStorage.getItem('token');
-    this.httpHeaders = this.httpHeaders.append('Authorization', 'Barer ' + token?.replace(/['"]+/g, ''));
+    this.suscription = this.vehicleService.refresh$.subscribe(() => {
+      this.getVehicles();
+    })
 
-    this.http.get<IReqResponse>(`${this.url}/vehicle/all`,
-      {
-        headers: this.httpHeaders,
-        observe: 'response'
-
-      }).subscribe(res => {
-
-        this.vehicles = res.body?.content
-        this.dataSource = this.vehicles
-
-        this.vehicles.forEach((element: any) => {
-          console.log('cada elemento es: ', element)
-        });
-
-      }, error => {
-        console.log('error al obtener los datos', error)
-      })
-
+    
+    
   }
 
-  deleteVehicle(id: any) {
+  getVehicles () {
+    this.vehicleService.getVehicle$().subscribe( (res:any) => {
+      this.dataSource = res.body.content
+    });
+  }
+
+  /* deleteVehicle(id: any) {
     this.http.delete<IRes>(`${this.url}/vehicle/${id}`,
       {
         headers: this.httpHeaders,
@@ -98,15 +95,22 @@ export class VehiclesComponent implements OnInit {
         });
       }
       )
-  }
+  } */
 
-
-  hacerAlgo() {
-    console.log('boton')
+  deleteVehicle(pId:any) {
+    console.log('envio pId')
+    this.vehicleService.reciboDato(pId)
+    this.dialog.open(DialogDeleteVehicleComponent);
   }
 
   openDialog() {
     this.dialog.open(DialogGenComponent);
   }
 
+  goToDetail()
+    {
+      console.log(this.router)
+      this.router.navigate(["dashboard/detail"])
+      console.log(this.router)
+    }
 }
