@@ -28,23 +28,24 @@ export class ContactComponent implements OnInit {
 
   ) {
     this.form = this.fb.group({
-      subjet: ['', Validators.required],
+      name: ['', Validators.required],
+      email: ['', Validators.required],
+      phone: [''],
+      subjet: [''],
       text: ['', Validators.required],
     });
   }
 
   ngOnInit(): void {
-    const token = localStorage.getItem('token');
-    this.httpHeaders = this.httpHeaders.append('Authorization', 'Barer ' + token?.replace(/['"]+/g, ''));
   }
 
   saveContact() {
     console.log("esto llega",this.form.value);
 
     if(this.form.valid){
-      console.log("esto seria si se valida el formulario", this.httpHeaders);
-      this.http.post(`https://arak-backend.herokuapp.com/api/contact/create`, this.form.value, {
-        headers: this.httpHeaders,
+
+      this.http.post(`${this.url}/contact/create`, this.form.value, {
+
       }).subscribe(
         (res) => {
           console.log(res);
