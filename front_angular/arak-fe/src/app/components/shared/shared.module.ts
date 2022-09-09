@@ -23,11 +23,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatBadgeModule } from '@angular/material/badge';
 import { DialogAddUserComponent } from './dialog-add-user/dialog-add-user.component';
+import { DialogDeleteVehicleComponent } from './dialog-delete-vehicle/dialog-delete-vehicle.component';
 
 @NgModule({
   declarations: [
     DialogGenComponent,
     DialogAddUserComponent,
+    DialogDeleteVehicleComponent,
   ],
   imports: [
     CommonModule,

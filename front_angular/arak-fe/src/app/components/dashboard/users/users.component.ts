@@ -1,10 +1,10 @@
-import { Component, OnInit, ViewChild, ViewChildren, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren, AfterViewInit, OnDestroy } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { IReqUser, ReqUser } from 'src/app/models/iusuario';
 import { UserService } from 'src/app/services/user/user.service';
 import { DialogAddUserComponent } from '../../shared/dialog-add-user/dialog-add-user.component';
 import { MatDialog } from '@angular/material/dialog';
-import { finalize, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 
 
@@ -15,7 +15,7 @@ import { finalize, Subscription } from 'rxjs';
   template: `message: <app-dialog-add-user></app-dialog-add-user>`
 })
 
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit, OnDestroy {
   m: number = 0;
   suscription?:Subscription;
   message: string = ''
@@ -43,7 +43,7 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
 
     this.getUsers();  
-    
+
     this.suscription = this.userService.refresh$.subscribe(() => {
       this.getUsers();
     })
@@ -65,10 +65,7 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    console.log('hago algo')
-    //Called once, before the instance is destroyed.
-    //Add 'implements OnDestroy' to the class.
-
+    
   }
 
 
