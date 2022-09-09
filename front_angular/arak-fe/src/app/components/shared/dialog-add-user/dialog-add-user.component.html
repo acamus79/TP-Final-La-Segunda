@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Formulario Usuario Nuevo</h1>
+<div mat-dialog-content>
+    <form [formGroup]="form" class="login-form" (ngSubmit)="addUser()">
+        <mat-form-field class="login-full-width" appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="Andres" value="" autocomplete="off" formControlName="name">
+        </mat-form-field>
+        <mat-form-field class="login-full-width" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="andres@mail.com" value="" autocomplete="off" formControlName="email">
+        </mat-form-field>
+        <mat-form-field class="login-full-width" appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="3414555555" value="" autocomplete="off" formControlName="password">
+        </mat-form-field>
+    
+        <button type="submit" mat-raised-button class="button" color="primary">Guardar</button>
+    
+      </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>
