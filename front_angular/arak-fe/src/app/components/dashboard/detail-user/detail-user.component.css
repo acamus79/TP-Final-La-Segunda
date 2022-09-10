@@ -1,0 +1,32 @@
+.sectionHeader {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.sectionHeader h1 {
+  margin-top: 20px;
+  color: rgba(19, 123, 154);
+}
+
+.sectionVehicle button {
+  height: 40px;
+}
+
+.layout {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1rem;
+  align-items: center;
+  text-align: center;
+}
+
+.example-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

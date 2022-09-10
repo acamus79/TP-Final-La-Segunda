@@ -25,6 +25,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatCardModule,
     MatBadgeModule,
     MatTooltipModule,
+    MatGridListModule,
   ],
   exports: [
     CommonModule,
@@ -75,6 +77,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatCardModule,
     MatBadgeModule,
     MatTooltipModule,
+    MatGridListModule,
   ],
 })
 export class SharedModule {}
