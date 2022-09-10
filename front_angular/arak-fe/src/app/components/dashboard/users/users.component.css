@@ -1,9 +1,15 @@
 .sectionHeader {
+  margin-top: 20px;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 1rem;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.sectionHeader h1 {
+  margin-top: 20px;
+  color: rgba(19, 123, 154);
 }
 
 .sectionVehicle button {
@@ -14,8 +20,9 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 2rem;
+  padding: 1rem;
   align-items: center;
+  text-align: center;
 }
 
 table {
@@ -24,7 +31,7 @@ table {
 }
 
 .butIcon {
-  margin-left: 1px;
+  margin-right: 10px;
 }
 
 .butIcon:hover {
@@ -40,7 +47,7 @@ th {
   font-size: 18px !important;
 }
 
-.btnReg {
+/* .btnReg {
   position: relative;
   left: 80%;
   background-color: rgb(29, 111, 178);
@@ -50,8 +57,47 @@ th {
   border-radius: 5px;
   border: none;
   margin: 0.5rem;
-}
+} */
 
 .btnReg:hover {
-  background-color: rgb(36, 180, 50);
+  background-color: rgba(25, 140, 132, 0.3);
+}
+.example-tooltip-red {
+  background-color: rgba(19, 123, 154, 0.9);
+  font-size: 14px;
+}
+
+.mat-column-actions {
+  text-align: center;
+}
+
+.mat-column {
+  text-align: center;
+  font-weight: bold;
+}
+
+.mat-header-cell {
+  text-align: center;
+}
+
+.mat-header-row .cdk-header-row .ng-star-inserted {
+  text-align: center;
+}
+
+.mat-header-cell
+  .cdk-header-cell
+  .cdk-column-actions
+  .mat-column-actions
+  .ng-star-inserted {
+  text-align: center;
+}
+
+.mat-header-row .ng-star-inserted {
+  text-align: center;
+  background-color: rgba(19, 123, 154, 0.82) !important;
+  color: rgb(245, 245, 245);
+}
+
+.mat-column-actions .ng-star-inserted {
+  text-align: center;
 }

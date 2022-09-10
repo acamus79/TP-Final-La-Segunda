@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 /* Modulos */
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DialogAddUserComponent } from './dialog-add-user/dialog-add-user.component';
+import { DialogDeleteVehicleComponent } from './dialog-delete-vehicle/dialog-delete-vehicle.component';
 
 /* Material angular modules */
 import { MatSliderModule } from '@angular/material/slider';
@@ -22,8 +24,7 @@ import { DialogGenComponent } from './dialog-gen/dialog-gen.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatBadgeModule } from '@angular/material/badge';
-import { DialogAddUserComponent } from './dialog-add-user/dialog-add-user.component';
-import { DialogDeleteVehicleComponent } from './dialog-delete-vehicle/dialog-delete-vehicle.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { DialogDeleteVehicleComponent } from './dialog-delete-vehicle/dialog-del
     MatSelectModule,
     FormsModule,
     MatCardModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatTooltipModule,
   ],
   exports: [
     CommonModule,
@@ -71,7 +73,8 @@ import { DialogDeleteVehicleComponent } from './dialog-delete-vehicle/dialog-del
     MatSelectModule,
     FormsModule,
     MatCardModule,
-    MatBadgeModule
-  ]
+    MatBadgeModule,
+    MatTooltipModule,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

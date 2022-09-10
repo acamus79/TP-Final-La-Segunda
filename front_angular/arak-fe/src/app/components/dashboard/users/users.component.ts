@@ -5,26 +5,30 @@ import {
   ViewChildren,
   AfterViewInit,
   OnDestroy,
+  ViewEncapsulation,
 } from '@angular/core';
+
 import { MatTableDataSource } from '@angular/material/table';
 import { IReqUser, ReqUser } from 'src/app/models/iusuario';
 import { UserService } from 'src/app/services/user/user.service';
 import { DialogAddUserComponent } from '../../shared/dialog-add-user/dialog-add-user.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+import { TooltipPosition } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css'],
   template: `message: <app-dialog-add-user></app-dialog-add-user>`,
+  encapsulation: ViewEncapsulation.None,
 })
 export class UsersComponent implements OnInit, OnDestroy {
   m: number = 0;
   suscription?: Subscription;
   message: string = '';
   @ViewChild(DialogAddUserComponent) child: any;
-
   colum = ['id', 'name', 'email', 'role', 'actions'];
 
   displayedColumns: string[] = this.colum;
@@ -32,7 +36,11 @@ export class UsersComponent implements OnInit, OnDestroy {
     [] as ReqUser[]
   );
 
-  constructor(private userService: UserService, public dialog: MatDialog) {}
+  constructor(
+    private userService: UserService,
+    public dialog: MatDialog,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getUsers();
@@ -55,4 +63,12 @@ export class UsersComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {}
+
+  goToDetailUser() {
+    this.router.navigate(['/dashboard/detailUser']);
+  }
+
+  goToDetailUserEditr() {
+    this.router.navigate(['/dashboard/detailUser']);
+  }
 }

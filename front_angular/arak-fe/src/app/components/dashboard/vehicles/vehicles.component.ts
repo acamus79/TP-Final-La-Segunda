@@ -9,34 +9,23 @@ import { DialogGenComponent } from '../../shared/dialog-gen/dialog-gen.component
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { VehiclesService } from 'src/app/services/vehicles/vehicles.service';
-import { Subscription } from 'rxjs'
+import { Subscription } from 'rxjs';
 import { DialogDeleteVehicleComponent } from '../../shared/dialog-delete-vehicle/dialog-delete-vehicle.component';
 
 @Component({
   selector: 'app-vehicles',
   templateUrl: './vehicles.component.html',
-  styleUrls: ['./vehicles.component.css']
+  styleUrls: ['./vehicles.component.css'],
 })
-
 export class VehiclesComponent implements OnInit {
-  suscription?:Subscription;
+  suscription?: Subscription;
   num: number = 0;
   httpHeaders: HttpHeaders = new HttpHeaders();
   url: string = environment.api;
   vehicles: any = [];
-  colum = [
-    "typeId",
-    "brand",
-    "model",
-    "year",
-    'tag',
-    "insurance",
-    "accion"
-  ];
+  colum = ['typeId', 'brand', 'model', 'year', 'tag', 'insurance', 'accion'];
 
-  tipos = [
-    { id: 1, }
-  ]
+  tipos = [{ id: 1 }];
 
   displayedColumns: string[] = this.colum;
   dataSource: any;
@@ -46,14 +35,13 @@ export class VehiclesComponent implements OnInit {
     public dialog: MatDialog,
     private _snackBar: MatSnackBar,
     private router: Router,
-    private vehicleService: VehiclesService,
-  ) { }
+    private vehicleService: VehiclesService
+  ) {}
 
   getToken(): void {
     const tok = localStorage.getItem('token');
 
-    if (tok) JSON.parse(tok)
-
+    if (tok) JSON.parse(tok);
   }
 
   ngOnInit(): void {
@@ -61,15 +49,12 @@ export class VehiclesComponent implements OnInit {
 
     this.suscription = this.vehicleService.refresh$.subscribe(() => {
       this.getVehicles();
-    })
-
-    
-    
+    });
   }
 
-  getVehicles () {
-    this.vehicleService.getVehicle$().subscribe( (res:any) => {
-      this.dataSource = res.body.content
+  getVehicles() {
+    this.vehicleService.getVehicle$().subscribe((res: any) => {
+      this.dataSource = res.body.content;
     });
   }
 
@@ -97,9 +82,9 @@ export class VehiclesComponent implements OnInit {
       )
   } */
 
-  deleteVehicle(pId:any) {
-    console.log('envio pId')
-    this.vehicleService.reciboDato(pId)
+  deleteVehicle(pId: any) {
+    console.log('envio pId');
+    this.vehicleService.reciboDato(pId);
     this.dialog.open(DialogDeleteVehicleComponent);
   }
 
@@ -107,10 +92,9 @@ export class VehiclesComponent implements OnInit {
     this.dialog.open(DialogGenComponent);
   }
 
-  goToDetail()
-    {
-      console.log(this.router)
-      this.router.navigate(["dashboard/detail"])
-      console.log(this.router)
-    }
+  goToDetail() {
+    console.log(this.router);
+    this.router.navigate(['dashboard/detailVehicle']);
+    console.log(this.router);
+  }
 }
