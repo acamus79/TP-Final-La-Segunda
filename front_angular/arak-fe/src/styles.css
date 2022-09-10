@@ -6,7 +6,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .snackOk {
     background: #5b8f5a;
     padding-left: 10em;
+    color: aliceblue !important;
   }
+
+  .snack{
+    padding-left: 10em;
+    color: aliceblue !important;
+  }
+
 
 .snackError .mat-simple-snackbar {
     display: flex;
@@ -14,5 +21,4 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     align-items: center !important;
     text-align: center !;
     background: #9e6234;
-
   }

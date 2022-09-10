@@ -4,11 +4,11 @@
         <div class="buttonGroup">
             <button mat-button routerLink="/dashboard">Inicio</button>
             <mat-divider></mat-divider>
-            <button mat-button routerLink="users">Usuarios</button>
+            <button mat-button *ngIf="isadmin" routerLink="users">Usuarios</button>
             <mat-divider></mat-divider>
-            <button mat-button *ngIf="expression">Flota</button>
+            <button mat-button *ngIf="isadmin || ismannger">Flota</button>
             <mat-divider></mat-divider>
-            <button mat-button routerLink="vehicles">Vehículos</button>
+            <button mat-button *ngIf="isadmin" routerLink="vehicles">Vehículos</button>
             <mat-divider></mat-divider>
             <button mat-button routerLink="vehicles">Reparaciones</button>
             <mat-divider></mat-divider>

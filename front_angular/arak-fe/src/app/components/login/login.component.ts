@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
 import { ILogin } from 'src/app/models/ilogin';
 import { IResponse } from 'src/app/models/iresponse';
 import { environment } from 'src/environments/environment';
+import { AuthService } from '../../services/auth/auth.service';
 
 
 @Component({
@@ -26,8 +27,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private _snackBar: MatSnackBar,
     private router: Router,
-    private http: HttpClient
-
+    private http: HttpClient,
+    private authService: AuthService
   ) {
     this.form = this.fb.group({
       email: ['', Validators.required],
@@ -49,9 +50,46 @@ export class LoginComponent implements OnInit, OnDestroy {
       password: password
     };
 
-    this.subRef$ = this.http.post<IResponse>(`${this.url}/signin`, userLogin, { observe: 'response' })
+    this.authService.login$(userLogin).subscribe((res: any) => {
+      respuesta = res.body;
+      console.log(respuesta);
+      localStorage.setItem('token', respuesta.data.token);
+      localStorage.setItem('user', respuesta.data.email);
+      localStorage.setItem('role', respuesta.data.role);
+      if (respuesta.status === 200) {
+
+        this.loading = true;
+        setTimeout(() => {
+          this.loading = false;
+          //ruta de dashboard
+          this.router.navigate(['dashboard']);
+        }, 2000);
+
+        this._snackBar.open('Bienvenido', 'Ok', {
+          duration: 4000,
+          panelClass: ['snackOk', 'snack'],
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+
+        });
+
+      } else {
+        this._snackBar.open('Usuario o contraseña incorrectos', 'Ok', {
+          duration: 2000,
+          panelClass: ['snackError']
+        });
+      }
+    });
+    }
+
+
+
+
+
+/*     this.subRef$ = this.http.post<IResponse>(`${this.url}/signin`, userLogin, { observe: 'response' })
       .subscribe(res => {
         respuesta = res.body
+        console.log(respuesta);
         localStorage.setItem('token', (respuesta.data.token));
         this.loading = true;
         setTimeout(() => {
@@ -66,9 +104,8 @@ export class LoginComponent implements OnInit, OnDestroy {
           verticalPosition: 'bottom',
           panelClass: ['snackError']
         })
-      }
-    )
-  }
+      } */
+
 
   contact(){
     this.router.navigate(['contact']);
