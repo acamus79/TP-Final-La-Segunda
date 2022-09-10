@@ -11,6 +11,7 @@ const authManager = require('../middlewares/authManager');
 const {
     showVehicle,
     findAllVehicle,
+    findAllVehicleByUser,
     registerVehicle,
     updateVehicle,
     destroyVehicle,
@@ -60,6 +61,8 @@ router.get('/all', authManager, findAllVehicle);
  *          description: Acceso no Autorizado.
  */
 router.get('/:id', authUser, showVehicle);
+
+router.get('/all/user', authUser, findAllVehicleByUser);
 
 router.put('/mng/:id', authManager, updateVehicleByManager);
 

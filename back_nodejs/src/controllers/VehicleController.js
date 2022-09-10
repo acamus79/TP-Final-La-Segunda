@@ -44,6 +44,34 @@ const findAllVehicle = async (req, res) => {
     });
 };
 
+//GET /vehicles/user
+const findAllVehicleByUser = async (req, res) => {
+    let pageAsNumber = Number.parseInt(req.query.page);
+    let page = 0,
+        size = 12;
+    if (!Number.isNaN(pageAsNumber)) {
+        page = pageAsNumber;
+    }
+
+    let vehicles = await Vehicle.findAndCountAll({
+        where: {
+            user_id: req.user.id
+        },
+        limit: size,
+        offset: page * size,
+        include: "repairs"
+    });
+
+    return res.status(200).json({
+        'status': 200,
+        content: vehicles.rows,
+        totalPages: Math.ceil(vehicles.count / size),
+        page,
+    });
+};
+
+
+
 //POST /vehicle
 const registerVehicle = async (req, res) => {
     let params = req.body;
@@ -151,6 +179,7 @@ const destroyVehicle = async (req, res) => {
 module.exports = {
     showVehicle,
     findAllVehicle,
+    findAllVehicleByUser,
     registerVehicle,
     updateVehicle,
     destroyVehicle,
