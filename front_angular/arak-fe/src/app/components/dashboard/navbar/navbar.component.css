@@ -19,17 +19,28 @@
     margin: 0 1rem;
     rotate: 38deg;
 }
-
 .log {
+  display: flex;
+  align-items: center;
+}
+
+.logOut {
     display: flex;
     align-items: center;
 }
 
-.log:hover {
+.logOut:hover {
     color: rgb(69, 212, 90)
 }
 
 .button {
     position: absolute;
     right: 10px;
+}
+
+.userName {
+  position: absolute;
+  right: 50px;
+  font-size: medium;
+  font-weight: lighter !important;
 }
