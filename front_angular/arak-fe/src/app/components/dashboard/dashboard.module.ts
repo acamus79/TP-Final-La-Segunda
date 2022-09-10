@@ -10,7 +10,6 @@ import { VehiclesComponent } from './vehicles/vehicles.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { DetailVehicleComponent } from './detail-vehicle/detail-vehicle.component';
-import { DetailUserComponent } from './detail-user/detail-user.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,6 @@ import { DetailUserComponent } from './detail-user/detail-user.component';
     VehiclesComponent,
     NavbarComponent,
     SideBarComponent,
-    DetailUserComponent,
   ],
   imports: [CommonModule, DashboardRoutingModule, SharedModule],
 })
