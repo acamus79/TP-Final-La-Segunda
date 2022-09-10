@@ -10,9 +10,13 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field class="login-full-width" appearance="fill">
+    <mat-form-field appearance="fill" class="login-full-width">
       <mat-label>Marca</mat-label>
-      <input matInput placeholder="Ford" value="" autocomplete="off" formControlName="brand">
+      <mat-select [(ngModel)]="selectedBrand" name="Tipo" formControlName="brand">
+        <mat-option *ngFor="let b of brands" [value]="b.nome">
+          {{b.nome}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field class="login-full-width" appearance="fill">
       <mat-label>Modelo</mat-label>

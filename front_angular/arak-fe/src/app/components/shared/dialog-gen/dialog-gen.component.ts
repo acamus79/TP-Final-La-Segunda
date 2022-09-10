@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { SharedModule,  } from '../shared.module';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { SharedModule } from '../shared.module';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -9,17 +14,16 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-dialog-gen',
   templateUrl: './dialog-gen.component.html',
-  styleUrls: ['./dialog-gen.component.css']
+  styleUrls: ['./dialog-gen.component.css'],
 })
-
 export class DialogGenComponent implements OnInit {
   form: FormGroup;
   selectedValue?: string;
+  selectedBrand?: string;
   selectedCar?: string;
   url: string = environment.api;
   httpHeaders: HttpHeaders = new HttpHeaders();
-  close:boolean = false
-
+  close: boolean = false;
 
   type: any[] = [
     { value: 1, viewValue: 'Moto' },
@@ -29,12 +33,13 @@ export class DialogGenComponent implements OnInit {
     { value: 5, viewValue: 'Taxi/Remis' },
   ];
 
+  brands: any[] = [];
+
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
     private _snackBar: MatSnackBar,
-    private router: Router,
-
+    private router: Router
   ) {
     this.form = this.fb.group({
       type_id: ['', Validators.required],
@@ -47,31 +52,47 @@ export class DialogGenComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     const token = localStorage.getItem('token');
-    this.httpHeaders = this.httpHeaders.append('Authorization', 'Barer ' + token?.replace(/['"]+/g, ''));
+    this.httpHeaders = this.httpHeaders.append(
+      'Authorization',
+      'Barer ' + token?.replace(/['"]+/g, '')
+    );
 
+    this.getBrandByApi();
   }
 
   saveVehicle() {
     console.log(this.form.value);
 
-    this.http.post(`${this.url}/vehicle`, this.form.value,
-      {
+    this.http
+      .post(`${this.url}/vehicle`, this.form.value, {
         headers: this.httpHeaders,
-      }).subscribe(res => {
-        console.log(res);
-        this._snackBar.open('Vehiculo creado correctamente', 'Aceptar', {
-          duration: 2000,
-          horizontalPosition: 'center',
-          verticalPosition: 'bottom',
-          panelClass: ['snackOk']
-        }).afterDismissed().subscribe(() => {
-          this.close = true
-          this.router.navigate(['/dashboard/vehicles']);
-
-        });
       })
+      .subscribe((res) => {
+        console.log(res);
+        this._snackBar
+          .open('Vehiculo creado correctamente', 'Aceptar', {
+            duration: 2000,
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom',
+            panelClass: ['snackOk'],
+          })
+          .afterDismissed()
+          .subscribe(() => {
+            this.close = true;
+            this.router.navigate(['/dashboard/vehicles']);
+          });
+      });
   }
-
+  //API EXTERNA
+  getBrandByApi() {
+    this.http.get(`${environment.ext}`).subscribe({
+      next: (res: any) => {
+        this.brands = res;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
 }
