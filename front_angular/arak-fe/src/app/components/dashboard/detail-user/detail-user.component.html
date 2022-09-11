@@ -1,6 +1,10 @@
 <div class="container">
-  <mat-toolbar>
-    <span>Detalle Usuario</span>
+  <mat-toolbar class="toolName">
+    <span *ngIf="flagEdit">Detalle Usuario</span>
+    <span *ngIf="!flagEdit">Editar Usuario</span>
+    <!-- <button mat-stroked-button color="primary" (click)="enableEditUser()">
+      Editar
+    </button> -->
   </mat-toolbar>
   <mat-card>
     <div class="wrapper">
@@ -11,50 +15,59 @@
           [formGroup]="form"
           *ngFor="let user of users"
         >
-          <mat-form-field class="formL" disabled>
+          <mat-form-field class="formL">
             <div class="fill">
               <mat-label>Nombre:</mat-label>
               <input
                 matInput
                 placeholder="{{ user.name }}"
                 value="{{ user.name }}"
-                disabled="true"
+                disabled="{{ flagEdit }}"
               />
             </div>
           </mat-form-field>
-          <mat-form-field class="formL" disabled>
+          <mat-form-field class="formL">
             <div class="fill">
               <mat-label>Email:</mat-label>
               <input
                 matInput
                 placeholder="{{ user.mail }}"
                 value="{{ user.mail }}"
-                disabled="true"
+                disabled="{{ flagEdit }}"
               />
             </div>
           </mat-form-field>
-          <mat-form-field class="formL" disabled>
+          <mat-form-field class="formL">
             <div class="fill">
               <mat-label>Telefono:</mat-label>
               <input
                 matInput
                 placeholder="{{ user.phone }}"
                 value="{{ user.phone }}"
-                disabled="true"
+                disabled="{{ flagEdit }}"
               />
             </div>
           </mat-form-field>
-          <mat-form-field class="formL" disabled>
+          <mat-form-field class="formL">
             <div class="fill">
               <mat-label>Roles</mat-label>
               <input
                 matInput
                 placeholder="{{ user.role }}"
-                value="{{ user.name }}"
-                disabled="true"
+                value="{{ user.role }}"
+                disabled="{{ flagEdit }}"
               />
             </div>
           </mat-form-field>
+          <button
+            *ngIf="!flagEdit"
+            class="btnEdit"
+            mat-stroked-button
+            color="primary"
+            (click)="editUser()"
+          >
+            Confirmar editar
+          </button>
           <!-- <mat-form-field class="formL" disabled>
             <div class="fill">
               <mat-label>Nombre:</mat-label>

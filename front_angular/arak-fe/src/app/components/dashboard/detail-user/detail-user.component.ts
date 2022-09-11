@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from 'src/app/services/user/user.service';
+import { Router } from '@angular/router';
 
 export interface Tile {
   color: string;
@@ -20,7 +22,9 @@ export class DetailUserComponent implements OnInit {
     { text: 'Two', cols: 2, rows: 2, color: 'lightgreen' },
     { text: 'Three', cols: 2, rows: 2, color: 'lightpink' },
   ];
-
+  flagEdit?: boolean;
+  disable?: boolean;
+  btnEdit?: Boolean = false;
   users: any = [
     {
       id: 1,
@@ -33,9 +37,24 @@ export class DetailUserComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private router: Router
+  ) {
     this.form = this.fb.group({});
+    this.flagEdit = this.userService.getUserEditFlag();
+    this.disable = this.flagEdit;
   }
 
   ngOnInit(): void {}
+
+  enableEditUser() {
+    this.userService.setUserEditFlag$(true);
+    console.log('edit');
+  }
+
+  editUser() {
+    console.log('endpont');
+  }
 }

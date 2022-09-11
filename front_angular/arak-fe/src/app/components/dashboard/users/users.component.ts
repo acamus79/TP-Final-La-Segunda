@@ -65,10 +65,12 @@ export class UsersComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {}
 
   goToDetailUser() {
+    this.userService.setUserEditFlag$(true);
     this.router.navigate(['/dashboard/detailUser']);
   }
 
   goToDetailUserEditr() {
+    this.userService.setUserEditFlag$(false);
     this.router.navigate(['/dashboard/detailUser']);
   }
 }
