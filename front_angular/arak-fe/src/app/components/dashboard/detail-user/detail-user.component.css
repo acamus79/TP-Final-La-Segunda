@@ -1,32 +1,40 @@
-.sectionHeader {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-  align-items: center;
-  margin-right: 20px;
-}
-
-.sectionHeader h1 {
-  margin-top: 20px;
-  color: rgba(19, 123, 154);
-}
-
-.sectionVehicle button {
-  height: 40px;
-}
-
-.layout {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+.container {
   padding: 1rem;
-  align-items: center;
-  text-align: center;
 }
 
-.example-card {
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+.one {
+  grid-column: 1 / 2;
+}
+.two {
+  grid-column: 2 / 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.host {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.formL {
+  width: 100%;
+}
+
+.fill {
+  height: 30px;
+  padding: 1rem;
+  background-color: rgba(25, 140, 132, 0.2) !important;
+}
+
+.fill input {
+  font-size: 20px;
 }

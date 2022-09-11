@@ -1,28 +1,80 @@
-<!--<section class="sectionHeader">
-  <h1>- Detalle de Usuario -</h1>
-  <button mat-stroked-button color="primary" class="btnReg">Atras</button>
-</section>
-<section class="layout">
-  <mat-grid-list cols="4" rowHeight="100px">
-    <mat-grid-tile
-      *ngFor="let tile of tiles"
-      [colspan]="tile.cols"
-      [rowspan]="tile.rows"
-      [style.background]="tile.color"
-    >
-      {{ tile.text }}
-    </mat-grid-tile>
-  </mat-grid-list>
-   <mat-card class="example-card">
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-    <mat-card-content>
-      <p>This card indeterminates progress bar.</p>
-      <p></p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions>
-  </mat-card> 
-</section>-->
+<div class="container">
+  <mat-toolbar>
+    <span>Detalle Usuario</span>
+  </mat-toolbar>
+  <mat-card>
+    <div class="wrapper">
+      <div class="one">
+        <form
+          action=""
+          class="host"
+          [formGroup]="form"
+          *ngFor="let user of users"
+        >
+          <mat-form-field class="formL" disabled>
+            <div class="fill">
+              <mat-label>Nombre:</mat-label>
+              <input
+                matInput
+                placeholder="{{ user.name }}"
+                value="{{ user.name }}"
+                disabled="true"
+              />
+            </div>
+          </mat-form-field>
+          <mat-form-field class="formL" disabled>
+            <div class="fill">
+              <mat-label>Email:</mat-label>
+              <input
+                matInput
+                placeholder="{{ user.mail }}"
+                value="{{ user.mail }}"
+                disabled="true"
+              />
+            </div>
+          </mat-form-field>
+          <mat-form-field class="formL" disabled>
+            <div class="fill">
+              <mat-label>Telefono:</mat-label>
+              <input
+                matInput
+                placeholder="{{ user.phone }}"
+                value="{{ user.phone }}"
+                disabled="true"
+              />
+            </div>
+          </mat-form-field>
+          <mat-form-field class="formL" disabled>
+            <div class="fill">
+              <mat-label>Roles</mat-label>
+              <input
+                matInput
+                placeholder="{{ user.role }}"
+                value="{{ user.name }}"
+                disabled="true"
+              />
+            </div>
+          </mat-form-field>
+          <!-- <mat-form-field class="formL" disabled>
+            <div class="fill">
+              <mat-label>Nombre:</mat-label>
+              <input
+                matInput
+                placeholder="{{ user.name }}"
+                value="{{ user.name }}"
+                disabled="true"
+              />
+            </div>
+          </mat-form-field> -->
+        </form>
+      </div>
+      <div class="two">
+        <img
+          src="../../../../assets/user-detail.png"
+          alt=""
+          style="max-width: 270px"
+        />
+      </div>
+    </div>
+  </mat-card>
+</div>
