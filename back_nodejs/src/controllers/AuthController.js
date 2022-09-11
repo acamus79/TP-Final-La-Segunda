@@ -40,7 +40,8 @@ module.exports = {
                 expire: new Date(Date.now() + config.expires * 24 * 60 * 60 * 1000),
                 httpOnly: true
             }
-            res.cookie('jwt', token, cookiesOptions)
+
+            res.cookie('jwt', token, cookiesOptions);
 
             User.findByPk(user.id).then(x => {
                 res.json({
@@ -49,20 +50,19 @@ module.exports = {
                     'data': {
                         'id': x.id,
                         'name': x.name,
+                        'phone': x.email,
                         'role': x.role,
                         'email': x.email,
                         token
                     },
                 })
             });
-
         }).catch(err => {
             res.status(400).json({
                 msg: err.message
             });
         });
     },
-
 
     // Login
     signIn(req, res) {
@@ -91,7 +91,6 @@ module.exports = {
                         expire: new Date(Date.now() + config.expires * 24 * 60 * 60 * 1000),
                         httpOnly: true
                     }
-
                     res.cookie('jwt', token, cookiesOptions)
                     res.json({
                         'status': 200,
