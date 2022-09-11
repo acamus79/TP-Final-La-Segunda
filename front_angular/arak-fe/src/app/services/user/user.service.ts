@@ -1,4 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Token } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Subject, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -12,13 +13,19 @@ export class UserService {
   url: string = environment.api;
   httpHeaders: HttpHeaders = new HttpHeaders();
   userEditFlag?: boolean = true;
+  userEnable: any;
 
   constructor(private http: HttpClient) {
     const token = localStorage.getItem('token');
+    this.userEnable = token;
     this.httpHeaders = this.httpHeaders.append(
       'Authorization',
       'Barer ' + token?.replace(/['"]+/g, '')
     );
+  }
+
+  getUserEnable() {
+    return this.userEnable;
   }
 
   get refresh$() {
