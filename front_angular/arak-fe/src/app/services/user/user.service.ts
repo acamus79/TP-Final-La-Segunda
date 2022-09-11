@@ -13,11 +13,12 @@ export class UserService {
   url: string = environment.api;
   httpHeaders: HttpHeaders = new HttpHeaders();
   userEditFlag?: boolean = true;
-  userEnable: any;
+  usertoken: any;
 
   constructor(private http: HttpClient) {
     const token = localStorage.getItem('token');
-    this.userEnable = token;
+    this.usertoken = token;
+    console.log('toquen es', token);
     this.httpHeaders = this.httpHeaders.append(
       'Authorization',
       'Barer ' + token?.replace(/['"]+/g, '')
@@ -25,7 +26,7 @@ export class UserService {
   }
 
   getUserEnable() {
-    return this.userEnable;
+    return this.usertoken;
   }
 
   get refresh$() {

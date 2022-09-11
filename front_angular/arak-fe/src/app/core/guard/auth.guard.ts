@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
-  Route,
   Router,
   RouterStateSnapshot,
   UrlTree,
@@ -31,10 +30,13 @@ export class AuthGuard implements CanActivate {
   checkUserLogin(route: ActivatedRouteSnapshot): boolean {
     const tokenEnable = this.userService.getUserEnable();
     console.log('me llega el token', tokenEnable);
-    if (tokenEnable) {
+    if (localStorage.getItem('token')) {
+      console.log('estoy en el if', tokenEnable);
       return true;
     } else {
+      console.log('else algo anda mal', tokenEnable);
       this.route.navigate(['/']);
+      console.log('else algo anda muy mal', tokenEnable);
       return false;
     }
   }

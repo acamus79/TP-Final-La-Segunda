@@ -1,3 +1,13 @@
+.container {
+  padding: 1rem;
+}
+
+.toolName {
+  height: 80px;
+  padding: 1rem;
+  background-color: rgba(25, 140, 132, 0.2) !important;
+}
+
 .sectionHeader {
   display: flex;
   flex-direction: column;
@@ -7,9 +17,7 @@
 }
 
 .sectionVehicle button {
-
   height: 40px;
-
 }
 
 .layout {
@@ -23,7 +31,6 @@
 table {
   width: 90%;
   min-width: 680px;
-
 }
 
 .butIcon {
@@ -44,17 +51,9 @@ th {
 }
 
 .btnReg {
-  position: relative;
-  left: 80%;
-  background-color: rgb(29, 111, 178);
-  color: white;
-  font-size: 14px;
-  font-weight: bold;
-  border-radius: 5px;
-  border: none;
-  margin: 0.5rem;
+  margin-left: 20px;
 }
 
 .btnReg:hover {
-  background-color: rgb(36, 180, 50);
+  background-color: rgba(25, 140, 132, 0.3);
 }

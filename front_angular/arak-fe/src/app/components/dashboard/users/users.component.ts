@@ -15,13 +15,11 @@ import { DialogAddUserComponent } from '../../shared/dialog-add-user/dialog-add-
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
-import { TooltipPosition } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css'],
-  template: `message: <app-dialog-add-user></app-dialog-add-user>`,
   encapsulation: ViewEncapsulation.None,
 })
 export class UsersComponent implements OnInit, OnDestroy {

@@ -1,3 +1,7 @@
+.container {
+  padding: 1rem;
+}
+
 .sectionHeader {
   margin-top: 20px;
   display: flex;
@@ -47,17 +51,9 @@ th {
   font-size: 18px !important;
 }
 
-/* .btnReg {
-  position: relative;
-  left: 80%;
-  background-color: rgb(29, 111, 178);
-  color: white;
-  font-size: 14px;
-  font-weight: bold;
-  border-radius: 5px;
-  border: none;
-  margin: 0.5rem;
-} */
+.btnReg {
+  margin-left: 20px;
+}
 
 .btnReg:hover {
   background-color: rgba(25, 140, 132, 0.3);
@@ -92,10 +88,17 @@ th {
   text-align: center;
 }
 
+.toolName {
+  height: 80px;
+  padding: 1rem;
+  background-color: rgba(25, 140, 132, 0.2) !important;
+}
+
 .mat-header-row .ng-star-inserted {
   text-align: center;
-  background-color: rgba(19, 123, 154, 0.82) !important;
-  color: rgb(245, 245, 245);
+  height: 80px;
+  background-color: rgba(25, 140, 132, 0.2) !important;
+  color: rgb(0, 0, 0);
 }
 
 .mat-column-actions .ng-star-inserted {

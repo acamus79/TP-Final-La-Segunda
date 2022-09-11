@@ -15,16 +15,25 @@ const routes: Routes = [
     component: DashboardComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: '', component: HomeComponent },
-      { path: 'users', component: UsersComponent },
-      { path: 'vehicles', component: VehiclesComponent },
-      { path: 'users', component: UsersComponent },
+      { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+      {
+        path: 'vehicles',
+        component: VehiclesComponent,
+        canActivate: [AuthGuard],
+      },
+      { path: 'users', component: UsersComponent, canActivate: [AuthGuard] },
       {
         path: 'detailVehicle',
         component: DetailVehicleComponent,
         pathMatch: 'full',
+        canActivate: [AuthGuard],
       },
-      { path: 'detailUser', component: DetailUserComponent, pathMatch: 'full' },
+      {
+        path: 'detailUser',
+        component: DetailUserComponent,
+        pathMatch: 'full',
+        canActivate: [AuthGuard],
+      },
     ],
   },
 ];

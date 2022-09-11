@@ -7,16 +7,15 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ILogin } from 'src/app/models/ilogin';
 import { IResponse } from 'src/app/models/iresponse';
+import { UserService } from 'src/app/services/user/user.service';
 import { environment } from 'src/environments/environment';
 import { AuthService } from '../../services/auth/auth.service';
-
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
-
 export class LoginComponent implements OnInit, OnDestroy {
   form: FormGroup;
   loading: boolean;
@@ -28,17 +27,17 @@ export class LoginComponent implements OnInit, OnDestroy {
     private _snackBar: MatSnackBar,
     private router: Router,
     private http: HttpClient,
-    private authService: AuthService
+    private authService: AuthService,
+    private userService: UserService
   ) {
     this.form = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
     });
-    this.loading = false
+    this.loading = false;
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   ingresar() {
     let respuesta: any;
@@ -47,7 +46,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     const userLogin: ILogin = {
       email: email,
-      password: password
+      password: password,
     };
 
     this.authService.login$(userLogin).subscribe((res: any) => {
@@ -57,7 +56,6 @@ export class LoginComponent implements OnInit, OnDestroy {
       localStorage.setItem('user', respuesta.data.email);
       localStorage.setItem('role', respuesta.data.role);
       if (respuesta.status === 200) {
-
         this.loading = true;
         setTimeout(() => {
           this.loading = false;
@@ -70,23 +68,17 @@ export class LoginComponent implements OnInit, OnDestroy {
           panelClass: ['snackOk', 'snack'],
           horizontalPosition: 'center',
           verticalPosition: 'top',
-
         });
-
       } else {
         this._snackBar.open('Usuario o contraseña incorrectos', 'Ok', {
           duration: 2000,
-          panelClass: ['snackError']
+          panelClass: ['snackError'],
         });
       }
     });
-    }
+  }
 
-
-
-
-
-/*     this.subRef$ = this.http.post<IResponse>(`${this.url}/signin`, userLogin, { observe: 'response' })
+  /*     this.subRef$ = this.http.post<IResponse>(`${this.url}/signin`, userLogin, { observe: 'response' })
       .subscribe(res => {
         respuesta = res.body
         console.log(respuesta);
@@ -106,21 +98,17 @@ export class LoginComponent implements OnInit, OnDestroy {
         })
       } */
 
-
-  contact(){
+  contact() {
     this.router.navigate(['contact']);
   }
 
-  newUser(){
+  newUser() {
     console.log('new user');
   }
 
-
-    ngOnDestroy() {
-      if (this.subRef$) {
-        this.subRef$.unsubscribe()
-      }
-
+  ngOnDestroy() {
+    if (this.subRef$) {
+      this.subRef$.unsubscribe();
     }
-
+  }
 }
