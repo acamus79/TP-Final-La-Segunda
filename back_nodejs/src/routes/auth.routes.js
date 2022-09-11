@@ -33,7 +33,7 @@ const {
   *      description: Sign in // Iniciar sesión
   *      summary: Authenticate user // Realiza la autenticación del usuario
   *      tags:
-  *        - Auth
+  *        - users
   *      requestBody:
   *        required: true
   *        content:
@@ -77,7 +77,7 @@ router.post('/signin', validateLogin, signIn);
   *      description: Inscribirse en el sistema // Sign up
   *      summary: Registra el usuario en el sistema // Register user
   *      tags:
-  *        - Auth
+  *        - users
   *      requestBody:
   *        required: true
   *        content:
@@ -116,8 +116,25 @@ router.post('/signin', validateLogin, signIn);
   */
 router.post('/signup', validateRegister, EmailIsUnique, signUp);
 
+/**
+ * @openapi
+ * path:
+ * /api/index:
+ *  get:
+ *    security:
+ *      - bearerAuth: []
+ *    description: Show all users for administrators only // Muestra todos los usuarios solo para administradores
+ *    summary: Trae todos los usuarios // Get all users
+ *    tags:
+ *      - users
+ *    responses:
+ *        200:
+ *         description: Regresa un objeto con los vechiculos y sus reparaciones.
+ *        401:
+ *          description: Acceso no Autorizado.
+ */
 router.get('/index', authAdmin, index);
 
-//router.get('/logout', signOut); */
+//router.get('/signout', signOut); 
 
 module.exports = router;
