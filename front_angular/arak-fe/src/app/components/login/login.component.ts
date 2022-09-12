@@ -1,13 +1,9 @@
-import { JsonPipe } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ILogin } from 'src/app/models/ilogin';
-import { IResponse } from 'src/app/models/iresponse';
-import { UserService } from 'src/app/services/user/user.service';
 import { environment } from 'src/environments/environment';
 import { AuthService } from '../../services/auth/auth.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -22,16 +18,14 @@ import { DialogAddUserComponent } from '../shared/dialog-add-user/dialog-add-use
 export class LoginComponent implements OnInit, OnDestroy {
   form: FormGroup;
   loading: boolean;
-  private url: string = environment.api;
   subRef$?: Subscription;
 
   constructor(
     private fb: FormBuilder,
     private _snackBar: MatSnackBar,
     private router: Router,
-    private http: HttpClient,
     private authService: AuthService,
-    private userService: UserService,
+
     public dialog: MatDialog,
   ) {
     this.form = this.fb.group({
@@ -55,7 +49,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     this.authService.login$(userLogin).subscribe((res: any) => {
       respuesta = res.body;
-      console.log(respuesta);
       localStorage.setItem('token', respuesta.data.token);
       localStorage.setItem('user', respuesta.data.email);
       localStorage.setItem('role', respuesta.data.role);
@@ -84,34 +77,28 @@ export class LoginComponent implements OnInit, OnDestroy {
     });
   }
 
-  /*     this.subRef$ = this.http.post<IResponse>(`${this.url}/signin`, userLogin, { observe: 'response' })
-      .subscribe(res => {
-        respuesta = res.body
-        console.log(respuesta);
-        localStorage.setItem('token', (respuesta.data.token));
-        this.loading = true;
-        setTimeout(() => {
-          this.loading = false;
-          //ruta de dashboard
-          this.router.navigate(['dashboard']);
-        }, 2000);
-      }, error => {
-        this._snackBar.open('Error en usuario o contraseña', '', {
-          duration: 2000,
-          horizontalPosition: 'center',
-          verticalPosition: 'bottom',
-          panelClass: ['snackError']
-        })
-      } */
-
   contact() {
     this.router.navigate(['contact']);
   }
 
   newUser() {
-    console.log('new user');
-    this.dialog.open(DialogAddUserComponent);
+    const dialogRef = this.dialog.open(DialogAddUserComponent, {
+            width: '500px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result != undefined) {
+        console.log(result);
+        this.dialog.closeAll();
+      }
+    });
+
+
   }
+
+
+
 
   ngOnDestroy() {
     if (this.subRef$) {
