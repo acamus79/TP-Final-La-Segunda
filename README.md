@@ -51,10 +51,14 @@ para conductores, el modulo de reparaciones puede ampliarse para incluir costos 
 * Con el uso la Interfaz de Usuario Angular Material 14
 
 
- # :blue_car: Documentación
+# :blue_car: Documentación
  
  Se documentó la API mediante el standar Swagger 3.0 con OpenAPI, también aprovechando el uso de Postman se publico una documentación utilizando esta metodoligía
  
  * [Swagger 3.0](https://arak-backend.herokuapp.com/api-docs/)
  * [PostmanDoc]()
+
+# :taxi: Agradecimientos
+
+Este proyecto no podría haber sido desarrollado sin el apoyo incondicional de nuestras familias que nos ayudaron dedicarle tanto empeño, tiempo y amor :heart:, los Profesores de la Academia La Segunda que nos brindaron el conocimiento y la predisposición, ¡GRACIAS!:raised_hands: :clap:
 
