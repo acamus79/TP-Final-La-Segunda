@@ -15,13 +15,11 @@ import { DialogAddUserComponent } from '../../shared/dialog-add-user/dialog-add-
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
-import { TooltipPosition } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css'],
-  template: `message: <app-dialog-add-user></app-dialog-add-user>`,
   encapsulation: ViewEncapsulation.None,
 })
 export class UsersComponent implements OnInit, OnDestroy {
@@ -40,11 +38,12 @@ export class UsersComponent implements OnInit, OnDestroy {
     private userService: UserService,
     public dialog: MatDialog,
     private router: Router
-  ) {}
+  ) {
+    this.getUsers();
+  }
 
   ngOnInit(): void {
     this.getUsers();
-
     this.suscription = this.userService.refresh$.subscribe(() => {
       this.getUsers();
     });
@@ -64,11 +63,15 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {}
 
-  goToDetailUser() {
+  goToDetailUser(pId: any) {
+    this.userService.setUserEditFlag$(true);
+    this.userService.setUserById(pId);
     this.router.navigate(['/dashboard/detailUser']);
   }
 
-  goToDetailUserEditr() {
+  goToDetailUserEditr(pId: any) {
+    this.userService.setUserById(pId);
+    this.userService.setUserEditFlag$(false);
     this.router.navigate(['/dashboard/detailUser']);
   }
 }
