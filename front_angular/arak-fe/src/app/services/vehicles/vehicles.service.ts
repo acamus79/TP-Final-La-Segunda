@@ -31,9 +31,7 @@ export class VehiclesService {
   }
 
   reciboDato(dato: any) {
-    console.log(dato);
     this.id = dato;
-    console.log('este es el this id', this.id);
   }
 
   deleteVehicleByUser() {
@@ -51,7 +49,6 @@ export class VehiclesService {
   }
 
   deleteVehicle() {
-    console.log('entra al delete service');
     const rute = `${this.url}/vehicle/${this.id}`;
     return this.http
       .delete<any>(rute, {

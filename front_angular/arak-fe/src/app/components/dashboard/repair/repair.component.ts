@@ -27,13 +27,11 @@ export class RepairComponent implements OnInit {
 
   ngOnInit(): void {
     this.vehicleService.getVehicleByUser().subscribe((res: any) => {
-      console.log(res);
       this.vehicleByUser = res.body.content;
     });
   }
 
   addRepair() {
     this.vehicleService.addRepair(this.form.value).subscribe();
-    console.log(this.form.value);
   }
 }

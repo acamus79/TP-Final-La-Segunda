@@ -43,7 +43,6 @@ export class DetailUserComponent implements OnInit {
 
   enableEditUser() {
     this.userService.setUserEditFlag$(true);
-    console.log('edit');
   }
 
   editUser() {

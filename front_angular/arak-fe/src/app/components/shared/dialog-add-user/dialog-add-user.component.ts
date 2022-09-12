@@ -1,4 +1,4 @@
-import { Component,  OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user/user.service';
 import { Router } from '@angular/router';
@@ -7,19 +7,19 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-dialog-add-user',
   templateUrl: './dialog-add-user.component.html',
-  styleUrls: ['./dialog-add-user.component.css']
+  styleUrls: ['./dialog-add-user.component.css'],
 })
 export class DialogAddUserComponent implements OnInit {
   form: FormGroup;
-  message: string = "Hola Mundo!"
-  user:any;
+  message: string = 'Hola Mundo!';
+  user: any;
   loading: boolean;
 
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
     private router: Router,
-    private _snackBar: MatSnackBar,
+    private _snackBar: MatSnackBar
   ) {
     this.form = this.fb.group({
       name: ['', Validators.required],
@@ -29,19 +29,17 @@ export class DialogAddUserComponent implements OnInit {
     this.loading = false;
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   addUser() {
     let respuesta: any;
-    this.user = this.form.value
-    this.userService.addUser$(this.user).subscribe( (res:any) => {
+    this.user = this.form.value;
+    this.userService.addUser$(this.user).subscribe((res: any) => {
       respuesta = res.body;
       localStorage.setItem('token', respuesta.data.token);
       localStorage.setItem('user', respuesta.data.email);
       localStorage.setItem('role', respuesta.data.role);
       if (respuesta.status != 200) {
-        console.log(respuesta);
         this._snackBar.open('Usuario o contraseña incorrectos', '', {
           duration: 2000,
           panelClass: ['snackError'],
@@ -63,8 +61,5 @@ export class DialogAddUserComponent implements OnInit {
         });
       }
     });
-
-    }
+  }
 }
-
-

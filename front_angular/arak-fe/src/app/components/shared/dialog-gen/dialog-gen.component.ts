@@ -118,9 +118,7 @@ export class DialogGenComponent implements OnInit {
       next: (res: any) => {
         this.brands = res;
       },
-      error: (err) => {
-        console.log(err);
-      },
+      error: (err) => {},
     });
   }
 }

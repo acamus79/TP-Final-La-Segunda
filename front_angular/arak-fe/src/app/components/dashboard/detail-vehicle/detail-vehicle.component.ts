@@ -67,7 +67,6 @@ export class DetailVehicleComponent implements OnInit {
 
   ngOnInit(): void {
     this.idVeicle = this.vehicleService.getIdVehicle();
-    console.log('id vehicle', this.idVeicle);
     this.vehicleService.getOneVehicle$(this.idVeicle).subscribe((res: any) => {
       this.vehicle = res.body.data;
     });
@@ -75,10 +74,7 @@ export class DetailVehicleComponent implements OnInit {
 
   enableEditUser() {
     this.userService.setUserEditFlag$(true);
-    console.log('edit');
   }
 
-  editUser() {
-    console.log('endpont');
-  }
+  editUser() {}
 }

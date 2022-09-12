@@ -47,19 +47,15 @@ export class VehiclesComponent implements OnInit {
   ngOnInit(): void {
     const role = localStorage.getItem('role');
     if (role == '2') {
-      console.log('rol Usuario 2');
       this.getVehicleByUser();
     } else {
-      console.log('rol admin');
       this.getVehicles();
     }
 
     this.suscription = this.vehicleService.refresh$.subscribe(() => {
       if (role == '2') {
-        console.log('entro en 2');
         this.getVehicleByUser();
       } else {
-        console.log('entro en 1 o 3');
         this.getVehicles();
       }
     });
@@ -67,7 +63,6 @@ export class VehiclesComponent implements OnInit {
 
   getVehicleByUser() {
     this.vehicleService.getVehicleByUser().subscribe((res: any) => {
-      console.log('entra');
       this.dataSource = res.body.content;
     });
   }
@@ -103,7 +98,6 @@ export class VehiclesComponent implements OnInit {
   } */
 
   deleteVehicle(pId: any) {
-    console.log('envio pId');
     this.vehicleService.reciboDato(pId);
     this.dialog.open(DialogDeleteVehicleComponent);
   }
