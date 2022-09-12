@@ -6,7 +6,8 @@
       Editar
     </button> -->
   </mat-toolbar>
-  <mat-card>
+
+  <mat-card class="oneCard">
     <div class="wrapper">
       <div class="one">
         <form action="" class="host" [formGroup]="form">
@@ -103,6 +104,29 @@
               />
             </div>
           </mat-form-field>
+          <button
+            *ngIf="!flagEdit"
+            class="btnEdit"
+            mat-stroked-button
+            color="primary"
+          >
+            Confirmar editar
+          </button>
+          <!-- <mat-form-field class="formL" disabled>
+            <div class="fill">
+              <mat-label>Nombre:</mat-label>
+              <input
+                matInput
+                placeholder="{{ vehicle.name }}"
+                value="{{ vehicle.name }}"
+                disabled="true"
+              />
+            </div>
+          </mat-form-field> -->
+        </form>
+      </div>
+      <div class="two">
+        <form action="" class="host" [formGroup]="form">
           <mat-form-field class="formL">
             <div class="fill">
               <mat-label>Patente</mat-label>
@@ -121,6 +145,28 @@
                 matInput
                 placeholder="{{ vehicle.insurance }}"
                 value="{{ vehicle.insurance }}"
+                disabled="{{ flagEdit }}"
+              />
+            </div>
+          </mat-form-field>
+          <mat-form-field class="formL">
+            <div class="fill">
+              <mat-label>RTO</mat-label>
+              <input
+                matInput
+                placeholder="{{ vehicle.rto }}"
+                value="{{ vehicle.rto }}"
+                disabled="{{ flagEdit }}"
+              />
+            </div>
+          </mat-form-field>
+          <mat-form-field class="formL">
+            <div class="fill">
+              <mat-label>Service</mat-label>
+              <input
+                matInput
+                placeholder="{{ vehicle.service }}"
+                value="{{ vehicle.service }}"
                 disabled="{{ flagEdit }}"
               />
             </div>
@@ -146,13 +192,33 @@
           </mat-form-field> -->
         </form>
       </div>
-      <div class="two">
-        <img
-          src="../../../../assets/vehicle.webp"
-          alt=""
-          style="max-width: 700px"
-        />
-      </div>
+    </div>
+  </mat-card>
+
+  <mat-card class="threeCard">
+    <div class="three">
+      <mat-form-field class="formL">
+        <div *ngFor="let item of vehicle.repairs" class="forFlex">
+          <div class="fill itemFor">
+            <mat-label>Repairaciones</mat-label>
+            <input
+              matInput
+              placeholder="{{ item.description }}"
+              value="{{ item.description }}"
+              disabled="{{ flagEdit }}"
+            />
+          </div>
+          <div class="fill itemFor">
+            <mat-label>Fecha</mat-label>
+            <input
+              matInput
+              placeholder="{{ item.createdAt }}"
+              value="{{ item.createdAt | date: 'dd/MM/yyyy' }}"
+              disabled="{{ flagEdit }}"
+            />
+          </div>
+        </div>
+      </mat-form-field>
     </div>
   </mat-card>
 </div>

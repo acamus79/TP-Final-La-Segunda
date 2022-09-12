@@ -26,6 +26,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatBadgeModule,
     MatTooltipModule,
     MatGridListModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   exports: [
     CommonModule,
@@ -78,6 +82,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatBadgeModule,
     MatTooltipModule,
     MatGridListModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
 })
 export class SharedModule {}

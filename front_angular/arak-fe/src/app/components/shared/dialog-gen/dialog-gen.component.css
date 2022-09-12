@@ -1,10 +1,48 @@
-.login-form {
-    min-width: 250px;
-    max-width: 650px;
-    width: 100%;
-    margin-top: 2rem;
+/* .login-form {
+  min-width: 250px;
+  max-width: 650px;
+  width: 100%;
+  margin-top: 2rem;
 }
 
 .login-full-width {
-    width: 100%;
+  width: 100%;
+} */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-width: 780px;
+}
+.layout-content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.itemRight,
+.itemLeft {
+  display: flex;
+  flex-direction: column;
+  margin: 8px;
+  padding: 4px;
+  width: 100%;
+}
+
+.btns {
+  display: flex;
+  justify-content: end;
+}
+
+.demo-inline-calendar-card {
+  width: 300px;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  width: 100%;
 }

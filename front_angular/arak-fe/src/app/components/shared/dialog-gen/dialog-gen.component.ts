@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedModule } from '../shared.module';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import {
   FormBuilder,
   FormGroup,
@@ -12,6 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { VehiclesService } from 'src/app/services/vehicles/vehicles.service';
 import { Subscription } from 'rxjs';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-dialog-gen',
@@ -26,7 +28,8 @@ export class DialogGenComponent implements OnInit {
   selectedCar?: string;
   url: string = environment.api;
   httpHeaders: HttpHeaders = new HttpHeaders();
-  close: boolean = false;
+  close?: any;
+  selected?: Date | null;
 
   type: any[] = [
     { value: 1, viewValue: 'Moto' },
@@ -52,6 +55,8 @@ export class DialogGenComponent implements OnInit {
       year: ['', Validators.required],
       insurance: ['', Validators.required],
       tag: ['', Validators.required],
+      rto: [''],
+      gnc: [''],
     });
   }
 
@@ -65,8 +70,33 @@ export class DialogGenComponent implements OnInit {
     this.getBrandByApi();
   }
 
+  /*  saveVehicle() {
+    const x = this.form.value.rto;
+    let d = new Date(x).getDate().toString();
+    let m = new Date(x).getMonth() + 1;
+    let ms = m.toString();
+    let a = new Date(x).getFullYear().toString();
+
+    let concatenacion = a + '-' + ms + '-' + d;
+  } */
+
+  parseFormatDate(pDte: any) {
+    const x = new Date(pDte);
+    let d = new Date(x).getDate().toString();
+    let m = new Date(x).getMonth() + 1;
+    let ms = m.toString();
+    let a = new Date(x).getFullYear().toString();
+    let concatenacion = a + '-' + ms + '-' + d;
+    return concatenacion;
+  }
+
   saveVehicle() {
-    this.vehicleService.addVehicle$(this.form.value).subscribe((res: any) => {
+    const rto = this.parseFormatDate(this.form.value.rto);
+    const gnc = this.parseFormatDate(this.form.value.gnc);
+
+    let oneVehicle = { ...this.form.value, rto, gnc };
+
+    this.vehicleService.addVehicle$(oneVehicle).subscribe((res: any) => {
       this._snackBar
         .open('Vehiculo creado correctamente', 'Aceptar', {
           duration: 2000,
