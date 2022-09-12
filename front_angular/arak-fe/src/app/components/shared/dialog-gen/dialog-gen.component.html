@@ -1,76 +1,118 @@
-<h1 mat-dialog-title>Panel Agregar Vehiculo</h1>
-<div mat-dialog-content>
-  <form [formGroup]="form" class="login-form" (ngSubmit)="saveVehicle()">
-    <mat-form-field appearance="fill" class="login-full-width">
-      <mat-label>Tipo Vehiculo</mat-label>
-      <mat-select
-        [(ngModel)]="selectedValue"
-        name="Tipo"
-        formControlName="type_id"
-      >
-        <mat-option *ngFor="let t of type" [value]="t.value">
-          {{ t.viewValue }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="fill" class="login-full-width">
-      <mat-label>Marca</mat-label>
-      <mat-select
-        [(ngModel)]="selectedBrand"
-        name="Tipo"
-        formControlName="brand"
-      >
-        <mat-option *ngFor="let b of brands" [value]="b.nome">
-          {{ b.nome }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field class="login-full-width" appearance="fill">
-      <mat-label>Modelo</mat-label>
-      <input
-        matInput
-        placeholder="Focus"
-        value=""
-        autocomplete="off"
-        formControlName="model"
-      />
-    </mat-form-field>
-    <mat-form-field class="login-full-width" appearance="fill">
-      <mat-label>Año</mat-label>
-      <input
-        matInput
-        placeholder="2015"
-        value=""
-        autocomplete="off"
-        formControlName="year"
-      />
-    </mat-form-field>
-    <mat-form-field class="login-full-width" appearance="fill">
-      <mat-label>Patente</mat-label>
-      <input
-        matInput
-        placeholder="AB122CL"
-        value=""
-        autocomplete="off"
-        formControlName="tag"
-      />
-    </mat-form-field>
-    <mat-form-field class="login-full-width" appearance="fill">
-      <mat-label>Seguro</mat-label>
-      <input
-        matInput
-        placeholder="La Segunda"
-        value=""
-        autocomplete="off"
-        formControlName="insurance"
-      />
-    </mat-form-field>
+<div class="container">
+  <h1 mat-dialog-title>Panel Agregar Vehículo</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="form" (ngSubmit)="saveVehicle()" class="layout">
+      <div class="layout-content">
+        <div class="itemLeft">
+          <mat-form-field appearance="fill" class="login-full-width">
+            <mat-label>Tipo Vehiculo</mat-label>
+            <mat-select
+              [(ngModel)]="selectedValue"
+              name="Tipo"
+              formControlName="type_id"
+            >
+              <mat-option *ngFor="let t of type" [value]="t.value">
+                {{ t.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
 
-    <button type="submit" mat-raised-button class="button" color="primary">
-      Guardar
+          <mat-form-field class="login-full-width" appearance="fill">
+            <mat-label>Modelo</mat-label>
+            <input
+              matInput
+              placeholder="Focus"
+              value=""
+              autocomplete="off"
+              formControlName="model"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="login-full-width" appearance="fill">
+            <mat-label>Patente</mat-label>
+            <input
+              matInput
+              placeholder="AB122CL"
+              value=""
+              autocomplete="off"
+              formControlName="tag"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>GNC</mat-label>
+            <input matInput [matDatepicker]="pickerGnc" formControlName="gnc" />
+            <mat-hint>YYYY/MM/DD</mat-hint>
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="pickerGnc"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #pickerGnc></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="itemRight">
+          <mat-form-field appearance="fill" class="login-full-width">
+            <mat-label>Marca</mat-label>
+            <mat-select
+              [(ngModel)]="selectedBrand"
+              name="Tipo"
+              formControlName="brand"
+            >
+              <mat-option *ngFor="let b of brands" [value]="b.nome">
+                {{ b.nome }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="login-full-width" appearance="fill">
+            <mat-label>Año</mat-label>
+            <input
+              matInput
+              placeholder="2015"
+              value=""
+              autocomplete="off"
+              formControlName="year"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="login-full-width" appearance="fill">
+            <mat-label>Seguro</mat-label>
+            <input
+              matInput
+              placeholder="La Segunda"
+              value=""
+              autocomplete="off"
+              formControlName="insurance"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>RTO</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="rto" />
+            <mat-hint>YYYY/MM/DD</mat-hint>
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      <div>
+        <button
+          type="submit"
+          mat-stroked-button
+          color="primary"
+          class="button"
+          [mat-dialog-close]="true"
+        >
+          Guardar
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div mat-dialog-actions class="btns">
+    <button [mat-dialog-close]="close" mat-stroked-button class="button">
+      Cerrar {{ close }}
     </button>
-  </form>
-</div>
-<div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="close">Cerrar</button>
+  </div>
 </div>

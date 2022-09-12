@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user/user.service';
 import { Router } from '@angular/router';
 import { VehiclesService } from 'src/app/services/vehicles/vehicles.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-detail-vehicle',
@@ -22,6 +23,7 @@ export class DetailVehicleComponent implements OnInit {
       role: 'Admin',
     },
   ];
+
   type: any[] = [
     { value: 1, viewValue: 'Moto' },
     { value: 2, viewValue: 'Auto' },
@@ -39,6 +41,15 @@ export class DetailVehicleComponent implements OnInit {
     year: 'Año',
     tag: 'Patente N°',
     insurance: 'Seguro',
+    service: '',
+    rto: 'RTO',
+    repairs: [
+      {
+        id: '',
+        description: '',
+        createdAt: new Date(),
+      },
+    ],
   };
   idVeicle: any;
 
