@@ -32,10 +32,7 @@ ARAK es una derivación etimológica de ARAÑA, ya que cuando comenzamos a desar
  <img width="250" src="https://user-images.githubusercontent.com/85143329/189552982-b59e20f7-aae3-48b0-9dbc-3056f51d7236.png">
 </p>
 
-AraK se desarrollo para el uso particular en caso de que cualquier usuario pueda llevar una agenda de sus vehiculos y asi ayudarlo a recordar cuando renovar
-obleas, realizar los services de mantenimiento general etc., pero tambien esta pensado para un uso mas profesional en donde pequeñas empresas o PyMes de transporte o logistica puedan gestionar sus flotas de camiones, taxis/remis, y poder asi tener en un solo lugar los datos de todos los vehiculos. Creemos que
-puede ser escalable implementando informacion sobre las licencias de conducir, o vinculable a un servicio de geoposicionamiento, una version movil exlusiva 
-para conductores, el modulo de reparaciones puede ampliarse para incluir costos o incluso presupuestos.
+AraK se desarrolló para el uso particular en caso de que cualquier usuario pueda llevar una agenda de sus vehículos y así ayudarlo a recordar cuando renovarobleas, realizar los servicios de mantenimiento general, etc., pero también está pensado para un uso más profesional en donde pequeñas empresas o Pymes de transporte o logística puedan gestionar sus flotas de camiones, taxis/remis, y poder así tener en un solo lugar los datos de todos los vehículos. Creemos quepuede ser escalable implementando información sobre las licencias de conducir, o vinculable a un servicio de geoposicionamiento, una versión móvil exclusivapara conductores, el módulo de reparaciones puede ampliarse para incluir costos o incluso presupuestos.
 
 # :truck: Tecnologías Utilizadas  
 
