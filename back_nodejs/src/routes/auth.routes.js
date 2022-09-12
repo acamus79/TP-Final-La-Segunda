@@ -3,6 +3,7 @@ const router = Router();
 
 //Middlewares
 const authAdmin = require('../middlewares/authAdmin');
+const authUser = require('../middlewares/authUser');
 
 
 //Controllers
@@ -10,6 +11,8 @@ const {
     signIn,
     signUp,
     index,
+    displayUser,
+    update,
     //signOut,
 } = require('../controllers/AuthController');
 
@@ -30,8 +33,8 @@ const {
   * path:
   * /signin:
   *   post:
-  *      description: Sign in // Iniciar sesión
-  *      summary: Authenticate user // Realiza la autenticación del usuario
+  *      description: Autentica un Usuario // Sign in
+  *      summary: Realiza la autenticación del usuario // Authenticate user
   *      tags:
   *        - users
   *      requestBody:
@@ -129,12 +132,74 @@ router.post('/signup', validateRegister, EmailIsUnique, signUp);
  *      - users
  *    responses:
  *        200:
- *         description: Regresa un objeto con los vechiculos y sus reparaciones.
+ *         description: Regresa un objeto con los usuarios.
  *        401:
  *          description: Acceso no Autorizado.
  */
 router.get('/index', authAdmin, index);
 
-//router.get('/signout', signOut); 
+/**
+ * @openapi
+ * path:
+ * /api/display/{id}:
+ *  get:
+ *    security:
+ *      - bearerAuth: []
+ *    description: Get one user by id // Muestra un usuario por iD
+ *    summary: Trae un usuario segun su id // Get one user by id
+ *    tags:
+ *      - users
+ *    responses:
+ *        200:
+ *         description: Regresa un objeto con el usuario.
+ *        401:
+ *          description: Acceso no Autorizado.
+ */
+router.get('/display/:id', authUser, displayUser);
+
+/**
+ * @openapi
+ * path:
+ * /api/update/{id}:
+ *   put:
+ *      security:
+ *        - bearerAuth: []
+ *      description: Update a User by id // Actualiza un usuario por el id
+ *      summary: Actualiza un Usuario por el id // Update a User by id
+ *      tags:
+ *        - users
+ *      responses:
+ *        201:
+ *          description: Actualizado correctamente
+ *        403:
+ *          description: Token no válido
+ *        401:
+ *          description: Acceso no autorizado
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          required: true
+ *          schema:
+ *              type: int
+ *          description: ID del usuario
+ *      requestBody:
+ *        required: true
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                name:
+ *                  type: string
+ *                  format: varchar(50)
+ *                  example: Juan Carlos
+ *                phone:
+ *                  type: string
+ *                  format: varchar(50)
+ *                  example: 0112487596
+ */
+router.put('/update/:id', update);
+
+//router.post('/signout', signOut); 
 
 module.exports = router;

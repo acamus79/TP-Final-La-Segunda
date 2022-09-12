@@ -4,6 +4,7 @@ const {
 } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Vehicle extends Model {
+    
     static associate(models) {
       
       Vehicle.belongsTo(models.Type, {

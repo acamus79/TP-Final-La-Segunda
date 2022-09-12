@@ -23,7 +23,7 @@ const {
  * /api/contact/create:
  *  post:
  *    description: Register a new contact message // Registra un nueco mensaje de contacto
- *    summary: Registra un nueco mensaje de contacto
+ *    summary: Registra un nuevo mensaje de contacto // Register a new contact message
  *    tags:
  *      - contacts
  *    requestBody:
@@ -69,7 +69,7 @@ router.post('/create', validateContact, registerContact);
  *     security:
  *       - bearerAuth: []
  *     description: Displays all registered contact messages, for administrators only // Muestra todos los mensajes de contacto registrados, solo para administradores
- *     summary: Trae todos los mensajes de contacto
+ *     summary: Trae todos los mensajes de contacto // Get all contact messages
  *     tags:
  *       - contacts
  *     responses:

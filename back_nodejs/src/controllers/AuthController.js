@@ -4,6 +4,7 @@ const config = require('../../config/config');
 const {
     User
 } = require('../models/index');
+const { param } = require('../routes/vehicle.routes');
 
 
 module.exports = {
@@ -20,6 +21,48 @@ module.exports = {
             res.status(404).json({
                 'status': 404,
                 'msg': 'No se encontraron usuarios'
+            });
+        }
+    },
+
+    //Show user by id
+    async displayUser(req, res) {
+
+        let user = await User.findByPk(req.params.id);
+        
+        if (user) {
+            res.status(200).json({
+                'status': 200,
+                'data': {
+                    'id': user.id,
+                    'name': user.name,
+                    'email': user.email,
+                    'phone': user.phone,
+                    'role': user.role
+                }
+            });
+        } else {
+            res.status(404).json({
+                'status': 404,
+                'msg': 'No se encontro el usuario'
+            });
+        }
+    },
+    
+    //update user
+    async update(req, res) {
+        const {name, phone} = req.body;
+        let user = await User.findByPk(req.params.id);
+        if (user) {
+            let userUpdated = await user.update({ name, phone });
+            res.status(200).json({
+                'status': 201,
+                'data': userUpdated
+            });
+        } else {
+            res.status(404).json({
+                'status': 404,
+                'msg': 'No se encontro el usuario'
             });
         }
     },

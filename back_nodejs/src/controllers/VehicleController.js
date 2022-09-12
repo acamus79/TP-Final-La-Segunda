@@ -44,7 +44,7 @@ const findAllVehicle = async (req, res) => {
     });
 };
 
-//GET /vehicles/user
+//GET /vehicle/user
 const findAllVehicleByUser = async (req, res) => {
     let pageAsNumber = Number.parseInt(req.query.page);
     let page = 0,
@@ -69,8 +69,6 @@ const findAllVehicleByUser = async (req, res) => {
         page,
     });
 };
-
-
 
 //POST /vehicle
 const registerVehicle = async (req, res) => {
@@ -155,7 +153,7 @@ const updateVehicleByManager = async (req, res) => {
     }
 }
 
-//DELETE /vehicles/:id
+//DELETE /vehicle/:id
 const destroyVehicle = async (req, res) => {
     const id = req.params.id
     let vehicle = await Vehicle.destroy({
@@ -175,6 +173,43 @@ const destroyVehicle = async (req, res) => {
         })
     }
 };
+//DELETE by User /vehicle/user/:id
+const destroyVehicleByUser = async (req, res) => {
+    const id = req.params.id;//id del vehiculo a editar
+    const idUser = req.user.id;//id del usuario logueado
+
+    let vehicles = await Vehicle.findAll({
+        where: {
+            user_id: idUser
+        }
+    });
+
+    let exist = vehicles.find(ve => ve.id == id);
+    
+    if (exist) {
+        let vehicle = await Vehicle.destroy({
+            where: {
+                id: id
+            }
+        });
+        if (vehicle) {
+            return res.status(200).json({
+                'status': 200,
+                'msg': 'Eliminado correctamente',
+            })
+        } else {
+            return res.status(404).json({
+                'status': 404,
+                'msg': 'No se recibieron los datos'
+            })
+        }
+    } else {
+        return res.status(403).json({
+            'status': 403,
+            'msg': 'No es el propietario del vehiculo'
+        })
+    }
+}
 
 module.exports = {
     showVehicle,
@@ -183,5 +218,6 @@ module.exports = {
     registerVehicle,
     updateVehicle,
     destroyVehicle,
-    updateVehicleByManager
+    updateVehicleByManager,
+    destroyVehicleByUser
 }
