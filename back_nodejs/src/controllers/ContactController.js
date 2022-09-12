@@ -2,28 +2,6 @@ const {
     Contact
 } = require('../models/index');
 
-//GET /my_contacts/
-const getByUser = async (req, res) => {
-    const userId = req.user.id;
-    let contacts = await Contact.findAll({
-        where: {
-            user_id: userId
-        }
-    });
-
-    if (contacts) {
-        res.status(200).json({
-            'status': 200,
-            'data': contacts
-        });
-    } else {
-        res.status(404).json({
-            'status': 404,
-            'msg': 'No se encontro Contacto con el id ' + userId
-        });
-    }
-}
-
 
 //GET /contacts
 const showAllContact = async (req, res) => {
@@ -69,7 +47,6 @@ const registerContact = async (req, res) => {
 }
 
 module.exports = {
-    getByUser,
     registerContact,
     showAllContact
 }

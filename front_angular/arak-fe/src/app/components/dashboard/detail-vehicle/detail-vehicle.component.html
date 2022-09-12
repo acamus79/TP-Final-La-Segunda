@@ -1,1 +1,224 @@
-<p>detail-vehicle works!</p>
+<div class="container">
+  <mat-toolbar class="toolName">
+    <span *ngIf="flagEdit">Detalle Vehiculo</span>
+    <span *ngIf="!flagEdit">Editar Vehiculo</span>
+    <!-- <button mat-stroked-button color="primary" (click)="enableEditvehicle()">
+      Editar
+    </button> -->
+  </mat-toolbar>
+
+  <mat-card class="oneCard">
+    <div class="wrapper">
+      <div class="one">
+        <form action="" class="host" [formGroup]="form">
+          <mat-form-field class="formL">
+            <div class="fill">
+              <mat-label>Tipo:</mat-label>
+              <ng-container ngSwitch="{{ vehicle.type_id }}">
+                <p
+                  style="font-size: 20px; color: rgba(0, 0, 0, 0.7)"
+                  *ngSwitchCase="1"
+                >
+                  {{ " Moto" }}
+                </p>
+                <p
+                  style="font-size: 20px; color: rgba(0, 0, 0, 0.7)"
+                  *ngSwitchCase="2"
+                >
+                  {{ " Automovil" }}
+                </p>
+                <p
+                  style="font-size: 20px; color: rgba(0, 0, 0, 0.7)"
+                  *ngSwitchCase="3"
+                >
+                  {{ " Camioneta" }}
+                </p>
+                <p
+                  style="font-size: 20px; color: rgba(0, 0, 0, 0.7)"
+                  *ngSwitchCase="4"
+                >
+                  {{ " Camion" }}
+                </p>
+                <p
+                  style="font-size: 20px; color: rgba(0, 0, 0, 0.7)"
+                  style="font-size: 20px; color: rgba(0, 0, 0, 0.7)"
+                  *ngSwitchCase="5"
+                >
+                  {{ " Taxi/Remis" }}
+                </p>
+                <input
+                  matInput
+                  placeholder="{{ vehicle.type_id }}"
+                  value=""
+                  disabled="{{ flagEdit }}"
+                />
+              </ng-container>
+              <mat-form-field
+                appearance="fill"
+                class="login-full-width"
+                *ngIf="!flagEdit"
+              >
+                <mat-label>Tipo Vehiculo</mat-label>
+                <mat-select
+                  [(ngModel)]="selectedValue"
+                  name="Tipo"
+                  formControlName="type_id"
+                >
+                  <mat-option *ngFor="let t of type" [value]="t.value">
+                    {{ t.viewValue }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </mat-form-field>
+          <mat-form-field class="formL">
+            <div class="fill">
+              <mat-label>Marca:</mat-label>
+              <input
+                matInput
+                placeholder="{{ vehicle.brand }}"
+                value="{{ vehicle.brand }}"
+                disabled="{{ flagEdit }}"
+              />
+            </div>
+          </mat-form-field>
+          <mat-form-field class="formL">
+            <div class="fill">
+              <mat-label>Modelo:</mat-label>
+              <input
+                matInput
+                placeholder="{{ vehicle.model }}"
+                value="{{ vehicle.model }}"
+                disabled="{{ flagEdit }}"
+              />
+            </div>
+          </mat-form-field>
+          <mat-form-field class="formL">
+            <div class="fill">
+              <mat-label>Año</mat-label>
+              <input
+                matInput
+                placeholder="{{ vehicle.year }}"
+                value="{{ vehicle.year }}"
+                disabled="{{ flagEdit }}"
+              />
+            </div>
+          </mat-form-field>
+          <button
+            *ngIf="!flagEdit"
+            class="btnEdit"
+            mat-stroked-button
+            color="primary"
+          >
+            Confirmar editar
+          </button>
+          <!-- <mat-form-field class="formL" disabled>
+            <div class="fill">
+              <mat-label>Nombre:</mat-label>
+              <input
+                matInput
+                placeholder="{{ vehicle.name }}"
+                value="{{ vehicle.name }}"
+                disabled="true"
+              />
+            </div>
+          </mat-form-field> -->
+        </form>
+      </div>
+      <div class="two">
+        <form action="" class="host" [formGroup]="form">
+          <mat-form-field class="formL">
+            <div class="fill">
+              <mat-label>Patente</mat-label>
+              <input
+                matInput
+                placeholder="{{ vehicle.tag }}"
+                value="{{ vehicle.tag }}"
+                disabled="{{ flagEdit }}"
+              />
+            </div>
+          </mat-form-field>
+          <mat-form-field class="formL">
+            <div class="fill">
+              <mat-label>Seguro</mat-label>
+              <input
+                matInput
+                placeholder="{{ vehicle.insurance }}"
+                value="{{ vehicle.insurance }}"
+                disabled="{{ flagEdit }}"
+              />
+            </div>
+          </mat-form-field>
+          <mat-form-field class="formL">
+            <div class="fill">
+              <mat-label>RTO</mat-label>
+              <input
+                matInput
+                placeholder="{{ vehicle.rto }}"
+                value="{{ vehicle.rto }}"
+                disabled="{{ flagEdit }}"
+              />
+            </div>
+          </mat-form-field>
+          <mat-form-field class="formL">
+            <div class="fill">
+              <mat-label>Service</mat-label>
+              <input
+                matInput
+                placeholder="{{ vehicle.service }}"
+                value="{{ vehicle.service }}"
+                disabled="{{ flagEdit }}"
+              />
+            </div>
+          </mat-form-field>
+          <button
+            *ngIf="!flagEdit"
+            class="btnEdit"
+            mat-stroked-button
+            color="primary"
+          >
+            Confirmar editar
+          </button>
+          <!-- <mat-form-field class="formL" disabled>
+            <div class="fill">
+              <mat-label>Nombre:</mat-label>
+              <input
+                matInput
+                placeholder="{{ vehicle.name }}"
+                value="{{ vehicle.name }}"
+                disabled="true"
+              />
+            </div>
+          </mat-form-field> -->
+        </form>
+      </div>
+    </div>
+  </mat-card>
+
+  <mat-card class="threeCard">
+    <div class="three">
+      <mat-form-field class="formL">
+        <div *ngFor="let item of vehicle.repairs" class="forFlex">
+          <div class="fill itemFor">
+            <mat-label>Repairaciones</mat-label>
+            <input
+              matInput
+              placeholder="{{ item.description }}"
+              value="{{ item.description }}"
+              disabled="{{ flagEdit }}"
+            />
+          </div>
+          <div class="fill itemFor">
+            <mat-label>Fecha</mat-label>
+            <input
+              matInput
+              placeholder="{{ item.createdAt }}"
+              value="{{ item.createdAt | date: 'dd/MM/yyyy' }}"
+              disabled="{{ flagEdit }}"
+            />
+          </div>
+        </div>
+      </mat-form-field>
+    </div>
+  </mat-card>
+</div>

@@ -6,16 +6,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './components/shared/shared.module';
 import { ContactComponent } from './components/contact/contact.component';
 
-
 /* Componentes */
 import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    ContactComponent
-  ],
+  declarations: [AppComponent, LoginComponent, ContactComponent],
 
   imports: [
     BrowserModule,
@@ -24,6 +19,6 @@ import { LoginComponent } from './components/login/login.component';
     SharedModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,0 +1,88 @@
+<div class="container">
+  <mat-toolbar class="toolName">
+    <span *ngIf="flagEdit">Detalle Usuario</span>
+    <span *ngIf="!flagEdit">Editar Usuario</span>
+    <!-- <button mat-stroked-button color="primary" (click)="enableEditUser()">
+      Editar
+    </button> -->
+  </mat-toolbar>
+  <mat-card>
+    <div class="wrapper">
+      <div class="one">
+        <form action="" class="host" [formGroup]="form">
+          <mat-form-field class="formL">
+            <div class="fill">
+              <mat-label>Nombre:</mat-label>
+              <input
+                formControlName="name"
+                matInput
+                placeholder="{{ user.name }}"
+                value="{{ user.name }}"
+              />
+            </div>
+          </mat-form-field>
+          <mat-form-field class="formL">
+            <div class="fill">
+              <mat-label>Email:</mat-label>
+              <input
+                matInput
+                placeholder="{{ user.email }}"
+                value="{{ user.email }}"
+                disabled
+              />
+            </div>
+          </mat-form-field>
+          <mat-form-field class="formL">
+            <div class="fill">
+              <mat-label>Telefono:</mat-label>
+              <input
+                formControlName="phone"
+                matInput
+                placeholder="{{ user.phone }}"
+                value="{{ user.phone }}"
+              />
+            </div>
+          </mat-form-field>
+          <mat-form-field class="formL">
+            <div class="fill">
+              <mat-label>Roles</mat-label>
+              <input
+                matInput
+                placeholder="{{ user.role }}"
+                value="{{ user.role }}"
+                disabled="{{ flagEdit }}"
+              />
+            </div>
+          </mat-form-field>
+          <button
+            *ngIf="!flagEdit"
+            class="btnEdit"
+            mat-stroked-button
+            color="primary"
+            (click)="editUser()"
+          >
+            Confirmar editar
+          </button>
+          <!-- <mat-form-field class="formL" disabled>
+            <div class="fill">
+              <mat-label>Nombre:</mat-label>
+              <input
+                matInput
+                placeholder="{{ user.name }}"
+                value="{{ user.name }}"
+                disabled="true"
+              />
+            </div>
+          </mat-form-field> -->
+        </form>
+      </div>
+      <div class="two">
+        <img
+          src="../../../../assets/user-detail.png"
+          alt=""
+          style="max-width: 270px"
+        />
+      </div>
+    </div>
+  </mat-card>
+</div>

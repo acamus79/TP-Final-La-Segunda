@@ -1,8 +1,8 @@
-*{
+* {
   box-sizing: border-box;
 }
 
-.sectionForm{
+.sectionForm {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,11 +13,10 @@
   margin-top: 25px;
   margin-bottom: 25px;
   border-radius: 5px;
-  box-shadow: 0 0 15px 0 rgba(0,0,0,.2);
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
 }
 
-
-.container-form{
+.container-form {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -26,7 +25,7 @@
   margin-left: -15px;
 }
 
-.fex-row{
+.fex-row {
   width: calc(33.3333% - 15px);
   padding: 15px;
   margin-left: 15px;
@@ -38,7 +37,7 @@
   padding: 15px;
 }
 
-.btn{
+.btn {
   align-items: center;
   width: 40%;
   margin-top: 15px;

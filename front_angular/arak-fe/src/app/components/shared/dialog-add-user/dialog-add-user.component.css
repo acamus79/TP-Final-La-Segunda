@@ -8,3 +8,7 @@
 .login-full-width {
     width: 100%;
 }
+.btn{
+  display: inline;
+  item-align: center;
+}

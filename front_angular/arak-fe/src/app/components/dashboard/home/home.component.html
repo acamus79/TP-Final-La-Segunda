@@ -1,125 +1,124 @@
 <div class="container">
-    <!-- <p *ngFor="let veh of arrUsers">
+  <!-- <p *ngFor="let veh of arrUsers">
         {{ veh | json }}
     </p> -->
-    <div class="panel-vehicle">
-        <section class="section">
-            <article>
-                <mat-card class="example-card">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Flotas</mat-card-title>
-                        <mat-card-subtitle>Asociadas</mat-card-subtitle>
-                        <p>
-                            <mat-icon class="icon" matBadge="1" matBadgeColor="warn" >local_shipping</mat-icon>
-                            
-                        </p>
-                    </mat-card-header>
-                    <img class="image-vehicle" mat-card-image
-                        src="../../../../assets/flote.png" alt="flote">
-                    <mat-card-content>
-                        
-                    </mat-card-content>
-                    <mat-card-actions>
-                        <button mat-button>Agregar</button>
-                        <button mat-button>Modificar</button>
-                    </mat-card-actions>
-                </mat-card>
-            </article>
 
-            <article>
-                <mat-card class="example-card">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Vehiculos</mat-card-title>
-                        <mat-card-subtitle>Asociados</mat-card-subtitle>
-                        <p>
-                            <mat-icon class="icon" matBadge="5" matBadgeColor="warn" >directions_car</mat-icon>
-                            
-                        </p>
-                    </mat-card-header>
-                    <img class="image-vehicle" mat-card-image
-                        src="../../../../assets/flote.png" alt="vehicles">
-                    <mat-card-content>
-                        
-                    </mat-card-content>
-                    <mat-card-actions>
-                        <button mat-button>Agregar</button>
-                        <button mat-button>Modificar</button>
-                    </mat-card-actions>
-                </mat-card>
+  <div class="panel-vehicle">
+    <section class="section">
+      <article>
+        <mat-card class="example-card">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Flotas</mat-card-title>
+            <mat-card-subtitle>Asociadas</mat-card-subtitle>
+            <p>
+              <mat-icon class="icon" matBadge="1" matBadgeColor="warn"
+                >local_shipping</mat-icon
+              >
+            </p>
+          </mat-card-header>
+          <img
+            class="image-vehicle"
+            mat-card-image
+            src="../../../../assets/flote.png"
+            alt="flote"
+          />
+          <mat-card-content> </mat-card-content>
+          <mat-card-actions>
+            <button mat-stroked-button color="primary">Gestionar</button>
+          </mat-card-actions>
+        </mat-card>
+      </article>
 
-            </article>
-        </section>
+      <article>
+        <mat-card class="example-card">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Vehiculos</mat-card-title>
+            <mat-card-subtitle>Asociados</mat-card-subtitle>
+            <p>
+              <mat-icon class="icon" matBadge="5" matBadgeColor="warn"
+                >directions_car</mat-icon
+              >
+            </p>
+          </mat-card-header>
+          <img
+            class="image-vehicle"
+            mat-card-image
+            src="../../../../assets/vehicle.webp"
+            alt="vehicles"
+          />
+          <mat-card-content> </mat-card-content>
+          <mat-card-actions>
+            <button mat-stroked-button color="primary">Gestionar</button>
+          </mat-card-actions>
+        </mat-card>
+      </article>
+    </section>
+  </div>
 
-    </div>
+  <div class="panel-expirations">
+    <section>
+      <article>
+        <mat-card class="example-card">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Vencimeintos</mat-card-title>
+            <mat-card-subtitle>Proximos</mat-card-subtitle>
+            <p>
+              <mat-icon class="icon" matBadge="3" matBadgeColor="warn"
+                >sms_failed</mat-icon
+              >
+            </p>
+          </mat-card-header>
 
-    <div class="panel-expirations">
-        <section>
-            <article>
-                <mat-card class="example-card">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Vecimeintos</mat-card-title>
-                        <mat-card-subtitle>Proximos</mat-card-subtitle>
-                        <p>
-                            <mat-icon class="icon" matBadge="3" matBadgeColor="warn" >sms_failed</mat-icon>
-                            
-                        </p>
-                        
-                    </mat-card-header>
-                    
-
-                    <mat-card-content>
-    
-
-                        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-                            <!--- Note that these columns can be defined in any order.
+          <mat-card-content>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+              <!--- Note that these columns can be defined in any order.
                                   The actual rendered columns are set as a property on the row definition" -->
-                          
-                            <!-- Position Column -->
-                            <ng-container matColumnDef="position">
-                              <th mat-header-cell *matHeaderCellDef> No. </th>
-                              <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-                            </ng-container>
-                          
-                            <!-- Name Column -->
-                            <ng-container matColumnDef="vehicle">
-                              <th mat-header-cell *matHeaderCellDef> Vehiculo </th>
-                              <td mat-cell *matCellDef="let element"> {{element.vehicle}} </td>
-                            </ng-container>
-                          
-                            <!-- Weight Column -->
-                            <ng-container matColumnDef="alert">
-                              <th mat-header-cell *matHeaderCellDef> Vencimiento </th>
-                              <td mat-cell *matCellDef="let element"> {{element.alert}} </td>
-                            </ng-container>
-                          
-                            <!-- Symbol Column -->
-                            <ng-container matColumnDef="date">
-                              <th mat-header-cell *matHeaderCellDef> Fecha </th>
-                              <td mat-cell *matCellDef="let element"> {{element.date}} </td>
-                            </ng-container>
 
-                            <ng-container matColumnDef="action">
-                              <th mat-header-cell *matHeaderCellDef> Acciones </th>
-                              <td mat-cell *matCellDef="let element"> {{element.action}} </td>
-                            </ng-container>
-                          
-                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                          </table>
-                
+              <!-- Position Column -->
+              <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef>No.</th>
+                <td mat-cell *matCellDef="let element">
+                  {{ element.position }}
+                </td>
+              </ng-container>
 
-                    </mat-card-content>
-                    <mat-card-actions>
-                        <button mat-button>Agregar</button>
-                        <button mat-button>Modificar</button>
-                    </mat-card-actions>
-                </mat-card>
-            </article>
-        </section>
+              <!-- Name Column -->
+              <ng-container matColumnDef="vehicle">
+                <th mat-header-cell *matHeaderCellDef>Vehiculo</th>
+                <td mat-cell *matCellDef="let element">
+                  {{ element.vehicle }}
+                </td>
+              </ng-container>
 
-    </div>
+              <!-- Weight Column -->
+              <ng-container matColumnDef="alert">
+                <th mat-header-cell *matHeaderCellDef>Vencimiento</th>
+                <td mat-cell *matCellDef="let element">{{ element.alert }}</td>
+              </ng-container>
+
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef>Fecha</th>
+                <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef>Acciones</th>
+                <td mat-cell *matCellDef="let element">{{ element.action }}</td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-stroked-button color="primary">Ver</button>
+          </mat-card-actions>
+        </mat-card>
+      </article>
+    </section>
+  </div>
 </div>

@@ -46,7 +46,6 @@ export class ContactComponent implements OnInit {
         .post(`${this.url}/contact/create`, this.form.value, {})
         .subscribe(
           (res) => {
-
             this.loading = true;
             this._snackBar.open('Mensaje enviado correctamente', 'OK', {
               duration: 2000,
@@ -60,7 +59,6 @@ export class ContactComponent implements OnInit {
             setTimeout(() => {
               this.router.navigate(['home']);
             }, 4000);
-
           },
           (err) => {
             console.log(err);

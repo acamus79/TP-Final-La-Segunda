@@ -43,7 +43,7 @@ app.use((req, res, next) => {
   console.log('Request URL:', req.originalUrl);
   res.status(404).json({
     status: '404',
-    descripcion: 'Pagina no encontrada'
+    descripcion: 'No existe el Endpoint'
   })
   next();
 })

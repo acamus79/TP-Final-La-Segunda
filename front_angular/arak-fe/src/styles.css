@@ -1,24 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .snackOk {
-    background: #5b8f5a;
-    padding-left: 10em;
-    color: aliceblue !important;
-  }
+  background: #5b8f5a;
+  padding-left: 10em;
+  color: aliceblue !important;
+}
 
-  .snack{
-    padding-left: 10em;
-    color: aliceblue !important;
-  }
-
+.snack {
+  padding-left: 10em;
+  color: aliceblue !important;
+}
 
 .snackError .mat-simple-snackbar {
-    display: flex;
-    justify-content: center !important;
-    align-items: center !important;
-    text-align: center !;
-    background: #9e6234;
-  }
+  display: flex;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !;
+  background: #9e6234;
+}

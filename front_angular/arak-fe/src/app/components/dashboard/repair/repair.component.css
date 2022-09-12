@@ -1,29 +1,22 @@
 .container {
-  display: flex;
   padding: 1rem;
-  flex-direction: column;
 }
 
 .wrapper {
   display: grid;
-  grid-template-columns: (1fr, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
   grid-auto-rows: minmax(100px, auto);
 }
 .one {
-  grid-column: 1;
+  grid-column: 1 / 2;
 }
-
 .two {
-  grid-column: 2;
+  grid-column: 2 / 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-/* .three {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 2;
-  grid-row-end: 2;
-} 
-*/
 
 .host {
   display: flex;
@@ -34,7 +27,6 @@
 
 .formL {
   width: 100%;
-  margin: 0 auto;
 }
 
 .toolName {
@@ -48,10 +40,12 @@
   padding: 1rem;
   background-color: rgba(25, 140, 132, 0.2) !important;
   color: black;
+  margin-top: 2px;
 }
 
 .fill input {
   font-size: 20px;
+  margin-top: 0.5px;
   color: rgba(0, 0, 0, 0.694);
 }
 .btnEdit {
@@ -59,38 +53,14 @@
   height: 50px;
 }
 
-.formRepair {
-  display: flex;
-  width: 100%;
-}
-
-.three {
-  display: flex;
-}
-
-.threeCard,
-.oneCard {
-  margin-top: 10px;
-}
-
-.forFlex {
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-}
-
-.itemFor {
-  width: 100%;
-}
-
-/* @media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .container {
     padding: 1rem;
   }
 
   .wrapper {
     display: grid;
-    grid-template-columns: repeat(1fr);
+    grid-template-columns: repeat(1, 1fr);
     grid-gap: 10px;
     grid-auto-rows: minmax(100px, auto);
   }
@@ -104,10 +74,7 @@
     justify-content: center;
     align-items: center;
   }
-
-  .three {
-  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
-} */
+}

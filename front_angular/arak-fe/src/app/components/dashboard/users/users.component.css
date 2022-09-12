@@ -1,61 +1,106 @@
+.container {
+  padding: 1rem;
+}
+
 .sectionHeader {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 1rem;
-  }
-  
-  .sectionVehicle button {
-  
-    height: 40px;
-  
-  }
-  
-  .layout {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 2rem;
-    align-items: center;
-  }
-  
-  table {
-    width: 90%;
-    min-width: 680px;
-  
-  }
-  
-  .butIcon {
-    margin-left: 1px;
-  }
-  
-  .butIcon:hover {
-    color: rgb(29, 178, 44);
-  }
-  
-  .elementos th {
-    color: blue;
-  }
-  
-  .elementos td,
-  th {
-    font-size: 18px !important;
-  }
-  
-  .btnReg {
-    position: relative;
-    left: 80%;
-    background-color: rgb(29, 111, 178);
-    color: white;
-    font-size: 14px;
-    font-weight: bold;
-    border-radius: 5px;
-    border: none;
-    margin: 0.5rem;
-  }
-  
-  .btnReg:hover {
-    background-color: rgb(36, 180, 50);
-  }
-  
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.sectionHeader h1 {
+  margin-top: 20px;
+  color: rgba(19, 123, 154);
+}
+
+.sectionVehicle button {
+  height: 40px;
+}
+
+.layout {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1rem;
+  align-items: center;
+  text-align: center;
+}
+
+table {
+  width: 90%;
+  min-width: 680px;
+}
+
+.butIcon {
+  margin-right: 10px;
+}
+
+.butIcon:hover {
+  color: rgb(29, 178, 44);
+}
+
+.elementos th {
+  color: blue;
+}
+
+.elementos td,
+th {
+  font-size: 18px !important;
+}
+
+.btnReg {
+  margin-left: 20px;
+}
+
+.btnReg:hover {
+  background-color: rgba(25, 140, 132, 0.3);
+}
+.example-tooltip-red {
+  background-color: rgba(19, 123, 154, 0.9);
+  font-size: 14px;
+}
+
+.mat-column-actions {
+  text-align: center;
+}
+
+.mat-column {
+  text-align: center;
+  font-weight: bold;
+}
+
+.mat-header-cell {
+  text-align: center;
+}
+
+.mat-header-row .cdk-header-row .ng-star-inserted {
+  text-align: center;
+}
+
+.mat-header-cell
+  .cdk-header-cell
+  .cdk-column-actions
+  .mat-column-actions
+  .ng-star-inserted {
+  text-align: center;
+}
+
+.toolName {
+  height: 80px;
+  padding: 1rem;
+  background-color: rgba(25, 140, 132, 0.2) !important;
+}
+
+.mat-header-row .ng-star-inserted {
+  text-align: center;
+  height: 80px;
+  background-color: rgba(25, 140, 132, 0.2) !important;
+  color: rgb(0, 0, 0);
+}
+
+.mat-column-actions .ng-star-inserted {
+  text-align: center;
+}

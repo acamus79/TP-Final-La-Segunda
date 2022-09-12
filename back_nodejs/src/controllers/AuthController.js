@@ -4,6 +4,7 @@ const config = require('../../config/config');
 const {
     User
 } = require('../models/index');
+const { param } = require('../routes/vehicle.routes');
 
 
 module.exports = {
@@ -24,6 +25,48 @@ module.exports = {
         }
     },
 
+    //Show user by id
+    async displayUser(req, res) {
+
+        let user = await User.findByPk(req.params.id);
+        
+        if (user) {
+            res.status(200).json({
+                'status': 200,
+                'data': {
+                    'id': user.id,
+                    'name': user.name,
+                    'email': user.email,
+                    'phone': user.phone,
+                    'role': user.role
+                }
+            });
+        } else {
+            res.status(404).json({
+                'status': 404,
+                'msg': 'No se encontro el usuario'
+            });
+        }
+    },
+    
+    //update user
+    async update(req, res) {
+        const {name, phone} = req.body;
+        let user = await User.findByPk(req.params.id);
+        if (user) {
+            let userUpdated = await user.update({ name, phone });
+            res.status(200).json({
+                'status': 201,
+                'data': userUpdated
+            });
+        } else {
+            res.status(404).json({
+                'status': 404,
+                'msg': 'No se encontro el usuario'
+            });
+        }
+    },
+
 
     //Registro
     signUp(req, res) {
@@ -40,7 +83,8 @@ module.exports = {
                 expire: new Date(Date.now() + config.expires * 24 * 60 * 60 * 1000),
                 httpOnly: true
             }
-            res.cookie('jwt', token, cookiesOptions)
+
+            res.cookie('jwt', token, cookiesOptions);
 
             User.findByPk(user.id).then(x => {
                 res.json({
@@ -49,20 +93,19 @@ module.exports = {
                     'data': {
                         'id': x.id,
                         'name': x.name,
+                        'phone': x.email,
                         'role': x.role,
                         'email': x.email,
                         token
                     },
                 })
             });
-
         }).catch(err => {
             res.status(400).json({
                 msg: err.message
             });
         });
     },
-
 
     // Login
     signIn(req, res) {
@@ -91,7 +134,6 @@ module.exports = {
                         expire: new Date(Date.now() + config.expires * 24 * 60 * 60 * 1000),
                         httpOnly: true
                     }
-
                     res.cookie('jwt', token, cookiesOptions)
                     res.json({
                         'status': 200,

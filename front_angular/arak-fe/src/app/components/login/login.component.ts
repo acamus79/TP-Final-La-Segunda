@@ -1,44 +1,40 @@
-import { JsonPipe } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ILogin } from 'src/app/models/ilogin';
-import { IResponse } from 'src/app/models/iresponse';
 import { environment } from 'src/environments/environment';
 import { AuthService } from '../../services/auth/auth.service';
-
+import { MatDialog } from '@angular/material/dialog';
+import { DialogAddUserComponent } from '../shared/dialog-add-user/dialog-add-user.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
-
 export class LoginComponent implements OnInit, OnDestroy {
   form: FormGroup;
   loading: boolean;
-  private url: string = environment.api;
   subRef$?: Subscription;
 
   constructor(
     private fb: FormBuilder,
     private _snackBar: MatSnackBar,
     private router: Router,
-    private http: HttpClient,
-    private authService: AuthService
+    private authService: AuthService,
+
+    public dialog: MatDialog
   ) {
     this.form = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
     });
-    this.loading = false
+    this.loading = false;
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   ingresar() {
     let respuesta: any;
@@ -47,17 +43,15 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     const userLogin: ILogin = {
       email: email,
-      password: password
+      password: password,
     };
 
     this.authService.login$(userLogin).subscribe((res: any) => {
       respuesta = res.body;
-      console.log(respuesta);
       localStorage.setItem('token', respuesta.data.token);
-      localStorage.setItem('user', respuesta.data.email);
+      localStorage.setItem('user', respuesta.data.name);
       localStorage.setItem('role', respuesta.data.role);
       if (respuesta.status === 200) {
-
         this.loading = true;
         setTimeout(() => {
           this.loading = false;
@@ -65,62 +59,42 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.router.navigate(['dashboard']);
         }, 2000);
 
-        this._snackBar.open('Bienvenido', 'Ok', {
+        this._snackBar.open('Bienvenido', '', {
           duration: 4000,
           panelClass: ['snackOk', 'snack'],
           horizontalPosition: 'center',
-          verticalPosition: 'top',
-
+          verticalPosition: 'bottom',
         });
-
       } else {
-        this._snackBar.open('Usuario o contraseña incorrectos', 'Ok', {
+        this._snackBar.open('Usuario o contraseña incorrectos', '', {
           duration: 2000,
-          panelClass: ['snackError']
+          panelClass: ['snackError'],
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
         });
       }
     });
-    }
+  }
 
-
-
-
-
-/*     this.subRef$ = this.http.post<IResponse>(`${this.url}/signin`, userLogin, { observe: 'response' })
-      .subscribe(res => {
-        respuesta = res.body
-        console.log(respuesta);
-        localStorage.setItem('token', (respuesta.data.token));
-        this.loading = true;
-        setTimeout(() => {
-          this.loading = false;
-          //ruta de dashboard
-          this.router.navigate(['dashboard']);
-        }, 2000);
-      }, error => {
-        this._snackBar.open('Error en usuario o contraseña', '', {
-          duration: 2000,
-          horizontalPosition: 'center',
-          verticalPosition: 'bottom',
-          panelClass: ['snackError']
-        })
-      } */
-
-
-  contact(){
+  contact() {
     this.router.navigate(['contact']);
   }
 
-  newUser(){
-    console.log('new user');
+  newUser() {
+    const dialogRef = this.dialog.open(DialogAddUserComponent, {
+      width: '500px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result != undefined) {
+        this.dialog.closeAll();
+      }
+    });
   }
 
-
-    ngOnDestroy() {
-      if (this.subRef$) {
-        this.subRef$.unsubscribe()
-      }
-
+  ngOnDestroy() {
+    if (this.subRef$) {
+      this.subRef$.unsubscribe();
     }
-
+  }
 }
