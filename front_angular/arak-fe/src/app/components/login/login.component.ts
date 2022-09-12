@@ -10,6 +10,9 @@ import { IResponse } from 'src/app/models/iresponse';
 import { UserService } from 'src/app/services/user/user.service';
 import { environment } from 'src/environments/environment';
 import { AuthService } from '../../services/auth/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogAddUserComponent } from '../shared/dialog-add-user/dialog-add-user.component';
+
 
 @Component({
   selector: 'app-login',
@@ -28,7 +31,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private router: Router,
     private http: HttpClient,
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    public dialog: MatDialog,
   ) {
     this.form = this.fb.group({
       email: ['', Validators.required],
@@ -106,6 +110,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   newUser() {
     console.log('new user');
+    this.dialog.open(DialogAddUserComponent);
   }
 
   ngOnDestroy() {
