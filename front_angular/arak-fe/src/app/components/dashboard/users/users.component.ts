@@ -38,11 +38,12 @@ export class UsersComponent implements OnInit, OnDestroy {
     private userService: UserService,
     public dialog: MatDialog,
     private router: Router
-  ) {}
+  ) {
+    this.getUsers();
+  }
 
   ngOnInit(): void {
     this.getUsers();
-
     this.suscription = this.userService.refresh$.subscribe(() => {
       this.getUsers();
     });
@@ -62,12 +63,14 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {}
 
-  goToDetailUser() {
+  goToDetailUser(pId: any) {
     this.userService.setUserEditFlag$(true);
+    this.userService.setUserById(pId);
     this.router.navigate(['/dashboard/detailUser']);
   }
 
-  goToDetailUserEditr() {
+  goToDetailUserEditr(pId: any) {
+    this.userService.setUserById(pId);
     this.userService.setUserEditFlag$(false);
     this.router.navigate(['/dashboard/detailUser']);
   }

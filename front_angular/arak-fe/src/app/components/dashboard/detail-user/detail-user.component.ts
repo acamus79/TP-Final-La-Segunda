@@ -9,18 +9,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./detail-user.component.css'],
 })
 export class DetailUserComponent implements OnInit {
-  flagEdit?: boolean;
+  flagEdit?: boolean = false;
   disable?: boolean;
   btnEdit?: Boolean = false;
-  users: any = [
-    {
-      id: 1,
-      name: 'andres',
-      mail: 'alopezcio@gmail.com',
-      phone: 32423434,
-      role: 'Admin',
-    },
-  ];
+  user = {
+    id: 1,
+    name: 'Usuario',
+    email: 'alopezcio@gmail.com',
+    phone: '341556667',
+    role: 'Admin',
+  };
 
   form: FormGroup;
 
@@ -29,12 +27,19 @@ export class DetailUserComponent implements OnInit {
     private userService: UserService,
     private router: Router
   ) {
-    this.form = this.fb.group({});
+    this.form = this.fb.group({
+      name: ['', Validators.required],
+      phone: ['', Validators.required],
+    });
     this.flagEdit = this.userService.getUserEditFlag();
     this.disable = this.flagEdit;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userService.getUserById().subscribe((res: any) => {
+      this.user = res.body.data;
+    });
+  }
 
   enableEditUser() {
     this.userService.setUserEditFlag$(true);
@@ -42,6 +47,6 @@ export class DetailUserComponent implements OnInit {
   }
 
   editUser() {
-    console.log('endpont');
+    this.userService.editUser$(this.form.value).subscribe();
   }
 }

@@ -99,19 +99,29 @@ export class VehiclesService {
 
   addRepair(pRepair: any) {
     const rute = `${this.url}/repair`;
-    return this.http.post<any>(rute, pRepair, {
-      headers: this.httpHeaders,
-      observe: 'response',
-    });
+    return this.http
+      .post<any>(rute, pRepair, {
+        headers: this.httpHeaders,
+        observe: 'response',
+      })
+      .pipe(
+        tap(() => {
+          this._refresh$.next();
+        })
+      );
   }
 
-  /* addVehicle(pVehicle:IVehicle) {
-    this.vehicles.push(pVehicle);
-    this.vehicles$.next(this.vehicles);
+  addVehicle$(form: any) {
+    const rute = `${this.url}/vehicle`;
+    return this.http
+      .post<any>(rute, form, {
+        headers: this.httpHeaders,
+        observe: 'response',
+      })
+      .pipe(
+        tap(() => {
+          this._refresh$.next();
+        })
+      );
   }
-
-  getVehicle$(): Observable<IVehicle[]> {
-    return this.vehicles$.asObservable() 
-
-  }*/
 }

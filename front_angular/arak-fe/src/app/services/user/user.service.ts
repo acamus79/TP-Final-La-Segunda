@@ -14,6 +14,7 @@ export class UserService {
   httpHeaders: HttpHeaders = new HttpHeaders();
   userEditFlag?: boolean = true;
   usertoken: any;
+  idUser: any;
 
   constructor(private http: HttpClient) {
     const token = localStorage.getItem('token');
@@ -63,5 +64,35 @@ export class UserService {
     this.userEditFlag = flag;
   }
 
-  editUser$() {}
+  setUserById(pId: any) {
+    this.idUser = pId;
+  }
+
+  getUserById() {
+    const rute = `${this.url}/display/${this.idUser}`;
+    return this.http
+      .get(rute, {
+        headers: this.httpHeaders,
+        observe: 'response',
+      })
+      .pipe(
+        tap(() => {
+          this._refresh$.next();
+        })
+      );
+  }
+
+  editUser$(form: any) {
+    const rute = `${this.url}/update/${this.idUser}`;
+    return this.http
+      .put(rute, form, {
+        headers: this.httpHeaders,
+        observe: 'response',
+      })
+      .pipe(
+        tap(() => {
+          this._refresh$.next();
+        })
+      );
+  }
 }

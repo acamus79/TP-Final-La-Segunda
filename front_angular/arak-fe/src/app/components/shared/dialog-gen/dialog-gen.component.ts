@@ -10,6 +10,8 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { VehiclesService } from 'src/app/services/vehicles/vehicles.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dialog-gen',
@@ -17,6 +19,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./dialog-gen.component.css'],
 })
 export class DialogGenComponent implements OnInit {
+  suscription?: Subscription;
   form: FormGroup;
   selectedValue?: string;
   selectedBrand?: string;
@@ -39,7 +42,8 @@ export class DialogGenComponent implements OnInit {
     private fb: FormBuilder,
     private http: HttpClient,
     private _snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private vehicleService: VehiclesService
   ) {
     this.form = this.fb.group({
       type_id: ['', Validators.required],
@@ -62,28 +66,22 @@ export class DialogGenComponent implements OnInit {
   }
 
   saveVehicle() {
-    console.log(this.form.value);
-
-    this.http
-      .post(`${this.url}/vehicle`, this.form.value, {
-        headers: this.httpHeaders,
-      })
-      .subscribe((res) => {
-        console.log(res);
-        this._snackBar
-          .open('Vehiculo creado correctamente', 'Aceptar', {
-            duration: 2000,
-            horizontalPosition: 'center',
-            verticalPosition: 'bottom',
-            panelClass: ['snackOk'],
-          })
-          .afterDismissed()
-          .subscribe(() => {
-            this.close = true;
-            this.router.navigate(['/dashboard/vehicles']);
-          });
-      });
+    this.vehicleService.addVehicle$(this.form.value).subscribe((res: any) => {
+      this._snackBar
+        .open('Vehiculo creado correctamente', 'Aceptar', {
+          duration: 2000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+          panelClass: ['snackOk'],
+        })
+        .afterDismissed()
+        .subscribe(() => {
+          this.close = true;
+          this.router.navigate(['/dashboard/vehicles']);
+        });
+    });
   }
+
   //API EXTERNA
   getBrandByApi() {
     this.http.get(`${environment.ext}`).subscribe({

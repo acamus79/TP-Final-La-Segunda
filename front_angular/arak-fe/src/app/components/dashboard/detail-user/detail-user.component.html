@@ -9,20 +9,15 @@
   <mat-card>
     <div class="wrapper">
       <div class="one">
-        <form
-          action=""
-          class="host"
-          [formGroup]="form"
-          *ngFor="let user of users"
-        >
+        <form action="" class="host" [formGroup]="form">
           <mat-form-field class="formL">
             <div class="fill">
               <mat-label>Nombre:</mat-label>
               <input
+                formControlName="name"
                 matInput
                 placeholder="{{ user.name }}"
                 value="{{ user.name }}"
-                disabled="{{ flagEdit }}"
               />
             </div>
           </mat-form-field>
@@ -31,9 +26,9 @@
               <mat-label>Email:</mat-label>
               <input
                 matInput
-                placeholder="{{ user.mail }}"
-                value="{{ user.mail }}"
-                disabled="{{ flagEdit }}"
+                placeholder="{{ user.email }}"
+                value="{{ user.email }}"
+                disabled
               />
             </div>
           </mat-form-field>
@@ -41,10 +36,10 @@
             <div class="fill">
               <mat-label>Telefono:</mat-label>
               <input
+                formControlName="phone"
                 matInput
                 placeholder="{{ user.phone }}"
                 value="{{ user.phone }}"
-                disabled="{{ flagEdit }}"
               />
             </div>
           </mat-form-field>

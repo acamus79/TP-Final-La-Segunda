@@ -56,8 +56,10 @@ export class VehiclesComponent implements OnInit {
 
     this.suscription = this.vehicleService.refresh$.subscribe(() => {
       if (role == '2') {
+        console.log('entro en 2');
         this.getVehicleByUser();
       } else {
+        console.log('entro en 1 o 3');
         this.getVehicles();
       }
     });

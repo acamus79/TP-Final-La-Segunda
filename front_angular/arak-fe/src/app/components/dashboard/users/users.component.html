@@ -64,7 +64,7 @@
         <th mat-header-cell *matHeaderCellDef>Acciones</th>
         <td mat-cell *matCellDef="let element">
           <mat-icon
-            (click)="goToDetailUser()"
+            (click)="goToDetailUser(element.id)"
             color="primary"
             class="butIcon"
             aria-hidden="false"
@@ -75,7 +75,7 @@
             matTooltipPosition="above"
           ></mat-icon>
           <mat-icon
-            (click)="goToDetailUserEditr()"
+            (click)="goToDetailUserEditr(element.id)"
             class="butIcon"
             aria-hidden="false"
             aria-label="Example home icon"
