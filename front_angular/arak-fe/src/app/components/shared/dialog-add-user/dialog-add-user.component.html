@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Formulario Usuario Nuevo</h1>
+<h1 mat-dialog-title>Registro de Nuevo Usuario</h1>
 <div mat-dialog-content>
     <form [formGroup]="form" class="login-form" (ngSubmit)="addUser()">
         <mat-form-field class="login-full-width" appearance="fill">
@@ -13,11 +13,11 @@
           <mat-label>Password</mat-label>
           <input matInput placeholder="3414555555" value="" autocomplete="off" formControlName="password">
         </mat-form-field>
-    
-        <button type="submit" mat-raised-button class="button" color="primary">Guardar</button>
-    
+
+        <div mat-dialog-actions class="btn">
+          <button mat-button mat-dialog-close>Cancelar</button>
+          <button type="submit" mat-raised-button class="button" color="primary">Registrar</button>
+        </div>
       </form>
 </div>
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Close</button>
-</div>
+
