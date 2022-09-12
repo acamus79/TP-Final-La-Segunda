@@ -40,10 +40,12 @@
   padding: 1rem;
   background-color: rgba(25, 140, 132, 0.2) !important;
   color: black;
+  margin-top: 2px;
 }
 
 .fill input {
   font-size: 20px;
+  margin-top: 0.5px;
   color: rgba(0, 0, 0, 0.694);
 }
 .btnEdit {

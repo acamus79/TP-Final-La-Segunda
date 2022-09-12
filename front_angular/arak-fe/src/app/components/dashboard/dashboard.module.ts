@@ -11,6 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { DetailVehicleComponent } from './detail-vehicle/detail-vehicle.component';
 import { DetailUserComponent } from './detail-user/detail-user.component';
+import { RepairComponent } from './repair/repair.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { DetailUserComponent } from './detail-user/detail-user.component';
     SideBarComponent,
     DetailUserComponent,
     DetailVehicleComponent,
+    RepairComponent,
   ],
   imports: [CommonModule, DashboardRoutingModule, SharedModule],
 })

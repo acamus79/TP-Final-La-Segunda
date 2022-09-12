@@ -1,15 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MatGridListModule } from '@angular/material/grid-list';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user/user.service';
 import { Router } from '@angular/router';
-
-export interface Tile {
-  color: string;
-  cols: number;
-  rows: number;
-  text: string;
-}
 
 @Component({
   selector: 'app-detail-user',
@@ -17,11 +9,6 @@ export interface Tile {
   styleUrls: ['./detail-user.component.css'],
 })
 export class DetailUserComponent implements OnInit {
-  tiles: Tile[] = [
-    { text: 'One', cols: 4, rows: 1, color: 'lightblue' },
-    { text: 'Two', cols: 2, rows: 2, color: 'lightgreen' },
-    { text: 'Three', cols: 2, rows: 2, color: 'lightpink' },
-  ];
   flagEdit?: boolean;
   disable?: boolean;
   btnEdit?: Boolean = false;

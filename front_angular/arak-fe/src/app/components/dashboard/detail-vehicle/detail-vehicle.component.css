@@ -1,0 +1,78 @@
+.container {
+  padding: 1rem;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+.one {
+  grid-column: 1 / 2;
+}
+.two {
+  grid-column: 2 / 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.formL {
+  width: 100%;
+}
+
+.toolName {
+  height: 80px;
+  padding: 1rem;
+  background-color: rgba(25, 140, 132, 0.2) !important;
+}
+
+.fill {
+  height: 30px;
+  padding: 1rem;
+  background-color: rgba(25, 140, 132, 0.2) !important;
+  color: black;
+}
+
+.fill input {
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.694);
+}
+.btnEdit {
+  width: 100%;
+  height: 50px;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+  }
+  .one {
+    grid-column: 1;
+  }
+  .two {
+    grid-column: 1;
+    display: flex;
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+}

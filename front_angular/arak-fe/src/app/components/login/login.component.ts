@@ -63,16 +63,18 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.router.navigate(['dashboard']);
         }, 2000);
 
-        this._snackBar.open('Bienvenido', 'Ok', {
+        this._snackBar.open('Bienvenido', '', {
           duration: 4000,
           panelClass: ['snackOk', 'snack'],
           horizontalPosition: 'center',
-          verticalPosition: 'top',
+          verticalPosition: 'bottom',
         });
       } else {
-        this._snackBar.open('Usuario o contraseña incorrectos', 'Ok', {
+        this._snackBar.open('Usuario o contraseña incorrectos', '', {
           duration: 2000,
           panelClass: ['snackError'],
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
         });
       }
     });

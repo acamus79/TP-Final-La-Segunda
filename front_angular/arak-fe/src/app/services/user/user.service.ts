@@ -62,4 +62,6 @@ export class UserService {
   setUserEditFlag$(flag: boolean) {
     this.userEditFlag = flag;
   }
+
+  editUser$() {}
 }

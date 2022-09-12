@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard.component';
 import { DetailUserComponent } from './detail-user/detail-user.component';
 import { DetailVehicleComponent } from './detail-vehicle/detail-vehicle.component';
 import { HomeComponent } from './home/home.component';
+import { RepairComponent } from './repair/repair.component';
 import { UsersComponent } from './users/users.component';
 import { VehiclesComponent } from './vehicles/vehicles.component';
 DetailVehicleComponent;
@@ -31,6 +32,18 @@ const routes: Routes = [
       {
         path: 'detailUser',
         component: DetailUserComponent,
+        pathMatch: 'full',
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'detailVehicle',
+        component: DetailVehicleComponent,
+        pathMatch: 'full',
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'repair',
+        component: RepairComponent,
         pathMatch: 'full',
         canActivate: [AuthGuard],
       },

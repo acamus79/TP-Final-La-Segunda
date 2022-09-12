@@ -1,0 +1,56 @@
+<div class="container">
+  <mat-toolbar class="toolName">
+    <span>Reparaciones</span>
+    <!-- <button mat-stroked-button color="primary" (click)="enableEditUser()">
+        Editar
+      </button> -->
+  </mat-toolbar>
+  <mat-card>
+    <div class="wrapper">
+      <div class="one">
+        <form action="" class="host" [formGroup]="form">
+          <mat-form-field class="formL">
+            <div class="fill">
+              <mat-label>Vehiculo</mat-label>
+              <mat-select
+                [(ngModel)]="vehicle_id"
+                name="Tipo"
+                formControlName="vehicle_id"
+                style="margin-top: 4px; font-size: medium"
+              >
+                <mat-option
+                  *ngFor="let vehicle of vehicleByUser"
+                  [value]="vehicle.id"
+                >
+                  {{ vehicle.brand }} - {{ vehicle.model }} - {{ vehicle.tag }}
+                </mat-option>
+              </mat-select>
+            </div>
+          </mat-form-field>
+          <mat-form-field class="formL">
+            <div class="fill">
+              <mat-label>Reparacion a agregar:</mat-label>
+              <input
+                matInput
+                placeholder=""
+                value=""
+                formControlName="description"
+              />
+            </div>
+          </mat-form-field>
+          <button
+            class="btnEdit"
+            mat-stroked-button
+            color="primary"
+            (click)="addRepair()"
+          >
+            Agregar Reparacion
+          </button>
+        </form>
+      </div>
+      <div class="two">
+        <img src="../../../../assets/service.webp" alt="" width="100%" />
+      </div>
+    </div>
+  </mat-card>
+</div>
