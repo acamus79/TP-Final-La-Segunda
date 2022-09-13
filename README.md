@@ -7,9 +7,9 @@
 <a href="https://arak-front.vercel.app" target="_blank"><img align="center" alt="Check-It-Out"  src="https://forthebadge.com/images/badges/check-it-out.svg"></a>
 </p>
 
-# FullStack 2022
+# FullStack 2022 - La Segunda S.A. - Universidad Tecnológica Nacional
 
- Trabajo Final para la academia de La Segunda S.A. 
+ Trabajo Final
   
 Grupo D:
 * :argentina: Andres Lopez [LinkedIn](https://www.linkedin.com/in/andresl%C3%B3pez/) - [GitHub](https://github.com/andylopezgit)
