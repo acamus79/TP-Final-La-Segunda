@@ -60,15 +60,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.userService.getUser$().subscribe((res: any) => {
       this.arrUsers = res.body.data;
-      console.log(this.arrUsers);
     });
 
-    this.vehicleService.getVehicle$().subscribe((vehicle) => {
+    this.vehicleService.getVehicleByUser().subscribe((vehicle) => {
       this.arrVehicle = vehicle;
     });
   }
 
-  ngOnDestroy(): void {
-    console.log('se destruyo');
-  }
+  ngOnDestroy(): void {}
 }

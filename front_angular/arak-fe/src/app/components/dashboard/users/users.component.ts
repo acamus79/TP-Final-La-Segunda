@@ -51,9 +51,7 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   getUsers(): void {
     this.userService.getUser$().subscribe((res: any) => {
-      console.log(res);
       this.dataSource.data = res.body.data;
-      console.log('esto se eejecuta otra vez');
     });
   }
 

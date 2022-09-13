@@ -9,7 +9,6 @@ import { AuthService } from '../../services/auth/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../shared/dialog-add-user/dialog-add-user.component';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -26,7 +25,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private router: Router,
     private authService: AuthService,
 
-    public dialog: MatDialog,
+    public dialog: MatDialog
   ) {
     this.form = this.fb.group({
       email: ['', Validators.required],
@@ -50,7 +49,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.authService.login$(userLogin).subscribe((res: any) => {
       respuesta = res.body;
       localStorage.setItem('token', respuesta.data.token);
-      localStorage.setItem('user', respuesta.data.email);
+      localStorage.setItem('user', respuesta.data.name);
       localStorage.setItem('role', respuesta.data.role);
       if (respuesta.status === 200) {
         this.loading = true;
@@ -83,22 +82,15 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   newUser() {
     const dialogRef = this.dialog.open(DialogAddUserComponent, {
-            width: '500px',
+      width: '500px',
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+    dialogRef.afterClosed().subscribe((result) => {
       if (result != undefined) {
-        console.log(result);
         this.dialog.closeAll();
       }
     });
-
-
   }
-
-
-
 
   ngOnDestroy() {
     if (this.subRef$) {

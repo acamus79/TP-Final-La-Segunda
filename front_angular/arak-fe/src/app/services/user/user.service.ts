@@ -19,7 +19,6 @@ export class UserService {
   constructor(private http: HttpClient) {
     const token = localStorage.getItem('token');
     this.usertoken = token;
-    console.log('toquen es', token);
     this.httpHeaders = this.httpHeaders.append(
       'Authorization',
       'Barer ' + token?.replace(/['"]+/g, '')

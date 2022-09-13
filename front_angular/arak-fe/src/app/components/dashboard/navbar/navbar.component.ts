@@ -15,7 +15,6 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {}
 
   logout() {
-    console.log('Logout');
     localStorage.removeItem('email');
     localStorage.removeItem('token');
     localStorage.removeItem('role');

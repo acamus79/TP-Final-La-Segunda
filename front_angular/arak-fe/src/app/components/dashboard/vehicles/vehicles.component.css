@@ -57,3 +57,25 @@ th {
 .btnReg:hover {
   background-color: rgba(25, 140, 132, 0.3);
 }
+
+.filter {
+  display: flex;
+  padding: 4px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+.btnFilter {
+  color: rgb(0, 8, 255);
+  margin-left: 2px;
+}
+
+.btnDelFilter {
+  color: rgb(255, 42, 0);
+  margin-left: 2px;
+}
+
+.btnOrder {
+  color: rgb(51, 134, 26);
+  margin-left: 2px;
+}
