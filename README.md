@@ -61,5 +61,5 @@ AraK se desarrolló para el uso particular en caso de que cualquier usuario pued
 
 # :taxi: Agradecimientos
 
-Este proyecto no podría haber sido desarrollado sin el apoyo incondicional de nuestras familias que nos ayudaron dedicarle tanto empeño, tiempo y amor :heart:, los Profesores de la Academia La Segunda y a la Universidad Tecnologica Nacional que hicieron posible este curso y que nos brindaron el conocimiento y la predisposición, ¡GRACIAS!:raised_hands: :clap:
+Este proyecto no podría haber sido desarrollado sin el apoyo incondicional de nuestras familias que nos ayudaron dedicarle tanto empeño, tiempo y amor :heart:, los Profesores que nos brindaron el conocimiento y la predisposición, la empresa La Segunda y a la Universidad Tecnologica Nacional que hicieron posible este curso ¡GRACIAS!:raised_hands: :clap:
 
