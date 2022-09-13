@@ -27,7 +27,9 @@ app.use(express.urlencoded({
   extend: false
 }));
 app.use(json());
-app.use(cors());
+app.use(cors({
+  origin: '*'
+}));
 
 //Rutas
 
