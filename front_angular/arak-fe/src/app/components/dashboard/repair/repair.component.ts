@@ -3,6 +3,7 @@ import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user/user.service';
 import { Router } from '@angular/router';
 import { VehiclesService } from 'src/app/services/vehicles/vehicles.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-repair',
@@ -17,7 +18,8 @@ export class RepairComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private vehicleService: VehiclesService
+    private vehicleService: VehiclesService,
+    private _snackBar: MatSnackBar
   ) {
     this.form = this.fb.group({
       vehicle_id: ['', Validators.required],
@@ -32,6 +34,14 @@ export class RepairComponent implements OnInit {
   }
 
   addRepair() {
-    this.vehicleService.addRepair(this.form.value).subscribe();
+    this.vehicleService.addRepair(this.form.value).subscribe(() => {
+      this._snackBar.open('Reparacion agregada', '', {
+        duration: 3000,
+        panelClass: ['snackOk', 'snack'],
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom',
+      });
+      this.form.reset();
+    });
   }
 }

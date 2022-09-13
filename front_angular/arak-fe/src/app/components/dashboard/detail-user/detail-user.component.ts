@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user/user.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-detail-user',
@@ -25,7 +26,8 @@ export class DetailUserComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) {
     this.form = this.fb.group({
       name: ['', Validators.required],
@@ -46,6 +48,20 @@ export class DetailUserComponent implements OnInit {
   }
 
   editUser() {
-    this.userService.editUser$(this.form.value).subscribe();
+    const userChange = this.user;
+    if (this.form.value.name != '') {
+      userChange.name = this.form.value.name;
+    }
+    if (this.form.value.phone != '') {
+      userChange.phone = this.form.value.phone;
+    }
+    this.userService.editUser$(userChange).subscribe(() => {
+      this._snackBar.open('Usuario editado correctamente', '', {
+        duration: 3000,
+        panelClass: ['snackOk', 'snack'],
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom',
+      });
+    });
   }
 }
