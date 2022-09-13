@@ -9,9 +9,8 @@
 
 # FullStack 2022 - La Segunda S.A. - Universidad Tecnológica Nacional
 
- Trabajo Final
-  
-Grupo D:
+<h2>Trabajo Final Grupo D:</h2>
+
 * :argentina: Andres Lopez [LinkedIn](https://www.linkedin.com/in/andresl%C3%B3pez/) - [GitHub](https://github.com/andylopezgit)
 * :argentina: Adrian Camus [LinkedIn](https://www.linkedin.com/in/acamus79/ ) - [GitHub](https://github.com/acamus79)
 
