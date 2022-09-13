@@ -32,7 +32,7 @@ ARAK es una derivación etimológica de ARAÑA, ya que cuando comenzamos a desar
  <img width="250" src="https://user-images.githubusercontent.com/85143329/189552982-b59e20f7-aae3-48b0-9dbc-3056f51d7236.png">
 </p>
 
-AraK se desarrolló para el uso particular en caso de que cualquier usuario pueda llevar una agenda de sus vehículos y así ayudarlo a recordar cuando renovarobleas, realizar los servicios de mantenimiento general, etc., pero también está pensado para un uso más profesional en donde pequeñas empresas o Pymes de transporte o logística puedan gestionar sus flotas de camiones, taxis/remis, y poder así tener en un solo lugar los datos de todos los vehículos. Creemos quepuede ser escalable implementando información sobre las licencias de conducir, o vinculable a un servicio de geoposicionamiento, una versión móvil exclusivapara conductores, el módulo de reparaciones puede ampliarse para incluir costos o incluso presupuestos.
+AraK se desarrolló para el uso particular en caso de que cualquier usuario pueda llevar una agenda de sus vehículos y así ayudarlo a recordar cuando renovar obleas, realizar los servicios de mantenimiento general, etc., pero también está pensado para un uso más profesional en donde pequeñas empresas, Pymes de transporte o logística, puedan gestionar sus flotas de camiones, taxis/remis, y poder así tener en un solo lugar los datos de todos los vehículos. Creemos que puede ser escalable implementando información sobre las licencias de conducir, o vinculable a un servicio de geoposicionamiento, una versión móvil exclusiva para conductores, el módulo de reparaciones puede ampliarse para incluir costos o incluso presupuestos.
 
 # :truck: Tecnologías Utilizadas  
 
@@ -57,9 +57,10 @@ AraK se desarrolló para el uso particular en caso de que cualquier usuario pued
 # :red_car: Deploy
 
 * BACKEND : [HEROKU](https://arak-backend.herokuapp.com)
+* BASE DE DATOS: [Free MySQL Hosting](https://www.freemysqlhosting.net)
 * FRONT: [VERCEL](https://arak-front.vercel.app)
 
 # :taxi: Agradecimientos
 
-Este proyecto no podría haber sido desarrollado sin el apoyo incondicional de nuestras familias que nos ayudaron dedicarle tanto empeño, tiempo y amor :heart:, los Profesores de la Academia La Segunda que nos brindaron el conocimiento y la predisposición, ¡GRACIAS!:raised_hands: :clap:
+Este proyecto no podría haber sido desarrollado sin el apoyo incondicional de nuestras familias que nos ayudaron dedicarle tanto empeño, tiempo y amor :heart:, los Profesores de la Academia La Segunda y a la Universidad Tecnologica Nacional que hicieron posible este curso y que nos brindaron el conocimiento y la predisposición, ¡GRACIAS!:raised_hands: :clap:
 
